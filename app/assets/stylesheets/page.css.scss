@@ -23,44 +23,6 @@
   text-align: center;
 }
 
-
-
-
-div#home-slider-wrapper{
-  border: 4px solid #fff;
-  -moz-box-shadow: 0 0 5px rgba(0,0,0,.37);
-  -webkit-box-shadow: 0 0 5px rgba(0,0,0,.37);
-  box-shadow: 0 0 5px rgba(0,0,0,.37);
-  /*height: 408px;*/
-  overflow: hidden;
-  margin-bottom: 30px;
-
-  @media(min-width:320px){
-    height: 326px;
-  }
-  @media(min-width:960px){
-    height: 326px;
-  }
-  @media(min-width:1200px){
-    height: 308px;
-  }
-  @media(min-width:1440px){
-    height: 360px;
-  }
-  @media(min-width:2020px){
-    height: 368px;
-  }
-}
-
-
-
-div#some-slider-wrapper img{
-  width: 100%;
-}
-
-
-
-
 #catalog-wrapper{
   background: url(catalog-main-bg.jpg) repeat;
   padding: 50px 0 25px 0;
