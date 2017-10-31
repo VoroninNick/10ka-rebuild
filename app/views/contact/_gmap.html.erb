@@ -1,0 +1,66 @@
+ <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAvkI36T-T6xJe8Qif7QkbQ1xvTl8Ha_9o&sensor=false"></script>
+<!-- temporarily commenthed  because of absent Internet connection -->
+<div id="gmap-wrapper" class="container f-height">
+  <div class="g12">
+    <h2 class="title"><%= image_tag('h-img.png') %>Ми на Google карті:</h2>
+  </div>
+  <div class="g12" id="map-container">
+  <div id="map">
+
+  </div>
+</div>
+</div>
+<script type="text/javascript">
+
+$.ajax('xml/gmap.xml',
+	{success:function(xml){
+		fullxml=xml;
+		if($('status',xml).text()=='OK')
+		{
+
+
+			var lat= 49.8163609;//$('geometry location lat',xml).text();
+			var lng= 23.9259267;//$('geometry location lng',xml).text();
+			//alert('lat:'+lat+';lng:'+lng);
+			//var map=new GMaps({
+  			//	el: '#map',
+  			//	lat: lat,
+  			//	lng: lng
+			//});
+
+			//var myLatlng = new google.maps.LatLng(lat, lng);
+
+			//var marker = new google.maps.Marker({
+   			// 	position: myLatlng,
+    		//	map: map,
+    		//	title:"Hello World!"
+			//});
+
+				var myLatlng = new google.maps.LatLng(lat, lng);
+				var myOptions = {
+        			zoom: 15,
+        			center: myLatlng,
+        			mapTypeId: google.maps.MapTypeId.ROADMAP,
+              scrollwheel: false
+    			};
+    			var map = new google.maps.Map(document.getElementById("map"), myOptions);
+
+    			var marker = new google.maps.Marker({
+    				position: myLatlng,
+    				map: map,
+    				title:"Гуртівня будівельних товарів \"Десятка\""
+				});
+}
+//initialize();
+
+		}
+
+});
+/* temporarily commenthed  because of absent Internet connection */
+$(window).resize(function(){
+	var h=window.innerHeight;
+	$('#map').css('max-height',h);
+	console.log('h:'+h);
+})
+
+</script>

@@ -1,0 +1,20 @@
+<response>
+	<child_info>
+		<child_name><%= @child_catalog.name %></child_name>
+		<child_avatar><%= @child_catalog.avatar.url %></child_avatar>
+		<child_description><%= @child_catalog.description %></child_description>
+		<child_id><%= @child_catalog.id %></child_id>
+	</child_info>
+
+	<products_by_child>
+		<% @child_catalog.products.each do |pr| %>
+			<product>
+				<product_id><%= pr.id %></product_id>
+				<product_name><%= pr.name %></product_name>
+				<product_description><%= pr.description %></product_description>
+				<product_avatar><%= pr.avatar.url(:prod) %></product_avatar>
+				<product_slug><%= catalog_main_url+'/'+@child_catalog.parent_catalog.catalog.slug+'/'+@child_catalog.parent_catalog.slug+'/'+@child_catalog.slug+'/'+pr.slug %></product_slug>
+			</product>
+		<% end %> 
+	</products_by_child>
+</response>

@@ -1,0 +1,102 @@
+<div id="hd-wrapper" class="page-indent container">
+  <div id="logo" class="alpha">
+    <div class="image-container">
+        <% if current_page?(root_path) %>
+            <%= image_tag('logo.png', :alt => '') %>
+        <% else %>
+            <%= link_to(image_tag('logo.png', :alt => ''), root_path) %>
+        <% end %>
+    </div>
+  </div><!-- span4 -->
+  <div class="omega mobile-menu-button">
+    <img src="/assets/mobile-menu-button.png" alt="show menu"/>
+  </div>
+  <div id="menu" class="omega">
+    <%= render :partial => "partials/menu" %>
+  </div><!-- span8 -->
+</div>
+
+<script type="text/javascript">
+  var $mobile_menu_button=$('.mobile-menu-button');
+  var $menu=$('div#hd-wrapper nav');
+  //if($mobile_menu_button.filter(':visible').length>0)
+  //  $menu.hide();
+    $('.mobile-menu-button').click(function(){
+      
+      if($menu.filter(':visible').length>0)
+        $menu.slideUp(400,function(){
+          $menu.removeAttr('style');
+          $menu.removeClass('expanded-menu');
+          $menu.addClass('collapsed-menu');
+
+        });
+
+      else
+        $menu.slideDown(400,function(){
+          $menu.removeAttr('style');
+          $menu.removeClass('collapsed-menu');
+
+          $menu.addClass('expanded-menu');
+        });
+    });
+    $('ul.header-nav li a').click(function(){
+      
+      var li=$(this).parent().addClass('click');
+      /*li.animate({'background-image':"url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEwMCAxMDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxsaW5lYXJHcmFkaWVudCBpZD0iaGF0MCIgZ3JhZGllbnRVbml0cz0ib2JqZWN0Qm91bmRpbmdCb3giIHgxPSI1MCUiIHkxPSIxMDAlIiB4Mj0iNTAlIiB5Mj0iLTEuNDIxMDg1NDcxNTIwMmUtMTQlIj4KPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZkYWQwMCIgc3RvcC1vcGFjaXR5PSIxIi8+CjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI2ZkZWYwMCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgIDwvbGluZWFyR3JhZGllbnQ+Cgo8cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0idXJsKCNoYXQwKSIgLz4KPC9zdmc+)",
+    'background-image': '-moz-linear-gradient(bottom, #FD3232 0%, #FD6432 100%)',
+    'background-image': '-o-linear-gradient(bottom, #FD3232 0%, #FD6432 100%)',
+    'background-image': '-webkit-linear-gradient(bottom, #FD3232 0%, #FD6432 100%)',
+    'background-image': 'linear-gradient(bottom, #FD3232 0%, #FD6432 100%)',
+  },100);
+      li.delay(100);
+      li.animate({'background-image':"url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEwMCAxMDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxsaW5lYXJHcmFkaWVudCBpZD0iaGF0MCIgZ3JhZGllbnRVbml0cz0ib2JqZWN0Qm91bmRpbmdCb3giIHgxPSI1MCUiIHkxPSIxMDAlIiB4Mj0iNTAlIiB5Mj0iLTEuNDIxMDg1NDcxNTIwMmUtMTQlIj4KPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZkYWQwMCIgc3RvcC1vcGFjaXR5PSIxIi8+CjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI2ZkZWYwMCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgIDwvbGluZWFyR3JhZGllbnQ+Cgo8cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0idXJsKCNoYXQwKSIgLz4KPC9zdmc+",
+    'background-image': '-moz-linear-gradient(bottom, #fdad00 0%, #fdef00 100%)',
+    'background-image': '-o-linear-gradient(bottom, #fdad00 0%, #fdef00 100%)',
+    'background-image': '-webkit-linear-gradient(bottom, #fdad00 0%, #fdef00 100%)',
+    'background-image': 'linear-gradient(bottom, #fdad00 0%, #fdef00 100%)',
+},100);
+      //.delay(5000)
+      //.removeClass('click');
+      $(this).preventDefault();
+      */
+    });
+
+     /* var lastWindow=false;
+      $(window).resize(function(){
+        console.log('resize');
+        var handler=function(){
+          alert('resize');
+        };
+        var currentWindow={};
+        currentWindow.width=window.innerWidth;
+
+        if(window.innerWidth>=320 && window.innerWidth<610)
+        {
+          currentWindow.type='mobile';
+        }
+        else if(window.innerWidth>=610 && window.innerWidth<1200)
+        {
+          currentWindow.type='ipad';
+        }
+        else if(window.innerWidth>=1200 && window.innerWidth<1440)
+        {
+          currentWindow.type='1200';
+        }
+        else if(window.innerWidth>=1440 && window.innerWidth<2020)
+        {
+          currentWindow.type='1440';
+        }
+        else if(window.innerWidth>=2020)
+        {
+          currentWindow.type='2020';
+        }
+
+        if(lastWindow==false || lastWindow.type!=currentWindow.type)
+          {
+            handler();
+
+          }
+          lastWindow=currentWindow;
+      */
+    
+  </script>

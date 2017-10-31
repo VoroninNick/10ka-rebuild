@@ -1,0 +1,79 @@
+*, ::after, ::before {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+::selection {
+  background: #bf291f;
+  color: #fff;
+  text-shadow: none;
+  font-weight: 300;
+}
+
+.animate{
+  -webkit-transition: 0.45s ease-out all;
+  -moz-transition: 0.45s ease-out all;
+  -ms-transition: 0.45s ease-out all;
+  -o-transition: 0.45s ease-out all;
+  transition: 0.45s ease-out all;
+}
+
+html, body {
+  height: 100%;
+}
+
+a:visited,
+a:active,
+a:focus{
+  color: #929292;
+}
+
+body{
+  font-family: 'Open Sans', sans-serif;
+  background: url(10k-bricks-pattern.gif) repeat transparent;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+[class*="container"]{
+  background: #ffffff;
+}
+
+[class*="container"]::before, [class*="container"]::after, [class*="f-height"]::before, [class*="f-height"]::after {
+  display: table;
+  line-height: 0;
+  content: "";
+}
+
+[class*="container"]::after, [class*="f-height"]::after {
+  clear: both;
+}
+
+#wrapper{
+  
+  width:80%;
+  margin: 10px auto;
+  background-color: #ffffff;
+}
+
+.shadow-top{
+  width: 100%;
+  background: url(shadow-top.jpg) no-repeat center bottom;
+  height: 10px;
+}
+
+.shadow-bottom{
+  width: 100%;
+  background: url(shadow-bottom.jpg) no-repeat center top;
+  height: 25px;
+}
+
+
+#hd-wrapper, #banner-wrapper, #info-wrapper, .shadow-bottom, #about-wrapper, .pd-me{
+  padding-bottom: 30px;
+}
+
+
+
+

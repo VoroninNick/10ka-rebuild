@@ -1,0 +1,31 @@
+<!-- Header render -->
+<%= render :partial => "partials/head" %>
+<!-- /Header render -->
+
+<!-- Catalog wrapper -->
+<div id="catalog-page-wrapper" class="f-height catalog-page-index page-indent container">
+  <div class="g12 pd-me">
+    <h1>Каталог продукції</h1>
+  </div>
+  <div class="catalog-block g4 alpha">
+    <%= render :partial => "partials/catalog_navigation" %>
+  </div><!-- Catalog wrap stuff G4 -->
+<div id="catalog-content" class="left-indent g8">  
+  <div id="catalog-main" class="g12 catalog-page-contact omega">
+    <h1 id=""><%= @description_dummy.name %></h1>
+		<%= @description_dummy.description %>
+  </div>
+</div>
+
+
+</div>
+<!-- /Catalog wrapper -->
+<div class="pd-me f-height"></div>
+
+<!-- Sponsor render -->
+<%= render :partial => "partials/sponsor-all" %>
+<!-- Sponsor render -->
+
+<!-- Footer render -->
+<%= render :partial => "partials/footer" %>
+<!-- /Footer render -->

@@ -1,0 +1,37 @@
+<% link_to_parent = catalog_main_path+'/'+@parent_catalog.catalog.slug+'/'+@parent_catalog.slug %>
+<responce>
+    <parent_catalog_info> 
+      <parent_catalog_id><%= @parent_catalog.id  %></parent_catalog_id>
+      <catalog_id><%= @parent_catalog.catalog_id  %></catalog_id>
+      <parent_catalog_name> <%= @parent_catalog.name %></parent_catalog_name>
+      <parent_catalog_url> <%= link_to_parent %> </parent_catalog_url>
+      <description><%= @parent_catalog.description unless @parent_catalog.description.blank? %></description>
+    </parent_catalog_info>
+
+    <childs_of_this_parent>
+     <% @get_child_xml.each do |pc| %>
+     <% link_to_child = catalog_main_path+'/'+@parent_catalog.catalog.slug+'/'+@parent_catalog.catalog.slug+'/'+@parent_catalog.slug+'/'+pc.slug %>
+      <child>  
+        <parent_catalog_id> <%= pc.parent_catalog_id %> </parent_catalog_id>
+        <child_catalog_id> <%= pc.id %></child_catalog_id>
+        <child_catalog_url> <%= link_to_child %></child_catalog_url>
+        <child_catalog_name> <%= pc.name %></child_catalog_name>
+      </child> 
+     <% end %>
+    </childs_of_this_parent>
+
+    <all_products>
+    <% all_pr = @parent_catalog.child_catalogs %>
+    <% all_pr.each do |cc| %>
+    <% cc.products.each do |pr| %>
+      <product_id><%= pr.id %></product_id>
+      <product_name><%= pr.name %></product_name>
+      <product_avatar><%= pr.avatar.url(:prod) %></product_avatar>
+      <product_description><%= pr.description %></product_description>
+      <product_slug><%= cc.slug+'/'+pr.slug %></product_slug>
+    <% end %>
+    <% end %>
+    </all_products>
+  </responce>
+
+

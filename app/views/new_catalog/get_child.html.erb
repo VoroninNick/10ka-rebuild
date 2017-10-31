@@ -1,0 +1,148 @@
+<!-- Header render -->
+<%= render :partial => "partials/head" %>
+<!-- /Header render -->
+
+<!-- Catalog wrapper -->
+<div id="catalog-page-wrapper" class="f-height catalog-page-index page-indent container">
+	<div class="g12 pd-me">
+		<h1>Каталог продукції</h1>
+	</div>
+	<div class="catalog-block g4 alpha">
+		<% @new_catalogs.each do |catalog| %>
+			<script type="text/javascript">
+				$(document).ready(function(){
+					var catalog_id = <%= @new_catalog.id %>
+					if(catalog_id == <%= catalog.id %>){
+						$('#status-<%= @new_catalog.id %>').text('-');
+						$('#menu-cat-<%= @new_catalog.id %>').addClass('visited');
+					}
+					$("#main-cat-<%= catalog.id %>").click(function(){
+						window.location.href = "<%= new_catalog_all_path+'/'+catalog.slug %>";
+					});
+				});
+			</script>
+			<div class="catalog-item"  data-category-name="<%= catalog.slug %>" data-category-id="<%= catalog.id %>">
+				<a class="catalog-show-more animate" id="main-cat-<%= catalog.id %>"><%= catalog.name %><span data-opened="false" id="status-<%= catalog.id %>">+</span></a>
+				<ul class="catalog-menu" id="menu-cat-<%= catalog.id %>">
+					<% get_all_parent_catalogs_by_id(catalog.id).each do |parent| %>
+						<% if parent.new_child_catalogs.present? %>
+							<script type="text/javascript">
+								$(document).ready(function(){
+									var parent_italic_id = <%= parent.id %>;
+									if(parent_italic_id == <%= @new_parent_catalog.id %>){
+										$('#if-visited<%= @new_parent_catalog.id %>').css({
+											'font-style': 'italic'
+										});
+									}
+								});
+							</script>
+							<li><%= link_to parent.name, new_catalog_path(catalog)+'/'+parent.slug, :title => parent.name, :id => 'if-visited' + parent.id.to_s %><span data-opened="false" id="sub-status-<%= parent.id %>" class="sub-menu-status">+</span>
+								<script type="text/javascript" charset="utf-8">
+									$(document).ready(function() {
+										$("#sub-status-<%= parent.id %>").text("+");
+										$('.sub-status-ul-<%= parent.id %>').hide();
+										$("#sub-status-<%= parent.id %>").click(function(){
+											$('.sub-status-ul-<%= parent.id %>').slideToggle('slow', function() {
+												// Animation complete.
+											});
+											$(this).each(function (i) {
+												if($(this).text() != "-"){
+													$(this).text("-");
+												}else{
+													$(this).text("+");
+												}
+											});
+										});
+									});
+								</script>
+								<script type="text/javascript">
+									$(document).ready(function(){
+										var parent_id = <%= @new_parent_catalog.id %>;
+										if(parent_id == <%= parent.id %>){
+											$('.sub-status-ul-<%= @new_parent_catalog.id %>').show();
+											$("#sub-status-<%= @new_parent_catalog.id %>").text("-");
+										}
+									});
+								</script>
+								<ul class="sub-status-ul-<%= parent.id %>">
+									<% get_all_child_catalogs_by_id(parent.id).each do |child| %>
+										<script type="text/javascript">
+											$(document).ready(function(){
+												var child_visited = <%= @new_child_catalog.id %>;
+												if(child_visited == <%= child.id %>){
+													$('#if-visited-child<%= @new_child_catalog.id %>').css({
+														'font-style': 'italic'
+													});
+													$('#tab-<%= @new_child_catalog.id %>').addClass('active');
+												}
+											});
+										</script>
+										<li><%= link_to child.name, new_catalog_path(catalog)+'/'+parent.slug+'/'+child.slug, :title => child.name, :id => 'if-visited-child' + child.id.to_s %></li>
+									<% end %>
+								</ul>
+							</li>
+						<% else %>
+							<li><%= link_to parent.name, new_catalog_path(catalog)+'/'+parent.slug, :title => parent.name %><!-- span>+</span --></li>
+						<% end %>
+					<% end %>
+				</ul>
+			</div><!-- Catalog Item -->
+		<% end %>
+	</div><!-- Catalog wrap stuff G4 -->
+	<div id="catalog-content" class="left-indent">
+		<div id="catalog-parent" class="g8 catalog-page-format omega">
+			<style type="text/css">
+				#tab-control{
+					margin-top: 15px;
+					margin-bottom: 20px;
+					width: 100%;
+				}
+			</style>
+			<div id="tab-control" class="f-height">
+				<!--<div class="tabs-left animate"> < </div>-->
+				<!--<div class="tabs-right animate"> > </div>-->
+				<div class="tabs">
+					<% get_all_child_catalogs_by_id(@new_parent_catalog.id).each do |child| %>
+						<div class="tab-item" id="tab-<%= child.id %>" data-child-name="<%= child.name %>" data-slug="<%= child.slug %>">
+							<%= link_to child.name, new_catalog_path(@new_catalog)+'/'+@new_parent_catalog.slug+'/'+child.slug, :title => child.name %>
+						</div>
+					<% end %>
+				</div>
+			</div><!-- /tab-control -->
+			<div class="parent-description">
+				<h1><%= @new_child_catalog.name %></h1> <br>
+				<%= @new_child_catalog.description.html_safe unless @new_child_catalog.description.blank? %>
+			</div>
+			<div class="clearfix">&nbsp;</div>
+			<div id="all-products-by-childs">
+
+				<div class="store-section"><!-- Online store -->
+					<div class="top-border">&nbsp;</div>
+					<%# fetch_all_child_ids(@parent_catalog.id).each do |child_ids| %>
+					<% @new_child_catalog.new_products.each do |pr| %>
+						<div class="online-item" data-id="" data-catalog-name="" data-price="">
+							<%= link_to image_tag(pr.avatar.url(:prod), :alt => pr.name), new_catalog_path(@new_catalog)+'/'+@new_parent_catalog.slug+'/'+@new_child_catalog.slug+'/'+pr.slug, :title => pr.name, :class => '' %>
+							<p><%= pr.name %></p>
+							<%= link_to 'Детальніше', new_catalog_path(@new_catalog)+'/'+@new_parent_catalog.slug+'/'+@new_child_catalog.slug+'/'+pr.slug, :title => pr.name, :class => 'submit-branded animate' %>
+						</div>
+					<% end %>
+					<%# end %>
+				</div> <!-- /Online store -->
+			</div> <!-- /products -->
+
+
+		</div><!-- catalog parent -->
+	</div><!-- catalog content -->
+
+
+</div>
+<!-- /Catalog wrapper -->
+<div class="pd-me f-height"></div>
+
+<!-- Sponsor render -->
+<%= render :partial => "partials/sponsor-all" %>
+<!-- Sponsor render -->
+
+<!-- Footer render -->
+<%= render :partial => "partials/footer" %>
+<!-- /Footer render -->

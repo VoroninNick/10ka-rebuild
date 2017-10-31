@@ -1,0 +1,10 @@
+<%= image_tag('logo-big.jpg') %>
+<h1><%= @text_unsupported.name %></h1>
+<%= @text_unsupported.description.html_safe unless @text_unsupported.description.blank? %>
+
+<div id="browser-downloads">
+	<%= link_to(image_tag('https://raw.github.com/paulirish/browser-logos/master/ie9-10/ie9-10.png', :width => '120px'), 'http://windows.microsoft.com/ru-ru/internet-explorer/download-ie', :target => '_blank') %>
+	<%= link_to(image_tag('https://raw.github.com/paulirish/browser-logos/master/opera/opera.png', :width => '120px'), 'http://www.opera.com/computer/windows', :target => '_blank') %>
+	<%= link_to(image_tag('https://raw.github.com/paulirish/browser-logos/master/firefox/firefox.png', :width => '120px'), 'http://www.mozilla.org/ru/firefox/new/', :target => '_blank') %>
+	<%= link_to(image_tag('https://raw.github.com/paulirish/browser-logos/master/chrome/chrome.png', :width => '120px'), 'http://www.google.com/intl/ru/chrome/browser/', :target => '_blank') %>
+</div>

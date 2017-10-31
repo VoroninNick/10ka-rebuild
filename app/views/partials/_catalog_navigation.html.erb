@@ -1,0 +1,288 @@
+<% if current_page?(catalog_main_path) %>
+  <% fetch_all_catalog.each do |catalog_section| %>
+    <div class="catalog-item"  data-category-name="<%= catalog_section.slug %>" data-category-id="<%= catalog_section.id %>">
+      <a class="catalog-show-more animate" id="main-cat-<%= catalog_section.id %>"><%= catalog_section.name %><span data-opened="false" id="status-<%= catalog_section.id %>">+</span></a>
+      <ul class="catalog-menu" id="menu-cat-<%= catalog_section.id %>">
+        <% catalog_section.parent_catalogs.each do |parent_section| %>
+          <li><%= link_to parent_section.name, catalog_main_path+'/'+catalog_section.slug+'/'+parent_section.slug, :title => parent_section.name %><!-- span>+</span --></li>
+        <% end %>
+      </ul>
+    </div><!-- Catalog Item -->
+  <% end %>
+
+<% elsif current_page?(parent_show_path) || current_page?(child_show_path) %>
+  <% fetch_all_catalog.each do |catalog_section| %>
+    <div class="catalog-item"  data-category-name="<%= catalog_section.slug %>" data-category-id="<%= catalog_section.id %>">
+      <a class="catalog-show-more animate" id="main-cat-<%= catalog_section.id %>"><%= catalog_section.name %><span data-opened="false" id="status-<%= catalog_section.id %>"><% if catalog_section.id == @parent_catalog.catalog_id %>-<% else %>+<% end %></span></a>
+      <ul class="catalog-menu <% if catalog_section.id == @parent_catalog.catalog_id %> visited <% end %>" id="menu-cat-<%= catalog_section.id %>">
+        <% catalog_section.parent_catalogs.each do |parent_section| %>
+          <% if parent_section.id == @parent_catalog.id %>
+            <li><%= parent_section.name %><span data-opened="false" id="sub-status-<%= parent_section.id %>" class="sub-menu-status">+</span>
+              <% if parent_section.child_catalogs.present? %>
+                <script type="text/javascript" charset="utf-8">
+                  $(document).ready(function() {
+                    $("#sub-status-<%= @parent_catalog.id %>").text("-");
+                    $('.sub-status-ul-<%= @parent_catalog.id %>').show();
+                    $("#sub-status-<%= parent_section.id %>").click(function(){
+                      $('.sub-status-ul-<%= parent_section.id %>').slideToggle('slow', function() {
+                        // Animation complete.
+                      });
+                      $(this).each(function (i) {
+                        if($(this).text() != "-"){
+                          $(this).text("-");
+                        }else{
+                          $(this).text("+");
+                        }
+                      });
+                    });
+                  });
+                </script>
+                <ul class="sub-status-ul-<%= parent_section.id %>">
+                  <% parent_section.child_catalogs.each do |child_li| %>
+                    <% link_child = catalog_main_path+'/'+catalog_section.slug+'/'+@parent_catalog.slug+'/'+child_li.slug %>
+                    <li><%= link_to child_li.name, link_child, :class => 'sub-'+child_li.slug, :title => child_li.name %></li>
+                  <% end %>
+                </ul>
+              <% end %>
+            </li>
+          <% else %>
+            <% if parent_section.child_catalogs.present? %>
+              <script type="text/javascript" charset="utf-8">
+                $(document).ready(function() {
+                  $("#sub-status-<%= parent_section.id %>").click(function(){
+                    $('.sub-status-ul-<%= parent_section.id %>').slideToggle('slow', function() {
+                      // Animation complete.
+                    });
+                    $(this).each(function (i) {
+                      if($(this).text() != "-"){
+                        $(this).text("-");
+                      }else{
+                        $(this).text("+");
+                      }
+                    });
+                  });
+                });
+              </script>
+              <% link_parent = catalog_main_path+'/'+catalog_section.slug+'/'+parent_section.slug %>
+              <li><%= link_to parent_section.name, link_parent, :title => parent_section.name %><% if count_childs(@parent_catalog.id) > 0 %><span class="sub-menu-status" data-opened="false" id="sub-status-<%= parent_section.id %>">+</span>
+                  <ul class="sub-status-ul-<%= parent_section.id %>">
+                    <% parent_section.child_catalogs.each do |child_li_next| %>
+                      <li><%= link_to child_li_next.name, catalog_main_url+'/'+catalog_section.slug+'/'+parent_section.slug+'/'+child_li_next.slug, :class => 'sub-'+child_li_next.slug, :title => child_li_next.name %></li>
+                    <% end %>
+                  </ul>
+                <% end %>
+              </li>
+            <% else %>
+              <% link_parent = catalog_main_path+'/'+catalog_section.slug+'/'+parent_section.slug %>
+              <li><%= link_to parent_section.name, link_parent, :title => parent_section.name %></li>
+            <% end %>
+          <% end %>
+        <% end %>
+      </ul>
+    </div><!-- Catalog Item -->
+  <% end %>
+<% elsif current_page?(product_show_path) %> <!-- Product render part -->
+  <% fetch_all_catalog.each do |catalog_section| %>
+    <%#= catalog_section.inspect %>
+    <div class="catalog-item"  data-category-name="<%= catalog_section.slug %>" data-category-id="<%= catalog_section.id %>">
+      <a class="catalog-show-more animate" id="main-cat-<%= catalog_section.id %>"><%= catalog_section.name %><span data-opened="false" id="status-<%= catalog_section.id %>"><% if catalog_section.id == parent_name_breadcrumb(child_name_breadcrumb(@product.child_catalog_id)).catalog_id %>-<% else %>+<% end %></span></a>
+      <ul class="catalog-menu <% if catalog_section.id == parent_name_breadcrumb(child_name_breadcrumb(@product.child_catalog_id)).catalog_id %> visited <% end %>" id="menu-cat-<%= catalog_section.id %>">
+        <% catalog_section.parent_catalogs.each do |parent_section| %>
+          <% if parent_section.id == parent_name_breadcrumb(child_name_breadcrumb(@product.child_catalog_id)).id %>
+            <li><%= parent_section.name %><span data-opened="false" id="sub-status-<%= parent_section.id %>" class="sub-menu-status">+</span>
+              <% if parent_section.child_catalogs.present? %>
+                <script type="text/javascript" charset="utf-8">
+                  $(document).ready(function() {
+                    $('.sub-status-ul-<%= parent_name_breadcrumb(child_name_breadcrumb(@product.child_catalog_id)).id %>').show();
+                    $("#sub-status-<%= parent_name_breadcrumb(child_name_breadcrumb(@product.child_catalog_id)).id %>").text("-");
+                    $("#sub-status-<%= parent_section.id %>").click(function(){
+                      $('.sub-status-ul-<%= parent_section.id %>').slideToggle('slow', function() {
+                        // Animation complete.
+                      });
+                      $(this).each(function (i) {
+                        if($(this).text() != "-"){
+                          $(this).text("-");
+                        }else{
+                          $(this).text("+");
+                        }
+                      });
+                    });
+                  });
+                </script>
+                <ul class="sub-status-ul-<%= parent_section.id %>">
+                  <% parent_section.child_catalogs.each do |child_li| %>
+                    <li><%= link_to child_li.name, catalog_main_url+'/'+catalog_section.slug+'/'+parent_section.slug+'/'+child_li.slug, :class => 'sub-'+child_li.slug, :title => child_li.name %></li>
+                  <% end %>
+                </ul>
+              <% end %>
+            </li>
+          <% else %>
+            <% if parent_section.child_catalogs.present? %>
+              <script type="text/javascript" charset="utf-8">
+                $(document).ready(function() {
+                  $('.sub-status-ul-<%= parent_name_breadcrumb(child_name_breadcrumb(@product.child_catalog_id)).id %>').show();
+                  $("#sub-status-<%= parent_name_breadcrumb(child_name_breadcrumb(@product.child_catalog_id)).id %>").text("-");
+                  $("#sub-status-<%= parent_section.id %>").click(function(){
+                    $('.sub-status-ul-<%= parent_section.id %>').slideToggle('slow', function() {
+                      // Animation complete.
+                    });
+                    $(this).each(function (i) {
+                      if($(this).text() != "-"){
+                        $(this).text("-");
+                      }else{
+                        $(this).text("+");
+                      }
+                    });
+                  });
+                });
+              </script>
+              <li><%= link_to parent_section.name, catalog_main_url+'/'+catalog_section.slug+'/'+parent_section.slug, :title => parent_section.name %><% if count_childs(parent_name_breadcrumb(child_name_breadcrumb(@product.child_catalog_id)).id) > 0 %><span class="sub-menu-status" data-opened="false" id="sub-status-<%= parent_section.id %>">+</span>
+                  <ul class="sub-status-ul-<%= parent_section.id %>">
+                    <% parent_section.child_catalogs.each do |child_li_next| %>
+                      <li><%= link_to child_li_next.name, catalog_main_url+'/'+catalog_section.slug+'/'+parent_section.slug+'/'+child_li_next.slug, :class => 'sub-'+child_li_next.slug, :title => child_li_next.name %></li>
+                    <% end %>
+                  </ul>
+                <% end %>
+              </li>
+            <% else %>
+              <li><%= link_to parent_section.name, catalog_main_url+'/'+catalog_section.slug+'/'+parent_section.slug, :title => parent_section.name %></li>
+            <% end %>
+          <% end %>
+        <% end %>
+      </ul>
+    </div><!-- Catalog Item -->
+  <% end %>
+<% end %>
+
+
+<script type="text/javascript">
+$(document).ready(function(){
+
+$('div.catalog-block div.catalog-item>ul>li').each(function(){
+  var $li=$(this);
+  var url=$li.find('a').get(0).href+'.xml';
+  if($li.find('ul').length==0){
+    $.ajax({
+      url:url,
+      success:function(xml){
+        
+        var $response=$(xml);
+        var $children=$response.find('childs_of_this_parent child');
+        var $parent=$response.find('parent_catalog_info');
+        if($parent.length==0){
+
+        }
+        if($children.length>0){
+          var ul=$('<ul></ul>');
+          var child_id;
+          var $span=$('<span></span>');
+          $children.each(function(childIndex,child){
+            var url=$('child_catalog_url',child).text();
+            var id=$('child_catalog_id',child).text()*1;
+            child_id=id;
+            var name=$('child_catalog_name',child).text();
+            ul.append('<li><a href="'+url+'">'+name+'</a></li>');
+
+          });
+
+          var $parent=$response.find('parent_catalog_info');
+          var parent_id;
+          if($parent.length==1){
+            var id=$('parent_catalog_id',$parent).text()*1;
+            parent_id=id;
+            $span.addClass('sub-menu-status');
+            $span.attr('id','sub-status-'+id);
+            $span.attr('data-opened','false');
+
+          }
+          ul.addClass('sub-status-ul-'+parent_id);
+
+          $li.append($span);
+          $li.append(ul);
+
+
+          $("#sub-status-"+parent_id).text("+");
+          //$('.sub-status-ul-'+parent_id).show();
+          $("#sub-status-"+parent_id).click(function(){
+            $('.sub-status-ul-'+parent_id).slideToggle('slow', function() {
+              // Animation complete.
+            });
+          $(this).each(function (i) {
+            if($(this).text() != "-"){
+              $(this).text("-");
+            }else{
+              $(this).text("+");
+            }
+          });
+        }); 
+
+        }
+        else{
+          //alert(0);
+        }
+       
+      }
+    });
+  }
+});
+  
+
+  function getCurrentLocation(){
+    var str='';
+    function getString(variable){
+      var str='';
+      if(typeof str == 'array'){
+        for(var i=0;i<variable.length;i++){
+          if(typeof variable[i] == 'array'){
+            str+=getString(variable[i]);
+          }
+          else{
+            str+=variable[i];
+          }
+        }
+      }
+      else{
+        str=variable;
+      }
+      return variable;
+    }
+    var variable=window.location.hash;
+    var str=getString(variable);
+    var pathname_array=location.pathname.split('/');
+    pathname_array.shift();
+    if(pathname_array[0]=='catalog'){
+      console.log('location:'+'catalog');
+      $('.catalog-item>ul>li>a').click(function(event){
+        //event.preventDefault();
+        //this.css('background','red');
+        //alert('hello');
+        console.log('href:'+this.href.protocol);
+        //$.ajax();
+        var uri=$(this).uri();
+        var required_uri=uri.pathname(true);
+        console.log('required:'+required_uri);
+        $.ajax({
+          url:required_uri+'.xml',
+          dataType:'xml',
+          success:function(xml){
+            var $xml=$(xml);
+            $('childs_of_this_parent>child',$xml).each(function(index,item){
+              //alert(index);
+              var $catalog_content=$('div#catalog-content');
+              var $catalog_parent=$catalog_content.find('div#catalog-parent');
+              //if($catalog_parent.length==1){ //if exists
+              //  catalog_parent.find('tab-wrapper')
+
+              //}
+            });
+          }
+        });
+      });
+    }
+      
+  }
+  getCurrentLocation();
+
+  
+});
+</script>

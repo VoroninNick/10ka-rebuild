@@ -1,0 +1,177 @@
+<!-- Header render -->
+<%= render :partial => "partials/head" %>
+<!-- /Header render -->
+
+<!-- Catalog wrapper -->
+<div id="catalog-page-wrapper" class="f-height catalog-page-index page-indent">
+  <div class="g12 pd-me">
+    <h1>Каталог продукції</h1>
+  </div>
+  <div class="catalog-block g4 alpha">
+    <%= render :partial => "partials/catalog_navigation" %>
+  </div><!-- Catalog wrap stuff G4 -->
+  <!-- Lets count have many childs we got -->
+  <div id="catalog-content" class="left-indent">
+    <div id="catalog-parent" class="g8 catalog-page-format omega">
+      <h1><%= @child_catalog.parent_catalog.name %></h1>
+      <div id="tab-control" class="f-height">
+        <!--<div class="tabs-left animate"> < </div>-->
+        <!--<div class="tabs-right animate"> > </div>-->
+        <div class="tabs">
+          <% fetch_all_child(@child_catalog.parent_catalog_id).each do |child_tabs| %>
+            <div class="tab-item <% if @child_catalog.id == child_tabs.id %> active <% end %>" id="tab-<%= child_tabs.id %>" data-child-name="<%= child_tabs.name %>" data-slug="<%= child_tabs.slug %>">
+              <% link_child = catalog_main_path+'/'+@child_catalog.parent_catalog.catalog.slug+'/'+@parent_catalog.slug+'/'+child_tabs.slug %>
+              <% if child_tabs.avatar.present? %>
+                <%= link_to (image_tag(child_tabs.avatar.url(:tab), :alt => child_tabs.name)), link_child %>
+              <% else %>
+                <%= link_to child_tabs.name, link_child %>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      <%=  %>
+
+      </div><!-- /tab-control -->
+      <div id="tabcontents" class="f-height">
+        <div class="tab-content-wrapper" id="tab-content-<%= @child_catalog.id %>">
+          <div class="category-description">
+            <%= @child_catalog.description.html_safe unless @child_catalog.description.blank? %>
+          </div>
+          <div id="all-products-by-childs">
+            <div class="store-section"><!-- Online store -->
+              <div class="top-border">&nbsp;</div>
+              <%# fetch_all_child_ids(@parent_catalog.id).each do |child_ids| %>
+              <% @child_catalog.products.each do |pr| %>
+                <div class="online-item" data-id="" data-catalog-name="" data-price="">
+                  <%= link_to image_tag(pr.avatar.url(:prod), :alt => pr.name), catalog_main_path+'/'+@catalog_slug.slug+'/'+parent_slug(get_first_child(@parent_catalog.id).id)+'/'+get_first_child(@parent_catalog.id).slug+'/'+pr.slug, :title => pr.name, :class => '' %>
+                  <p><%= pr.name %></p>
+                  <%= link_to 'Детальніше', catalog_main_path+'/'+@catalog_slug.slug+'/'+parent_slug(get_first_child(@parent_catalog.id).id)+'/'+get_first_child(@parent_catalog.id).slug+'/'+pr.slug, :title => pr.name, :class => 'submit-branded animate' %>
+                </div>
+              <% end %>
+              <%# end %>
+            </div> <!-- /Online store -->
+          </div> <!-- /products -->
+        </div>
+      </div>
+
+    </div>
+
+  </div> <!-- / div#catalog-content -->
+
+</div>
+<!-- /Catalog wrapper -->
+
+<script type="text/javascript">
+  function openChild(url){
+    var menu_link=$('.catalog-item>ul>li>a[href*="'+url+'"]');
+    var $tab=$('#tab-control .tabs .tab-item a[href*="'+url+'"]').parent();
+    var $tabs=$tab.parent().find('.tab-item');
+    console.log('required:'+url);
+    $.ajax({
+      url:url+'.xml',
+      dataType:'xml',
+      success:function(xml){
+        var $xml=$(xml);
+        x=$xml;
+        var description=$('child_info child_description',$xml).text();
+        var $description=$('<div></div>');
+        $description.addClass('description');
+        var $products=$('<div></div>');
+
+        var $tab_content=$('<div></div>');
+
+        $products.attr('id','all-products-by-childs');
+        var $store_section=$('<div></div>');
+        $store_section.addClass('store-section');
+        $products.append($store_section);
+        var $top_border=$('<div></div>');
+        $top_border.addClass('top-border');
+        $store_section.append($top_border);
+
+        $('products_by_child product',$xml).each(function(index,item){
+          var $xml_item=$(item);
+          var product_name=$('product_name',$xml_item).text();
+          var product_description=$('product_description',$xml_item).text();
+          var product_avatar=$('product_avatar',$xml_item).text();
+          var product_slug=$('product_slug',$xml_item).text();
+
+          var $item=$('<div></div>');
+          $item.addClass('online-item');
+          var $img=$('<img />');
+          $img.attr('src',product_avatar);
+          $img.attr('alt',product_name);
+          var $title=$('<p>'+product_name+'</p>');
+          var $show_more=$('<a>Детальніше</a>');
+          $show_more.attr('href',product_slug);
+          $show_more.addClass('submit-branded');
+          $show_more.addClass('animate');
+          $show_more.attr('title',product_name);
+
+          $item.append($img);
+          $item.append($title);
+          $item.append($show_more);
+
+          $store_section.append($item);
+        });
+
+        if(description!='')
+          $description.append(description);
+        else
+          $description.append('<p>page is empty</p>');
+
+        //$('#all-products-by-childs').remove()
+        $tab_content.append($description);
+        $tab_content.append($products);
+
+        $('#tabcontents .tab-content-wrapper').html($tab_content);
+        //var $catalog_content=$('div#catalog-content');
+        //var $catalog_parent=$catalog_content.find('div#catalog-parent');
+
+        $tabs.filter('.active').removeClass('active');
+        $tab.addClass('active');
+
+        $('div.catalog-block').find('a.active').removeClass('active');
+        $('div.catalog-block').find('a[href*="'+url+'"]').addClass('active');
+
+        // add url handler
+
+
+      }
+    });
+  }
+  window.onpopstate = function(event) {
+    console.log("location: " + document.location + ", state: " + JSON.stringify(event.state)+';window.location.pathname:'+window.location.pathname);
+    var url=window.location.pathname;
+    //consol
+    if(event.state=='child'){
+      openChild(url);
+
+    }
+  };
+  $('#tab-control .tabs .tab-item a').click(function(event){
+    event.preventDefault();
+    var uri=$(this).uri();
+    var required_uri=uri.pathname();
+    openChild(required_uri);
+    window.history.pushState('child','',required_uri);
+  });
+  $('div.catalog-block div.catalog-item>ul>li>ul>li>a').click(function(event){
+    event.preventDefault();
+    var uri=$(this).uri();
+    var required_uri=uri.pathname();
+    //alert(required_uri);
+    openChild(required_uri);
+    window.history.pushState('child','',required_uri);
+  });
+</script>
+
+
+<div class="pd-me f-height"></div>
+
+<!-- Sponsor render -->
+<%= render :partial => "partials/sponsor-all" %>
+<!-- Sponsor render -->
+
+<!-- Footer render -->
+<%= render :partial => "partials/footer" %>
+<!-- /Footer render -->

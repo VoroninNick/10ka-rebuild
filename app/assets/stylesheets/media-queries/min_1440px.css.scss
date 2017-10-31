@@ -1,0 +1,48 @@
+@media(min-width: 1440px){
+  /* contact start */
+  #gmap-wrapper,
+  form#contact_us,
+  div#contact-wrapper,
+  div#footer-wrapper
+  {
+    padding-left: 45px;
+    padding-right: 45px;
+  }
+  #contact-wrapper .contact-info-row.g4,
+  #contact-wrapper .contact-info-row.g4.alpha,
+  #contact-wrapper .contact-info-row.g4.omega
+  {
+    width: 400px;
+    margin-left: 35px;
+  }
+  #gmap-wrapper .g12
+  {
+
+  }
+  div.container form#contact_us div.g7.omega
+{
+  margin-left: 30px;
+  margin-right: 0;
+  width:784px;
+}
+div.container form#contact_us div.g7.omega textarea
+{
+  height: 265px;
+}
+.container form#contact_us div.g5.omega
+{
+  width:620px;
+}
+
+/* contact end */
+
+
+/* sponsor start */
+
+#sponsor-wrapper .g2{
+   /* margin-left: 42.85px; */
+  }
+
+/* sponsor end */
+
+}

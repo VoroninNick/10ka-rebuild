@@ -1,0 +1,47 @@
+
+<!-- Banners -->
+<div id="home-slider-wrapper" class="g12" style="" >
+
+    <div id="home-slider" style="">
+			<% @banners.each do |banner| %>
+				<div class="slide"><span class="title"><%= banner.name %></span><%= link_to(image_tag(banner.banner.url(:main)), banner.url, :title => banner.name) %></div>
+			<% end %>
+     </div>
+
+  </div>
+<!-- /Banners -->
+<script type="text/javascript">
+    browser= (function(){
+        var N= navigator.appName, ua= navigator.userAgent, tem;
+        var M= ua.match(/(opera|chrome|safari|firefox|msie)\/?\s*(\.?\d+(\.\d+)*)/i);
+        if(M && (tem= ua.match(/version\/([\.\d]+)/i))!= null) M[2]= tem[1];
+        //M= M? [M[1], M[2]]: [N, navigator.appVersion,'-?'];
+        M={name:M[1],version:M[2]};
+        return M;
+    })();
+
+    $(document).ready(function(){
+           $('body').addClass(browser.name.toLowerCase());
+        var slider=HomeSlider('div#home-slider');
+        slider.init();
+        var docWidth=$(document).width();
+        $(window).resize(function(){
+        
+        var $temp=$('<div id="home-slider"></div>').appendTo($('.banner-holder'));
+        var original_height=$temp.height();
+          $temp.remove();
+        if($('div#home-slider').height()>$(window).height())
+        {
+          //$('div#home-slider').height($(window).height()); 
+        }
+        else
+        {
+          //$('div#home-slider').height(original_height);
+        }
+
+        
+      });
+    });
+
+    
+</script>

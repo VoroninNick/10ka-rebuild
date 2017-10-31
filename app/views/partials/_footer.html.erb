@@ -1,0 +1,48 @@
+<!-- Footer partial -->
+<div id="footer-wrapper" class="f-height container page-indent">
+
+  <div class="g4 contact-info-row omega contacts">
+    <%= image_tag('h-img.png', :style => 'position: absolute; left: -35px;') %><h2>Контакти:</h2>
+    <p id="office" class="footer-title">офіс: <a href="<%= office_phone_url %>" title="<%= office_phone %>" class="tel" style=""><%= office_phone %></a></p>
+    <p id="sale" class="footer-title">продаж: <a href="<%= main_site_phone_url %>" class="tel" title="<%= main_site_phone %>" style=""><%= main_site_phone %></a></p>
+    <p class="sub-title"><a href="/contact">Більш детальна контактна інформація</a></p>
+  </div>
+
+  <div class="g4 contact-info-row work">
+    <%= image_tag('h-img.png', :style => 'position: absolute; left: -35px;') %><h2>Графік роботи:</h2>
+    <p id="pn-pt" class="footer-title">Пн — Пт: <span class="me-color" style="">09:00 — 18:00</span></p>
+    <p id="sb" class="footer-title">Сб: <span class="me-color me2" style="">09:00 — 14:00</span></p>
+    <p class="sub-title">На складі обід з 13:00 до 14:00</p>
+  </div>
+
+  <div id="contact-info-row copyright" class="g4 alpha contact-info-row copyright">
+
+    <p class="copyrights">© 2012 &mdash; <%= Date.today.year %> ТзОВ «Десятка»</p>
+    <div id="developed-by">
+      <a href="http://voroninstudio.eu">
+        <%= image_tag('v-logo.png', :alt => '') %>
+      </a>
+      <p class="title"><br/>Зроблено <a href="http://voroninstudio.eu">дизайн студією М. Вороніна</a> <br>
+        в 2013 році. <a href="http://voroninstudio.eu">Інформація про сайт</a></p>
+    </div>
+  </div>
+
+
+</div>
+
+<!-- /Footer partial -->
+
+<script type="text/javascript">
+/*$(document).ready(function(){
+var zoom=1;
+  if($(document).width()>$(window).width())
+{
+  zoom=$(window).width()/$(document).width();
+}
+if(zoom!=1)
+{
+  alert('zoom:'+zoom);
+  $(this).zoomTo({targetsize:zoom, duration:600});
+}
+});*/
+</script>

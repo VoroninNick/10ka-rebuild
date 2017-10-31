@@ -1,0 +1,10 @@
+<div id="product-breadcrumbs" class="g12 pd-me">
+  <ul>
+    <li><span>//</span><%= link_to 'Головна', root_path, :title => 'Головна' %></li>
+    <li><span>/</span><%= link_to 'Каталог', catalog_main_path, :title => 'Каталог' %></li>
+    <li><span>/</span><%= link_to catalog_name_breadcrumb(parent_name_breadcrumb(child_name_breadcrumb(@product.child_catalog_id))).name, catalog_show_path(catalog_name_breadcrumb(parent_name_breadcrumb(child_name_breadcrumb(@product.child_catalog_id)))), :title => catalog_name_breadcrumb(parent_name_breadcrumb(child_name_breadcrumb(@product.child_catalog_id))).name %></li>
+    <li><span>/</span><%= link_to parent_name_breadcrumb(child_name_breadcrumb(@product.child_catalog_id)).name, parent_show_path(parent_name_breadcrumb(child_name_breadcrumb(@product.child_catalog_id))), :title => parent_name_breadcrumb(child_name_breadcrumb(@product.child_catalog_id)).name %></li>
+    <li><span>/</span><%= link_to child_name_breadcrumb(@product.child_catalog_id).name, child_show_path(child_name_breadcrumb(@product.child_catalog_id)), :title => child_name_breadcrumb(@product.child_catalog_id).name %></li>
+    <li><span>/</span><%= @product.name %></li>
+  </ul>
+</div>

@@ -1,0 +1,31 @@
+
+  {
+    "parent_catalog_info": {
+      "parent_catalog_id" : <%= @parent_catalog.id.as_json  %>,
+      "catalog_id" : <%= @parent_catalog.catalog_id.as_json  %>,
+      "parent_catalog_name": "<%= @parent_catalog.name.as_json %>",
+      "parent_catalog_url": "<%= parent_show_url(@parent_catalog).as_json %>"
+    },
+
+    "childs_of_this_parent": {
+     <% @get_child_json.each do |pc| %>
+     
+      "par": { 
+        "parent_catalog_id": <%= pc.parent_catalog_id %>,
+        "child_catalog_id": <%= pc.id.as_json %>,
+        "child_catalog_url": "<%= child_show_url(pc).as_json %>",
+        "child_catalog_name": "<%= pc.name.as_json %>",
+        "child_avatar_url": "<%= pc.avatar.url(:tab).as_json %>",
+        "child_description": "<%= pc.description.gsub(/"/, "\\\"").html_safe.to_json  unless pc.description.blank? %>" %><% if pc.products.present? %>,<% else %><% end %>
+        <% pc.products.each do |child_products| %>
+          "products": {
+            "product_id": "<%= child_products.id %>",
+            "product_name": "<%= child_products.name %>"
+          } 
+        <% end %>
+      } <% if pc.id == @get_child_json_last.id %><% else %>,<% end %>
+     <% end %>
+    }
+  }
+
+

@@ -1,0 +1,65 @@
+#about-wrapper{
+
+}
+
+#about-wrapper h1{
+  color: #838383;
+  font-weight: 400;
+}
+
+#about-wrapper .fd h1{
+  color: #bf291f;
+  font-weight: 300;
+  line-height: 1.2em;
+}
+
+#about-wrapper .fd .about-sd{
+  color: #666;
+  font-style: italic;
+  font-weight: 300;
+  font-size: 0.9em;
+  width: 60%;
+}
+
+#about-wrapper .fd .about-fd, .spec-descr .about-fd{
+  color: #666;
+  font-weight: 300;
+  font-size: 1.1em;
+}
+
+.about-sponsor{
+  width: inherit;
+  padding-bottom: 15px;
+  height: 100px;
+}
+
+.about-sponsor-img{
+  float: left;
+  width: 25%;
+  margin-right: 5%;
+}
+
+.about-sponsor-p{
+  float: left;
+  width: 70%;
+}
+
+.spec-descr h2{
+  color: #bf291f;
+  font-weight: 300;
+  margin-top: 0;
+}
+
+.spec-img{
+  text-align: center;
+}
+
+.spec-img img{
+  border: 4px solid #fff;
+  -moz-box-shadow: 0 0 5px rgba(0,0,0,.37);
+  -webkit-box-shadow: 0 0 5px rgba(0,0,0,.37);
+  box-shadow: 0 0 5px rgba(0,0,0,.37);
+}
+
+
+

@@ -1,0 +1,31 @@
+<div id="article-banner-wrapper">
+	<div id="slider" class="sl-slider-wrapper demo2">
+		<div class="sl-slider">
+			<% @fetuared.each do |banner_item| %>
+				<script type="text/javascript" charset="utf-8">
+					$(document).ready(function(){
+						$(".bg-img-<%= banner_item.id %>").css({
+							"background-image" : "url(<%= banner_item.avatar.url(:banner) %>)"
+						});
+					});
+				</script>
+				<div class="sl-slide" data-orientation="<%= cycle('horizontal', 'vertical') %>" data-slice1-rotation="<%= rand(5..15) %>" data-slice2-rotation="-<%= rand(5..15) %>" data-slice1-scale="<%= rand(1..3) %>" data-slice2-scale="<%= rand(1..3) %>">
+					<div class="sl-slide-inner">
+						<div class="bg-img bg-img-<%= banner_item.id %>"></div>
+						<div id="item-description">
+							<h2><%= banner_item.name %></h2>
+							<p><%= banner_item.short_description %></p>
+							<%= link_to 'Дізнатись більше!', article_item_path(banner_item), :class => 'button' %>
+						</div>
+					</div>
+				</div>
+			<% end %>
+		</div><!-- /sl-slider -->
+	</div><!-- /slider-wrapper -->
+</div>
+
+<nav id="nav-dots" class="nav-dots">
+	<% for i in 0...@fetuared.count  %>
+		<span <% if i == 0 then %> class="nav-dot nav-dot-current" <% else %> class="nav-dot" <% end %> ></span>
+	<% end %>
+</nav>

@@ -1,0 +1,58 @@
+<!-- Header render -->
+<%= render :partial => "partials/head" %>
+<!-- /Header render -->
+<!-- Article -->
+<div id="articles-wrapper" class="f-height">
+	<script type="text/javascript" charset="utf-8">
+		$(document).ready(function() {
+				$('#banner-item').css({
+					"background-image" : "url(<%= @article.avatar.url('banner_item') %>)",
+				});
+				//alert('here!');
+		});
+	</script>
+	<div class="shadow-top"></div>
+	<div id="banner-item">&nbsp;</div>
+	<div id="next-article">
+		<%= link_to(image_tag(@article_next.avatar.url(:article_next_pre)), article_item_path(@article_next), :title => @article_next.name) %>
+	</div>
+	<div id="prev-article">
+		<%= link_to(image_tag(@article_prev.avatar.url(:article_next_pre), :style => 'float: right;'), article_item_path(@article_prev), :title => @article_prev.name) %>
+	</div>
+	<div class="shadow-bottom" style="clear: none;"></div>
+	<br class="clear"/>
+	<div class="article-render-left">
+		<span class="date"><%= @article.created_at.strftime("%m.%d.%Y") %></span>
+	</div>
+	<div class="article-render">
+		<h2><%= @article.name %></h2>
+
+		<div class="shortDescription">
+			<p><%= @article.short_description %></p>
+		</div>
+
+		<div class="fullDescription">
+			<%= @article.description.html_safe unless @article.description.blank? %>
+		</div>
+	</div>
+
+	<div id="latest-articles">
+		<div class="g12">
+			<h1>Читатачам також сподобались:</h1>
+		</div>
+		<% @lasted.each do |last| %>
+			<div class="g6 news-item <%= cycle('alpha g6-alpha', 'omega g6-omega') %> ">
+				<h2 class="article-header"><%= link_to last.name, article_item_path(last), :title => last.name %></h2>
+				<div class="image-cont"><%= link_to(image_tag(last.avatar.url('main')), article_item_path(last), :title => last.name) %></div>
+				<p class="article-short-description"><%= last.short_description %></p>
+			</div><!-- g6 news-item -->
+		<% end %>
+	</div>
+</div>
+<!-- Article -->
+<!-- Sponsor render -->
+<%= render :partial => "partials/sponsor-all" %>
+<!-- Sponsor render -->
+<!-- Footer render -->
+<%= render :partial => "partials/footer" %>
+<!-- /Footer render -->

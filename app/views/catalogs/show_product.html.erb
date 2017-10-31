@@ -1,0 +1,38 @@
+<!-- Header render -->
+<%= render :partial => 'partials/head'%>
+<!-- /Header render -->
+
+<div id="catalog-page-wrapper" class="f-height product-index-page page-indent">
+  <div class="g12 pd-me">
+    <h1><%= link_to 'Каталог продукції', catalog_main_path %></h1>
+  </div>
+  <%= render :partial => 'partials/prod_breadcrumbs' %>
+  <div class="catalog-block g4 alpha">
+    <%= render :partial => 'partials/catalog_navigation' %>
+  </div><!-- Catalog wrap stuff G4 -->
+<div id="catalog-content" class="left-indent">  
+<div id="catalog-product" class="g8 catalog-page-format omega">
+  <div class="g4 main-product-avatar ">
+    <h2><%= @product.name %></h2>
+    <%= image_tag @product.avatar.url, :alt => @product.name %>
+  </div>
+
+  <div class="g4 omega">
+    <%= @product.description.html_safe unless @product.description.blank? %>
+  </div>
+</div>
+</div> <!-- / div#catalog-content -->
+</div>
+
+<%= parent_name_breadcrumb(child_name_breadcrumb(@product.child_catalog_id)).inspect %>
+<%= @product.inspect %>
+
+<div class="pd-me f-height"></div>
+
+<!-- Sponsor render -->
+<%= render :partial => 'partials/sponsor-all' %>
+<!-- Sponsor render -->
+
+<!-- Footer render -->
+<%= render :partial => 'partials/footer' %>
+<!-- /Footer render -->

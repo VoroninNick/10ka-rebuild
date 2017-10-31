@@ -1,0 +1,482 @@
+div#home-slider
+{
+    overflow: hidden;
+    position: relative;
+    left:0px;
+    top:0px;
+    width: 100%;
+    height: 100%;
+}
+div#home-slider div.slide
+{
+    position: absolute;
+    left:0px;
+    top:0px;
+    z-index: 2;
+}
+div#home-slider div.slide.active
+{
+    
+}
+div#home-slider div.slide span.title
+{
+
+    cursor: pointer;
+color:#f4a500;
+    position: absolute;
+    display: block;
+    
+    z-index: 3;
+    margin-left: 20px;
+
+
+
+
+    
+    padding-left: 39px;
+
+    -moz-transform:rotate(270deg);
+    -webkit-transform:rotate(270deg);
+    -o-transform:rotate(270deg);
+    -ms-transform:rotate(270deg);
+    transform-origin: 0px 0px 0px;
+
+
+background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEwMCAxMDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxsaW5lYXJHcmFkaWVudCBpZD0iaGF0MCIgZ3JhZGllbnRVbml0cz0ib2JqZWN0Qm91bmRpbmdCb3giIHgxPSI1MCUiIHkxPSIxMDAlIiB4Mj0iNTAlIiB5Mj0iLTEuNDIxMDg1NDcxNTIwMmUtMTQlIj4KPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzE4MTgxOCIgc3RvcC1vcGFjaXR5PSIxIi8+CjxzdG9wIG9mZnNldD0iNDglIiBzdG9wLWNvbG9yPSIjM2EzYTNhIiBzdG9wLW9wYWNpdHk9IjEiLz4KPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjMTgxODE4IiBzdG9wLW9wYWNpdHk9IjEiLz4KICAgPC9saW5lYXJHcmFkaWVudD4KCjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiBmaWxsPSJ1cmwoI2hhdDApIiAvPgo8L3N2Zz4=);
+background-image: -moz-linear-gradient(bottom, #181818 0%, #3a3a3a 47.83%, #181818 100%);
+background-image: -o-linear-gradient(bottom, #181818 0%, #3a3a3a 47.83%, #181818 100%);
+background-image: -webkit-linear-gradient(bottom, #181818 0%, #3a3a3a 47.83%, #181818 100%);
+background-image: linear-gradient(bottom, #181818 0%, #3a3a3a 47.83%, #181818 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#414141', endColorstr='#393939',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
+
+
+    text-align: left;
+    vertical-align: middle;
+
+}
+div#home-slider div.slide.active span.title
+{
+     background: rgba(0,0,0,0.5);
+    color:#ff0101;
+    border-top:none;
+    
+
+
+}
+/* 600px slider */
+
+div#home-slider div.slide span.title
+    {
+        font-size: 20px;
+        height:66px;
+    padding-top: 17px;
+    padding-bottom: 17px;
+    }
+
+.firefox div#home-slider span.title
+{
+    left: -19px;
+    top:352px;
+}
+.firefox div#home-slider div.slide:first-child span.title
+{
+    left: -20px;
+}
+.firefox div#home-slider div.slide span.title.orange_border
+{
+    border-top: groove #f4a500 1px;
+    left:-20px;
+}
+.firefox div#home-slider div.slide.active span.title
+{
+    left: -19px;
+}
+.firefox div#home-slider div.slide.next span.title
+{
+    left: -20px;
+    border-top:none;
+}
+
+
+
+.chrome div#home-slider span.title
+{
+    left: -162px;
+    top:143px;
+}
+.chrome div#home-slider div.slide:first-child span.title
+{
+    left: -163px;
+}
+.chrome div#home-slider div.slide span.title.orange_border
+{
+    border-top: groove #f4a500 1px;
+    left:-163px;
+}
+.chrome div#home-slider div.slide.active span.title
+{
+    left: -162px;
+}
+.chrome div#home-slider div.slide.next span.title
+{
+    left: -163px;
+    border-top:none;
+}
+
+
+
+.opera div#home-slider span.title
+{
+    left: -162px;
+    top:143px;
+}
+.opera div#home-slider div.slide:first-child span.title
+{
+    left: -163px;
+}
+.opera div#home-slider div.slide span.title.orange_border
+{
+    border-top: groove #f4a500 1px;
+    left:-163px;
+}
+.opera div#home-slider div.slide.active span.title
+{
+    left: -162px;
+}
+.opera div#home-slider div.slide.next span.title
+{
+    left: -163px;
+    border-top:none;
+}
+
+/* 892px slider */
+@media(min-width: 960px){
+    div#home-slider div.slide span.title
+    {
+        font-size: 24px;
+        height:88px;
+    padding-top: 32px;
+    padding-bottom: 32px;
+    }
+.chrome div#home-slider span.title
+{
+    left:-134px;
+    top:115px;
+}
+.chrome div#home-slider div.slide:first-child span.title
+{
+    left: -135px;
+}
+.chrome div#home-slider div.slide span.title.orange_border
+{
+    border-top: groove #f4a500 1px;
+    left:-135px;
+}
+.chrome div#home-slider div.slide.active span.title
+{
+    left: -134px;
+}
+.chrome div#home-slider div.slide.next span.title
+{
+    left: -135px;
+    border-top:none;
+}
+
+
+ .opera div#home-slider span.title
+{
+    left:-134px;
+    top:115px;
+}
+.opera div#home-slider div.slide:first-child span.title
+{
+    left: -135px;
+}
+.opera div#home-slider div.slide span.title.orange_border
+{
+    border-top: groove #f4a500 1px;
+    left:-135px;
+}
+.opera div#home-slider div.slide.active span.title
+{
+    left: -134px;
+}
+.opera div#home-slider div.slide.next span.title
+{
+    left: -135px;
+    border-top:none;
+}
+
+
+
+.firefox div#home-slider span.title
+{
+    left: -19px;
+    top:318px;
+}
+.firefox div#home-slider div.slide:first-child span.title
+{
+    left: -20px;
+}
+.firefox div#home-slider div.slide span.title.orange_border
+{
+    border-top: groove #f4a500 1px;
+    left:-20px;
+}
+.firefox div#home-slider div.slide.active span.title
+{
+    left: -19px;
+}
+.firefox div#home-slider div.slide.next span.title
+{
+    left: -20px;
+    border-top:none;
+}
+
+}
+/* 1112px slider */
+@media (min-width: 1200px) {
+
+.firefox div#home-slider span.title
+{
+    left: -19px;
+    top:300px;
+}
+.firefox div#home-slider div.slide:first-child span.title
+{
+    left: -20px;
+}
+.firefox div#home-slider div.slide span.title.orange_border
+{
+    border-top: groove #f4a500 1px;
+    left:-20px;
+}
+.firefox div#home-slider div.slide.active span.title
+{
+    left: -19px;
+}
+.firefox div#home-slider div.slide.next span.title
+{
+    left: -20px;
+    border-top:none;
+}
+
+
+.chrome div#home-slider span.title
+{
+    left: -125px;
+    top:106px;
+}
+.chrome div#home-slider div.slide:first-child span.title
+{
+    left: -126px;
+}
+.chrome div#home-slider div.slide span.title.orange_border
+{
+    border-top: groove #f4a500 1px;
+    left:-126px;
+}
+.chrome div#home-slider div.slide.active span.title
+{
+    left: -125px;
+}
+.chrome div#home-slider div.slide.next span.title
+{
+    left: -126px;
+    border-top:none;
+}
+
+
+
+
+
+.opera div#home-slider span.title
+{
+    left: -125px;
+    top:106px;
+}
+.opera div#home-slider div.slide:first-child span.title
+{
+    left: -126px;
+}
+.opera div#home-slider div.slide span.title.orange_border
+{
+    border-top: groove #f4a500 1px;
+    left:-126px;
+}
+.opera div#home-slider div.slide.active span.title
+{
+    left: -125px;
+}
+.opera div#home-slider div.slide.next span.title
+{
+    left: -126px;
+    border-top:none;
+}
+}
+
+/* 1332px slider */
+@media (min-width: 1440px) {
+
+.firefox div#home-slider span.title
+{
+    left: -19px;
+    top:352px;
+}
+.firefox div#home-slider div.slide:first-child span.title
+{
+    left: -20px;
+}
+.firefox div#home-slider div.slide span.title.orange_border
+{
+    border-top: groove #f4a500 1px;
+    left:-20px;
+}
+.firefox div#home-slider div.slide.active span.title
+{
+    left: -19px;
+}
+.firefox div#home-slider div.slide.next span.title
+{
+    left: -20px;
+    border-top:none;
+}
+
+
+
+.chrome div#home-slider span.title
+{
+    left: -151px;
+    top:132px;
+}
+.chrome div#home-slider div.slide:first-child span.title
+{
+    left: -152px;
+}
+.chrome div#home-slider div.slide span.title.orange_border
+{
+    border-top: groove #f4a500 1px;
+    left:-152px;
+}
+.chrome div#home-slider div.slide.active span.title
+{
+    left: -151px;
+}
+.chrome div#home-slider div.slide.next span.title
+{
+    left: -152px;
+    border-top:none;
+}
+
+
+
+.opera div#home-slider span.title
+{
+    left: -151px;
+    top:132px;
+}
+.opera div#home-slider div.slide:first-child span.title
+{
+    left: -152px;
+}
+.opera div#home-slider div.slide span.title.orange_border
+{
+    border-top: groove #f4a500 1px;
+    left:-152px;
+}
+.opera div#home-slider div.slide.active span.title
+{
+    left: -151px;
+}
+.opera div#home-slider div.slide.next span.title
+{
+    left: -152px;
+    border-top:none;
+}
+}
+/* 1672px slider */
+@media (min-width: 2020px) {
+
+.firefox div#home-slider span.title
+{
+    left: -19px;
+    top:360px;
+}
+.firefox div#home-slider div.slide:first-child span.title
+{
+    left: -20px;
+}
+.firefox div#home-slider div.slide span.title.orange_border
+{
+    border-top: groove #f4a500 1px;
+    left:-20px;
+}
+.firefox div#home-slider div.slide.active span.title
+{
+    left: -19px;
+}
+.firefox div#home-slider div.slide.next span.title
+{
+    left: -20px;
+    border-top:none;
+}
+
+
+
+
+.chrome div#home-slider span.title
+{
+    left: -155px;
+    top:136px;
+}
+.chrome div#home-slider div.slide:first-child span.title
+{
+    left: -156px;
+}
+.chrome div#home-slider div.slide span.title.orange_border
+{
+    border-top: groove #f4a500 1px;
+    left:-156px;
+}
+.chrome div#home-slider div.slide.active span.title
+{
+    left: -155px;
+}
+.chrome div#home-slider div.slide.next span.title
+{
+    left: -156px;
+    border-top:none;
+}
+
+
+
+
+
+.opera div#home-slider span.title
+{
+    left: -155px;
+    top:136px;
+    /*padding-left: 39px;*/
+
+
+}
+.opera div#home-slider div.slide:first-child span.title
+{
+    left: -156px;
+}
+.opera div#home-slider div.slide span.title.orange_border
+{
+    border-top: groove #f4a500 1px;
+    left:-156px;
+}
+.opera div#home-slider div.slide.active span.title
+{
+    left: -155px;
+}
+.opera div#home-slider div.slide.next span.title
+{
+    left: -156px;
+    border-top:none;
+}
+}

@@ -1,0 +1,52 @@
+//@media screen and (min-width: 1px) and (max-width: 959px){
+body {
+  min-width: 320px !important;
+  div.container,
+  section.container,
+  article.container{
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+    [class*="g"]{
+      margin-left: 1%;
+      margin-right: 1%;
+    }
+    .g1{
+      width:6.333%;
+    }
+    .g2{
+      width:14.667%;
+    }
+    .g3{
+      width:23.0%;
+    }
+    .g4{
+      width:31.333%;
+    }
+    .g5{
+      width:39.667%;
+    }
+    .g6{
+      width:48.0%;
+    }
+    .g7{
+      width:56.333%;
+    }
+    .g8{
+      width:64.667%;
+    }
+    .g9{
+      width:73.0%;
+    }
+    .g10{
+      width:81.333%;
+    }
+    .g11{
+      width:89.667%;
+    }
+    .g12{
+      width:98.0%;
+    }
+  }
+}
+//}

@@ -1,0 +1,126 @@
+<%#= current_user.inspect %>
+
+<!-- Header render -->
+<%= render :partial => "partials/head" %>
+<!-- /Header render -->
+
+<div id="contact-page-wrapper">
+<!-- Info render -->
+<div id="contact-wrapper" class="f-height padding-holder my-test-class">
+  <div class="g12">
+    <h1 contenteditable="true" data-editable-id="1">Контактна інформація</h1>
+  </div>
+  <div id="contact-info-row-address" class="g4 contact-info-row alpha">
+    <h2 class="title" contenteditable="true"><%= image_tag('h-img.png') %>Адреса:</h2>
+    <p class="title" contenteditable="true">вул. Городоцька, 357</p>
+    <p class="title" contenteditable="true">м. Львів, Україна, 79068</p>
+    <p class="sub-title" contenteditable="true">GPS: 49° 48° 757° Пн. Ш. 23° 58° 671° Сх. Д.</p>
+  </div>
+  <div id="contact-info-row-work" class="g4 contact-info-row">
+    <h2 class="title"><%= image_tag('h-img.png') %>Графік роботи:</h2>
+    <p class="title">Пн—Пт: <span class="times">09:00 &mdash; 18:00</span></p>
+    <p id="sb" class="title">Сб: <span class="times part2">09:00 &mdash; 14:00</span></p>
+    <p class="sub-title"><i>На складі обід з 13:00 до 14:00</i></p>
+  </div>
+  <div id="contact-info-row-phone" class="g4 contact-info-row omega">
+    <h2 class="title"><%= image_tag('h-img.png') %>Телефони:</h2>
+    <p id="office" class="title">офіс: <span class="phone"><%= office_phone %></span></p>
+    <p id="sale" class="title">продаж: <span class="phone"><%= main_site_phone %></span></p>
+    <p id="fax" class="title">факс: <span class="phone"><%= fax_phone %></span></p>
+  </div>
+</div>
+<!-- /Info render -->
+
+<!-- Gmap render -->
+<%= render :partial => "contact/gmap" %>
+<!-- /Gmap render -->
+
+<!-- Form render -->
+
+<%= form_for @message, :url => contact_path, :html => { :id => 'contact_us' } do |form| %>
+    <div class="g12">
+      <h2 class="title"><%= image_tag('h-img.png') %>Зворотній зв'язок:</h2>
+    </div>
+    <div id="form-fields">
+    <div id="fields"  class="g5 alpha">
+      <div id="validate_name" class="row-input">
+        <%= form.text_field :name, :data => { :'validation' => "validate_min_length length3",
+          :'validation-error-msg' => " Введіть будь-ласка Ваше імя!" } %>
+        <%= form.label "Ім'я" %>
+        <span id="validate_name"></span>
+      </div>
+      <div id="validate_email" class="row-input">
+        <%= form.text_field :email, :data => { :'validation' => "validate_email",
+          :'validation-error-msg' => " Введіть будь-ласка Вашу поштову скриньку!" } %>
+        <%= form.label "Електронна пошта" %>
+        <span id="validate_email"></span>
+      </div>
+      <div id="validate_phone" class="row-input">
+        <%= form.text_field :phone, :data => { :'validation' => "validate_phone",
+          :'validation-error-msg' => "Введіть будь-ласка Ваш телефон!" } %>
+        <%= form.label "Телефон" %>
+        <span id="validate_phone"></span>
+      </div>
+    </div>
+    <div class="g7 omega">
+      <div class="row-input">
+        <%= form.text_area :body, :data => { :'validation' => "required",
+          :'validation-error-msg' => "Введіть будь-ласка Ваше повідомлення!" } %>
+        <%= form.label "Повідомлення" %>
+      </div>
+
+    </div>
+
+    <div class="g12">
+      <%= form.submit "Надіслати!", :class => "submit-branded animate" %>
+    </div>
+  </div>
+  <div style="display:none;" id="sending-message" class="g12">
+    <p><img style="width:16px;height:16px" src="<%= asset_path('ajax-loader.gif') %>" id="loader-image" />Надсилається...</p>
+  </div>
+
+  <div style="display:none;" id="thanks-message" class="g12">
+    <p>Дякуємо за ваш лист</p>
+  </div>
+
+<% end %>
+
+<!-- /Form render -->
+<script type="text/javascript">
+  var validationSettings = {
+                errorMessagePosition : 'top'
+            };
+
+            $('#contact_us')
+                .submit(function() {
+                    if ($(this).validate(false, validationSettings)){
+                        //return true;
+                        var $form = $('#contact_us');
+                        //$('#form-fields').hide();
+                        //$('#sending-message').show();
+                        /*$.ajax({
+                          type:'POST',
+                          url: $form.attr('action'),
+                          data: $form.serialize(),
+                          success: function(){
+                            $('#sending-message').hide();
+                            $('#thanks-message').show();
+                          }
+                        });*/
+                    }
+
+                    //return false;
+                })
+                .validateOnBlur(false, validationSettings)
+                .showHelpOnFocus();
+</script>
+
+</div>
+
+<!-- Sponsor render -->
+<%= render :partial => "partials/sponsor-all" %>
+<!-- Sponsor render -->
+
+<!-- Footer render -->
+<%= render :partial => "partials/footer" %>
+<!-- /Footer render -->

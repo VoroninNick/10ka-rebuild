@@ -1,0 +1,100 @@
+body{
+	font-weight:300;
+}
+
+@media (min-width: 1px) and (max-width: 720px){
+	body{
+		font-size: 14px;
+		line-height: 20px;
+		font-weight: 300;
+	}
+}
+
+@media (min-width: 1200px){
+	body{
+		font-size: 16px;
+		line-height: 24px;
+		font-weight: 300;
+	}
+}
+
+.container{
+
+	/*padding-left: 1%;
+	padding-right: 1%;
+	*/
+
+}
+$indent:3%;
+$total_width:100%;
+.g1,
+.g2,
+.g3,
+.g4,
+.g5,
+.g6,
+.g7,
+.g8,
+.g9,
+.g10,
+.g11,
+.g12{
+	float: left;
+	display: inline;
+	position: relative;
+	margin-left: 0%;
+	margin-right: $indent;
+
+}
+
+.g1{
+	width: ( (100%) - 13*($indent) ) / 12;
+}
+.g2{
+	width: ( (100%) - 13*($indent) ) / 12 * 2 + 1 * ($indent);
+}
+.g3{
+	width: ( (100%) - 13*($indent) ) / 12 * 3 + 2 * ($indent);
+}
+.g4{
+	width: ( (100%) - 13*($indent) ) / 12 * 4 + 3 * ($indent);
+}
+.g5{
+	width: ( (100%) - 13*($indent) ) / 12 * 5 + 4 * ($indent);
+}
+.g6{
+	width: ( (100%) - 13*($indent) ) / 12 * 6 + 5 * ($indent);
+}
+.g7{
+	width: ( (100%) - 13*($indent) ) / 12 * 7 + 6 * ($indent);
+}
+.g8{
+	width: ( (100%) - 13*($indent) ) / 12 * 8 + 7 * ($indent);
+}
+.g9{
+	width: ( (100%) - 13*($indent) ) / 12 * 9 + 8 * ($indent);
+}
+.g10{
+	width: ( (100%) - 13*($indent) ) / 12 * 10 + 9 * ($indent);
+}
+.g11{
+	width: ( (100%) - 13*($indent) ) / 12 * 11 + 10 * ($indent);
+}
+.g12{
+	width: ( (100%) - 13*($indent) ) / 12 * 12 + 11 * ($indent);
+	margin-left: $indent;
+	margin-right: $indent;
+}
+
+.alpha{
+	 margin-left: $indent;
+	 margin-right: $indent;
+}
+.omega{
+	margin-right: $indent;
+	margin-left: 0%;
+}
+
+.indent{
+	width:0%;
+}

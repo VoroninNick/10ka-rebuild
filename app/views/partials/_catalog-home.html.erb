@@ -1,0 +1,133 @@
+<!-- Shadow area -->
+  <div class="shadow-top"></div>
+  <!-- /Shadow area -->
+  <!-- Catalog area -->
+  <div id="catalog-wrapper" class="f-height page-indent">
+    <div class="catalog-block g4 alpha">
+        <%# cache do %>
+        <%# get_left_catalogs.catalogs.each do |catalog_first_section| %>
+        <div class="catalog-item"  data-category-name="<%#= catalog_first_section.slug %>" data-category-id="<%#= catalog_first_section.id %>">
+          <a class="catalog-show-more animate" id="main-cat-1">Сухі суміші<span data-opened="false" id="status-1">+</span></a>
+          <ul class="catalog-menu" id="menu-cat-1">
+            <%# catalog_first_section.parent_catalogs.each do |parent_first_section| %>
+            <!--li><%#= link_to parent_first_section.name, catalog_main_path+'/'+catalog_first_section.slug+'/'+parent_first_section.slug %></li -->
+            <li><a href="/c/suhi-sumishi/shpaklivki-suhi">Шпаклівки сухі</a></li>
+            <li><a href="/c/suhi-sumishi/shpaklivki-gotovi">Шпаклівки готові</a></li>
+            <li><a href="/c/suhi-sumishi/suputni-materiali">Супутні матеріали</a></li>
+            <li><a href="/c/suhi-sumishi/kleyuchi-sumishi">Клеючі суміші</a></li>
+            <li><a href="/c/suhi-sumishi/zatirki-dlya-shviv">Затирки для швів</a></li>
+            <li><a href="/c/suhi-sumishi/pidlogi">Підлоги</a></li>
+            <%# end %>
+          </ul>
+        </div><!-- Catalog Item -->
+
+      <div class="catalog-item"  data-category-name="<%#= catalog_first_section.slug %>" data-category-id="<%#= catalog_first_section.id %>">
+        <a class="catalog-show-more animate" id="main-cat-2">Ізоляційні матеріали<span data-opened="false" id="status-2">+</span></a>
+        <ul class="catalog-menu" id="menu-cat-2">
+          <%# catalog_first_section.parent_catalogs.each do |parent_first_section| %>
+          <!--li><%#= link_to parent_first_section.name, catalog_main_path+'/'+catalog_first_section.slug+'/'+parent_first_section.slug %></li -->
+          <li><a href="/c/izolyatsiyni-materiali/bazaltova-vata">Базальтова вата</a></li>
+          <li><a href="/c/izolyatsiyni-materiali/sklovata">Скловата</a></li>
+          <li><a href="/c/izolyatsiyni-materiali/pinopolistirol">Пінополістирол</a></li>
+          <%# end %>
+        </ul>
+      </div><!-- Catalog Item -->
+
+      <div class="catalog-item"  data-category-name="<%#= catalog_first_section.slug %>" data-category-id="<%#= catalog_first_section.id %>">
+        <a class="catalog-show-more animate" id="main-cat-3">Оздоблювальні матеріали<span data-opened="false" id="status-3">+</span></a>
+        <ul class="catalog-menu" id="menu-cat-3">
+          <%# catalog_first_section.parent_catalogs.each do |parent_first_section| %>
+          <!--li><%#= link_to parent_first_section.name, catalog_main_path+'/'+catalog_first_section.slug+'/'+parent_first_section.slug %></li -->
+          <li><a href="/c/ozdoblyuvalni-materiali/marmurova-krihta">Мармурова крихта</a></li>
+          <li><a href="/c/ozdoblyuvalni-materiali/kasetoni-karnizi">Касетони, карнизи</a></li>
+          <%# end %>
+        </ul>
+      </div><!-- Catalog Item -->
+        <%# end %>
+        <%# end %>
+    </div><!-- Catalog wrap stuff -->
+
+    <div class="catalog-block g4">
+        <%# cache do %>
+        <%# get_center_catalogs.catalogs.each do |catalog_middle_section| %>
+          <div class="catalog-item"  data-category-name="<%#= catalog_middle_section.slug %>" data-category-id="<%#= catalog_middle_section.id %>">
+            <a class="catalog-show-more animate" id="main-cat-4">Підвісні стелі<span data-opened="false" id="status-4">+</span></a>
+            <ul class="catalog-menu" id="menu-cat-4">
+              <%# catalog_middle_section.parent_catalogs.each do |parent_middle_section| %>
+                <!--li><%#= link_to parent_middle_section.name, catalog_main_path+'/'+catalog_middle_section.slug+'/'+parent_middle_section.slug %></li -->
+              <%# end %>
+              <li><a href="/c/pidvisni-steli/komplektuyuchi">Комплектуючі</a></li>
+              <li><a href="/c/pidvisni-steli/pliti-do-pidvisnih-stel">Плити до підвісних стель</a></li>
+            </ul>
+          </div><!-- Catalog Item -->
+
+      <div class="catalog-item"  data-category-name="<%#= catalog_middle_section.slug %>" data-category-id="<%#= catalog_middle_section.id %>">
+        <a class="catalog-show-more animate" id="main-cat-5">Грунтовки та захисні покриття<span data-opened="false" id="status-5">+</span></a>
+        <ul class="catalog-menu" id="menu-cat-5">
+          <%# catalog_middle_section.parent_catalogs.each do |parent_middle_section| %>
+          <!--li><%#= link_to parent_middle_section.name, catalog_main_path+'/'+catalog_middle_section.slug+'/'+parent_middle_section.slug %></li -->
+          <%# end %>
+          <li><a href="/c/gruntovki-ta-zahisni-pokrittya/gruntovki">Грунтовки</a></li>
+          <li><a href="/c/gruntovki-ta-zahisni-pokrittya/vogne-derevo-ta-biozahist">Вогне-, дерево- та біозахист</a></li>
+        </ul>
+      </div><!-- Catalog Item -->
+
+      <div class="catalog-item"  data-category-name="<%#= catalog_middle_section.slug %>" data-category-id="<%#= catalog_middle_section.id %>">
+        <a class="catalog-show-more animate" id="main-cat-6">Матеріали для будівництва<span data-opened="false" id="status-6">+</span></a>
+        <ul class="catalog-menu" id="menu-cat-6">
+          <%# catalog_middle_section.parent_catalogs.each do |parent_middle_section| %>
+          <!--li><%#= link_to parent_middle_section.name, catalog_main_path+'/'+catalog_middle_section.slug+'/'+parent_middle_section.slug %></li -->
+          <%# end %>
+          <li><a href="/c/gruntovki-ta-zahisni-pokrittya/gruntovki">Основні будівельні матеріали</a></li>
+        </ul>
+      </div><!-- Catalog Item -->
+
+
+        <%# end %>
+        <%# end %>
+    </div><!-- Catalog wrap stuff -->
+    <div class="catalog-block g4 omega">
+        <%# cache do %>
+        <%# get_right_catalogs.catalogs.each do |catalog_last_section| %>
+          <div class="catalog-item"  data-category-name="<%#= catalog_last_section.slug %>" data-category-id="<%#= catalog_last_section.id %>">
+            <a class="catalog-show-more animate" id="main-cat-7">Гіпсокартонні системи<span data-opened="false" id="status-7">+</span></a>
+            <ul class="catalog-menu" id="menu-cat-7">
+              <%# catalog_last_section.parent_catalogs.each do |parent_last_section| %>
+                <!--li><%#= link_to parent_last_section.name, catalog_main_path+'/'+catalog_last_section.slug+'/'+parent_last_section.slug %></li-->
+              <%# end %>
+              <li><a href="/c/gipsokartonni-sistemi/gipsokartonni-pliti">Гіпсокартонні плити</a></li>
+              <li><a href="/c/gipsokartonni-sistemi/profili-dlya-gipsokartonnih-plit">Профілі для гіпсокартонних плит</a></li>
+            </ul>
+          </div><!-- Catalog Item -->
+
+      <div class="catalog-item"  data-category-name="<%#= catalog_last_section.slug %>" data-category-id="<%#= catalog_last_section.id %>">
+        <a class="catalog-show-more animate" id="main-cat-8">Лакофарбова продукція<span data-opened="false" id="status-8">+</span></a>
+        <ul class="catalog-menu" id="menu-cat-8">
+          <%# catalog_last_section.parent_catalogs.each do |parent_last_section| %>
+          <!--li><%#= link_to parent_last_section.name, catalog_main_path+'/'+catalog_last_section.slug+'/'+parent_last_section.slug %></li-->
+          <%# end %>
+          <li><a href="/c/lakofarbova-produktsiya/osnovni-lakofarbovi-materiali">Основні лакофарбові матеріали</a></li>
+        </ul>
+      </div><!-- Catalog Item -->
+
+      <div class="catalog-item"  data-category-name="<%#= catalog_last_section.slug %>" data-category-id="<%#= catalog_last_section.id %>">
+        <a class="catalog-show-more animate" id="main-cat-9">Ущільнювачі та клеї<span data-opened="false" id="status-9">+</span></a>
+        <ul class="catalog-menu" id="menu-cat-9">
+          <%# catalog_last_section.parent_catalogs.each do |parent_last_section| %>
+          <!--li><%#= link_to parent_last_section.name, catalog_main_path+'/'+catalog_last_section.slug+'/'+parent_last_section.slug %></li-->
+          <%# end %>
+          <li><a href="/c/uschilnyuvachi-ta-kleyi/pini">Піни</a></li>
+          <li><a href="/c/uschilnyuvachi-ta-kleyi/germetiki">Герметики</a></li>
+          <li><a href="/c/uschilnyuvachi-ta-kleyi/monazhni-kleyi">Монтажні клеї</a></li>
+          <li><a href="/c/uschilnyuvachi-ta-kleyi/universalni-kleyi">Універсальні клеї</a></li>
+          <li><a href="/c/uschilnyuvachi-ta-kleyi/stolyarni-kleyi">Столярні клеї</a></li>
+        </ul>
+      </div><!-- Catalog Item -->
+        <%# end %>
+        <%# end %>
+    </div><!-- Catalog wrap stuff -->
+  </div>
+  <!-- /Catalog area -->
+  <!-- Shadow area -->
+  <div class="shadow-bottom"></div>
+  <!-- /Shadow area -->
