@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-    $('div.catalog-block div.catalog-item>ul>li').each(function(){
+    $('div.catalog-navigation div.catalog-block div.catalog-item>ul>li').each(function(){
         var $li=$(this);
         var url=$li.find('a').get(0).href+'.xml';
         if($li.find('ul').length==0){

@@ -1,3 +1,4 @@
+<div class="catalog-navigation">
 <% if current_page?(catalog_main_path) %>
   <% fetch_all_catalog.each do |catalog_section| %>
     <div class="catalog-item"  data-category-name="<%= catalog_section.slug %>" data-category-id="<%= catalog_section.id %>">
@@ -153,3 +154,4 @@
     </div><!-- Catalog Item -->
   <% end %>
 <% end %>
+</div>

@@ -76,6 +76,7 @@ function openChild(url){
     });
 }
 window.onpopstate = function(event) {
+    return;
     console.log("location: " + document.location + ", state: " + JSON.stringify(event.state)+';window.location.pathname:'+window.location.pathname);
     var url=window.location.pathname;
     if(event.state=='child'){
@@ -84,6 +85,7 @@ window.onpopstate = function(event) {
     }
 };
 $document.on("click", "#tab-control .tabs .tab-item a", function(event){
+    return;
     event.preventDefault();
     var uri=$(this).uri();
     var required_uri=uri.pathname();
@@ -91,6 +93,7 @@ $document.on("click", "#tab-control .tabs .tab-item a", function(event){
     window.history.pushState('child','',required_uri);
 });
 $(document).on("click", "div.catalog-block div.catalog-item>ul>li>ul>li>a", function(event){
+    return;
     event.preventDefault();
     var uri=$(this).uri();
     var required_uri=uri.pathname();
