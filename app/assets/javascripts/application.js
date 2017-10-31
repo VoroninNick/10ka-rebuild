@@ -11,8 +11,10 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery
-//= require jquery_ujs
-//= require jquery-migrate-min
+// require jquery_ujs
+// require jquery-migrate-min
+//= require global
 //= require modernizr.custom.79639
 //= require jquery.fancybox.pack
+//= require bxslider-4/dist/jquery.bxslider.min.js
 //= require_tree .

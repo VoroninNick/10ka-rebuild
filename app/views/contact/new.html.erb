@@ -1,5 +1,3 @@
-<%#= current_user.inspect %>
-
 <!-- Header render -->
 <%= render :partial => "partials/head" %>
 <!-- /Header render -->
@@ -86,34 +84,7 @@
 <% end %>
 
 <!-- /Form render -->
-<script type="text/javascript">
-  var validationSettings = {
-                errorMessagePosition : 'top'
-            };
 
-            $('#contact_us')
-                .submit(function() {
-                    if ($(this).validate(false, validationSettings)){
-                        //return true;
-                        var $form = $('#contact_us');
-                        //$('#form-fields').hide();
-                        //$('#sending-message').show();
-                        /*$.ajax({
-                          type:'POST',
-                          url: $form.attr('action'),
-                          data: $form.serialize(),
-                          success: function(){
-                            $('#sending-message').hide();
-                            $('#thanks-message').show();
-                          }
-                        });*/
-                    }
-
-                    //return false;
-                })
-                .validateOnBlur(false, validationSettings)
-                .showHelpOnFocus();
-</script>
 
 </div>
 

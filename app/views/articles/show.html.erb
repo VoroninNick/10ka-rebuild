@@ -3,16 +3,8 @@
 <!-- /Header render -->
 <!-- Article -->
 <div id="articles-wrapper" class="f-height">
-	<script type="text/javascript" charset="utf-8">
-		$(document).ready(function() {
-				$('#banner-item').css({
-					"background-image" : "url(<%= @article.avatar.url('banner_item') %>)",
-				});
-				//alert('here!');
-		});
-	</script>
 	<div class="shadow-top"></div>
-	<div id="banner-item">&nbsp;</div>
+	<div id="banner-item" <% if @article.avatar.exists? then %> style="background-image: url('<%= @article.avatar.url('banner_item') %>')" <% end %> >&nbsp;</div>
 	<div id="next-article">
 		<%= link_to(image_tag(@article_next.avatar.url(:article_next_pre)), article_path(@article_next), :title => @article_next.name) %>
 	</div>
