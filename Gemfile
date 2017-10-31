@@ -83,3 +83,5 @@ gem 'i18n-active_record',
 gem 'rails-i18n'
 
 gem 'russian'
+
+gem 'quiet_assets'
