@@ -40,33 +40,4 @@ class Product < ActiveRecord::Base
     self.slug ||= name.parameterize
   end
 
-
-
-	rails_admin do
-
-		edit do
-			field :name do
-				label 'Название'
-				help 'Название должно быть немение 4 символов'
-			end
-			field :parent_catalog do
-				label 'Саб категория'
-				help 'Необязательное поле. Выбирать в том случае если есть родительская категория'
-			end
-			field :child_catalog do
-				label 'Производитель'
-				help 'Выберите пожалуйста производителя'
-
-			end
-			field :description do
-				label 'Описание'
-				help 'Описание должны быть немение 15 символов'
-				ckeditor true
-			end
-			field :avatar do
-				label 'Главное изображение'
-			end
-		end
-	end
-
 end

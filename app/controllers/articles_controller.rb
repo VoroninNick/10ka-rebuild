@@ -5,12 +5,12 @@ class ArticlesController < ApplicationController
 
   def index
     @articles = Article.all
-		@fetuared = Article.find_all_by_featured(:t)
+		@fetuared = Article.featured
 
   end
 
   def show
-    @article = Article.find_by_slug!(params[:id])
+    @article = Article.where(slug: params[:id]).first
 
 		@article_next = Article.where('id < ?', @article.id).order('id asc').first
     if @article_next.nil?

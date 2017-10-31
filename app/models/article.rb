@@ -11,6 +11,8 @@ class Article < ActiveRecord::Base
 
   has_attached_file :avatar, :styles => { :main => "707x108#", :banner => "1920x360#", :banner_item => "2400x440#", :article_next_pre => "203x98#" }
 
+  boolean_scope :featured
+
   def to_param
     slug
   end
@@ -18,39 +20,4 @@ class Article < ActiveRecord::Base
   def generate_slug_for_article
     self.slug ||= name.parameterize
   end
-
-	rails_admin do
-		label 'Новости'
-		label_plural 'Новости'
-		list do
-			field :featured do
-				label 'Отображать баннер'
-			end
-			field :name do
-				label 'Название'
-			end
-			field :short_description do
-				label 'Короткое описание'
-			end
-		end
-
-		edit do
-			field :featured do
-				label 'Отображать баннер'
-			end
-			field :name do
-				label 'Название'
-			end
-			field :short_description do
-				label 'Короткое описание'
-			end
-			field :description do
-				ckeditor true
-				label 'Описание'
-			end
-			field :avatar do
-				label 'Изображение'
-			end
-		end
-	end
 end

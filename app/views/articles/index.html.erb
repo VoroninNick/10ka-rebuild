@@ -19,8 +19,8 @@
   </div>
 	<% @articles.each do |article| %>
 		<div class="g6 news-item <%= cycle('alpha g6-alpha', 'omega g6-omega') %> ">
-			<h2 class="article-header"><%= link_to article.name, article_item_path(article), :title => article.name %></h2>
-			<div class="image-cont"><%= link_to(image_tag(article.avatar.url('main')), article_item_path(article), :title => article.name) %></div>
+			<h2 class="article-header"><%= link_to article.name, article_path(article), :title => article.name %></h2>
+			<div class="image-cont"><%= link_to(image_tag(article.avatar.url('main')), article_path(article), :title => article.name) %></div>
 			<p class="article-short-description"><%= article.short_description %></p>
 		</div><!-- g6 news-item -->
 	<% end %>
@@ -28,7 +28,7 @@
 <!-- /Articles -->
 
 <!-- Sponsor render -->
-<%= render :partial => "partials/sponsor-all" %>
+<%= render :partial => "partials/sponsor_all" %>
 <!-- Sponsor render -->
 <!-- Footer render -->
 <%= render :partial => "partials/footer" %>

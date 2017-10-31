@@ -20,34 +20,6 @@ class ChildCatalog < ActiveRecord::Base
 
 
 
-  rails_admin do
-    label 'Производитель'
-    label_plural 'Производители'
-
-    list do
-      field :avatar do
-        label 'Изображение'
-        thumb_method :admin_prv
-      end
-      field :name do
-        label 'Название'
-      end
-      field :parent_catalog do
-        label 'Родительский каталог'
-      end
-    end
-
-    edit do
-      field :name
-      field :description do
-        ckeditor true
-      end
-      field :avatar, :paperclip
-      field :parent_catalog
-    end
-  end
-
-
   def to_param
     slug
   end

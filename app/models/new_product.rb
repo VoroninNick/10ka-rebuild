@@ -20,63 +20,6 @@ class NewProduct < ActiveRecord::Base
                     :url  => '/assets/pr/:id/:style/:basename.:extension',
                     :path => ':rails_root/public/assets/pr/:id/:style/:basename.:extension'
 
-  rails_admin do
-	  label 'Товар'
-	  label_plural 'Товары'
-
-	  edit do
-		  field :name do
-			  label 'Название'
-		  end
-		  field :description do
-			  label 'Описание'
-			  ckeditor true
-		  end
-		  field :new_child_catalog do
-			  label 'Категория'
-			  inline_add false
-			  #enum do
-				#  ['1a', '1b', '2a', '2b', '3a', '3b', '4a', '4b', '5']
-			  #end
-			  #enum do
-				#  except = bindings[:object].id.nil? ? 0 : bindings[:object].id
-				#  NewChildCatalog.where("id != ?", except).map { |c| [ c.name, c.id, c.new_parent_catalog ] }
-			  #end
-			  #formatted_value do
-				#  new_child_catalog_id = bindings[:object].new_child_catalog_id
-				#  proper_name = bindings[:view].proper_name(new_child_catalog_id)
-				#  bindings[:view].link_to "#{proper_name}", '#' #bindings[:view].rails_admin.edit_path('new_child_catalog', new_child_catalog_id)
-			  #end
-		  end
-
-		  field :avatar do
-				label 'Изображение'
-		  end
-		  field :slug do
-			  read_only true
-			  label 'Ссылка'
-		  end
-	  end
-	  list do
-		  field :name do
-			  label 'Название'
-		  end
-		  field :new_child_catalog do
-			  label 'Категория'
-			  pretty_value do
-				  new_child_catalog_id = bindings[:object].new_child_catalog_id
-				  proper_name = bindings[:view].proper_name(new_child_catalog_id)
-				  bindings[:view].link_to "#{proper_name}", bindings[:view].rails_admin.show_path('new_child_catalog', new_child_catalog_id)
-			  end
-		  end
-		  field :slug do
-			  label 'Ссылка'
-		  end
-		  field :avatar do
-			  label 'Изображение'
-		  end
-	  end
-  end
 
 
 

@@ -13,34 +13,4 @@ class Banner < ActiveRecord::Base
                   :url  => '/assets/banner/:id/:style/:basename.:extension',
                   :path => ':rails_root/public/assets/banner/:id/:style/:basename.:extension'
 
-	rails_admin do
-		label 'Баннера главной страницы'
-		label_plural 'Баннера главной страницы'
-		list do
-			field :name do
-				label 'Название'
-			end
-			field :description do
-				label 'Описание'
-			end
-			field :banner do
-				label 'Изображение'
-			end
-		end
-		edit do
-			field :name do
-				label 'Название'
-			end
-			field :description do
-				label 'Описание'
-			end
-			field :banner do
-				label 'Изображение'
-			end
-			field :url do
-				label 'Ссылка'
-			end
-		end
-	end
-
 end

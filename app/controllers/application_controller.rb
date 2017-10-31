@@ -45,7 +45,7 @@ class ApplicationController < ActionController::Base
   end
 
   def fetch_all_child(ids)
-    @childs ||= ChildCatalog.find_all_by_parent_catalog_id(ids)
+    @childs ||= ChildCatalog.where(parent_catalog_id: ids)
   end
 
   def get_all_items_from_all_subcatalogs(parent_catalog)
@@ -60,11 +60,11 @@ class ApplicationController < ActionController::Base
   end
 
   def fetch_all_child_ids(ids)
-    @childs ||= ChildCatalog.find_all_by_parent_catalog_id(ids).id
+    @childs ||= ChildCatalog.where(parent_catalog_id: ids).id
   end
 
   def get_first_child(ids)
-    @child ||= ChildCatalog.find_all_by_parent_catalog_id(ids).first
+    @child ||= ChildCatalog.where(parent_catalog_id: ids).first
   end
 
   def parent_slug(parent_id)
@@ -72,15 +72,15 @@ class ApplicationController < ActionController::Base
   end
 
   def fetch_all_products(ids)
-    @products ||= Product.find_all_by_child_catalog_id(ids)
+    @products ||= Product.where(child_catalog_id: ids)
   end
 
   def fetch_all_products_by_parent(ids)
-    @products ||= Product.find_all_by_parent_catalog_id(ids)
+    @products ||= Product.where(parent_catalog_id: ids)
   end
 
   def count_childs(ids)
-    @count ||= ChildCatalog.find_all_by_parent_catalog_id(ids).count
+    @count ||= ChildCatalog.where(parent_catalog_id: ids).count
   end
 
   def child_name_breadcrumb(id)

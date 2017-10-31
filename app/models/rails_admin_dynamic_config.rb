@@ -41,9 +41,9 @@ module RailsAdminDynamicConfig
               only []
             end
             #edit_model
-            nestable do
-              only [Cms::Page, BlogArticleCategory, TeamMember, Vacancy, Client]
-            end
+            #nestable do
+            #  only []
+            #end
 
             ## With an audit adapter, you can add:
             # history_index
@@ -84,93 +84,93 @@ module RailsAdminDynamicConfig
 
         #
         #
-        config.include_models Cms::SitemapElement, Cms::MetaTags
-        config.include_models Cms::Page
-        config.model Cms::Page do
-          navigation_label_key(:pages, 1)
-          nestable_list({position_field: :sorting_position, scope: :order_by_sorting_position})
-          object_label_method do
-            :custom_name
-            #{
-            #k = @bindings[:object].type.underscore.split("/").last
-            #I18n.t("activerecord.models.pages.#{k}", raise: true) rescue k.humanize
-            #}
-          end
-          list do
-            sort_by do
-              "sorting_position"
-            end
-
-            field :name do
-              def value
-                k = @bindings[:object].type.underscore.split("/").last
-                I18n.t("activerecord.models.pages.#{k}", raise: true) rescue k.humanize
-              end
-            end
-
-            field :h1_text do
-              def value
-                @bindings[:object].h1_text
-              end
-            end
-          end
-
-          edit do
-            field :name do
-              read_only true
-              def value
-                k = @bindings[:object].type.underscore.split("/").last
-                I18n.t("activerecord.models.pages.#{k}", raise: true) rescue k.humanize
-              end
-            end
-            field :translations, :globalize_tabs
-            field :seo_tags
-
-          end
-
-        end
-
-        config.model_translation Cms::Page do
-          field :locale, :hidden
-          field :h1_text
-        end
-
-
-        config.model Cms::MetaTags do
-          visible false
-          field :translations, :globalize_tabs
-        end
-
-        config.model_translation Cms::MetaTags do
-          field :locale, :hidden
-          field :title
-          field :keywords
-          field :description
-        end
-
-
-        config.model Cms::SitemapElement do
-          visible false
-
-          field :display_on_sitemap
-          field :changefreq
-          field :priority
-        end
-
-        config.include_models Attachable::Asset
-
-        config.model Attachable::Asset do
-          navigation_label_key(:assets, 1)
-          field :data
-          #watermark_position_field(:data)
-          field :sorting_position
-          field :translations, :globalize_tabs
-        end
-
-        config.model_translation Attachable::Asset do
-          field :locale, :hidden
-          field :data_alt
-        end
+        # config.include_models Cms::SitemapElement, Cms::MetaTags
+        # config.include_models Cms::Page
+        # config.model Cms::Page do
+        #   navigation_label_key(:pages, 1)
+        #   nestable_list({position_field: :sorting_position, scope: :order_by_sorting_position})
+        #   object_label_method do
+        #     :custom_name
+        #     #{
+        #     #k = @bindings[:object].type.underscore.split("/").last
+        #     #I18n.t("activerecord.models.pages.#{k}", raise: true) rescue k.humanize
+        #     #}
+        #   end
+        #   list do
+        #     sort_by do
+        #       "sorting_position"
+        #     end
+        #
+        #     field :name do
+        #       def value
+        #         k = @bindings[:object].type.underscore.split("/").last
+        #         I18n.t("activerecord.models.pages.#{k}", raise: true) rescue k.humanize
+        #       end
+        #     end
+        #
+        #     field :h1_text do
+        #       def value
+        #         @bindings[:object].h1_text
+        #       end
+        #     end
+        #   end
+        #
+        #   edit do
+        #     field :name do
+        #       read_only true
+        #       def value
+        #         k = @bindings[:object].type.underscore.split("/").last
+        #         I18n.t("activerecord.models.pages.#{k}", raise: true) rescue k.humanize
+        #       end
+        #     end
+        #     field :translations, :globalize_tabs
+        #     field :seo_tags
+        #
+        #   end
+        #
+        # end
+        #
+        # config.model_translation Cms::Page do
+        #   field :locale, :hidden
+        #   field :h1_text
+        # end
+        #
+        #
+        # config.model Cms::MetaTags do
+        #   visible false
+        #   field :translations, :globalize_tabs
+        # end
+        #
+        # config.model_translation Cms::MetaTags do
+        #   field :locale, :hidden
+        #   field :title
+        #   field :keywords
+        #   field :description
+        # end
+        #
+        #
+        # config.model Cms::SitemapElement do
+        #   visible false
+        #
+        #   field :display_on_sitemap
+        #   field :changefreq
+        #   field :priority
+        # end
+        #
+        # config.include_models Attachable::Asset
+        #
+        # config.model Attachable::Asset do
+        #   navigation_label_key(:assets, 1)
+        #   field :data
+        #   #watermark_position_field(:data)
+        #   field :sorting_position
+        #   field :translations, :globalize_tabs
+        # end
+        #
+        # config.model_translation Attachable::Asset do
+        #   field :locale, :hidden
+        #   field :data_alt
+        # end
 
 
         config.include_models User
@@ -181,406 +181,415 @@ module RailsAdminDynamicConfig
           field :password_confirmation
         end
 
-        config.include_models Cms::Tag, Cms::Tagging
-
-        config.model Cms::Tag do
-          navigation_label_key(:tags, 1)
-          field :translations, :globalize_tabs
-          field :videos
-        end
-
-        config.model_translation Cms::Tag do
-          field :locale, :hidden
-          field :name
-          field :url_fragment do
-            help do
-              I18n.t("admin.help.#{name}")
-            end
-          end
-        end
-
-        config.model Cms::Tagging do
-          visible false
-        end
+        # config.include_models Cms::Tag, Cms::Tagging
+        #
+        # config.model Cms::Tag do
+        #   navigation_label_key(:tags, 1)
+        #   field :translations, :globalize_tabs
+        #   field :videos
+        # end
+        #
+        # config.model_translation Cms::Tag do
+        #   field :locale, :hidden
+        #   field :name
+        #   field :url_fragment do
+        #     help do
+        #       I18n.t("admin.help.#{name}")
+        #     end
+        #   end
+        # end
+        #
+        # config.model Cms::Tagging do
+        #   visible false
+        # end
 
         # ===================================================
         # Requests
         # ===================================================
-        config.configure_forms(ContactRequest)
+        #config.configure_forms(ContactRequest)
 
         # ===================================================
         # Application specific models
         # ===================================================
-        config.include_models NewsArticle, BlogArticle, BlogArticleCategory, LatticeFlooringCategory, LatticeFlooringPageInfo
-        config.include_models InstallationPageInfo, StairsPageInfo, InstallationFeature, StairsFeature
-        config.include_models ManualArticle, ManualPageInfo
-        config.include_models Album, AlbumTag, ExamplesPageInfo
-        config.include_models HomeSlide
-        config.include_models AboutUsPageInfo
-        config.include_models TermsOfUsePageInfo
-        config.include_models NewsPageInfo, BlogPageInfo
-        config.include_models TeamMember, Vacancy, Client, Certificate
 
-        config.model NewsArticle do
-          navigation_label_key(:news, 1)
+        config.include_models AboutPage, AboutPageSponsor, Article, Banner, Catalog, ChildCatalog, ContactMessageReceiver, HomePosition
+        config.include_models NewCatalog, NewChildCatalog, NewParentCatalog, NewProduct, ParentCatalog, Product
+        config.include_models Sponsor, Text
 
-          field :published
-          field :translations, :globalize_tabs
-          field :banner
-          field :release_date do
-            date_format do
-              :short
+        config.model AboutPage do
+          edit do
+            field :top_description
+            field :about_page_sponsors
+            field :bottom_description
+          end
+        end
+
+        config.model AboutPageSponsor do
+          edit do
+            field :name
+            field :url
+            field :short_description
+            field :about_page
+          end
+
+          nested do
+            field :name
+            field :url
+            field :short_description
+          end
+        end
+
+        config.model Article do
+          label 'Новости'
+          label_plural 'Новости'
+          list do
+            field :featured do
+              label 'Отображать баннер'
+            end
+            field :name do
+              label 'Название'
+            end
+            field :short_description do
+              label 'Короткое описание'
             end
           end
-          field :seo_tags
-        end
 
-        config.model_translation NewsArticle do
-          field :locale, :hidden
-          field :name
-          field :url_fragment
-          field :short_description
-          field :content, :ck_editor
-        end
-
-        config.model BlogArticle do
-          navigation_label_key(:blog, 1)
-
-          field :published
-          field :blog_article_category
-          field :translations, :globalize_tabs
-          field :banner
-          field :release_date do
-            date_format do
-              :short
+          edit do
+            field :featured do
+              label 'Отображать баннер'
+            end
+            field :name do
+              label 'Название'
+            end
+            field :short_description do
+              label 'Короткое описание'
+            end
+            field :description, :ck_editor do
+              label 'Описание'
+            end
+            field :avatar do
+              label 'Изображение'
             end
           end
-          field :seo_tags
         end
 
-        config.model_translation BlogArticle do
-          field :locale, :hidden
-          field :name
-          field :url_fragment
-          field :content, :ck_editor
-        end
-
-        config.model BlogArticleCategory do
-          navigation_label_key(:blog, 2)
-          nestable_list({position_field: :sorting_position})
-
-          field :translations, :globalize_tabs
-        end
-
-        config.model_translation BlogArticleCategory do
-          field :locale, :hidden
-          field :name
-          field :url_fragment
-        end
-
-        config.model LatticeFlooringCategory do
-          navigation_label_key(:lattice_flooring, 2)
-          nestable_list({position_field: :sorting_position})
-
-          field :published
-          field :translations, :globalize_tabs
-          field :attachment
-          field :banner
-          field :albums
-
-        end
-
-        config.model_translation LatticeFlooringCategory do
-          field :locale, :hidden
-          field :name
-          field :url_fragment
-          field :content, :ck_editor
-          field :attachment_name
-
-        end
-
-        config.model LatticeFlooringPageInfo do
-          navigation_label_key(:lattice_flooring, 3)
-          field :banner_image
-          field :home_image
-          field :translations, :globalize_tabs
-        end
-
-        config.model_translation LatticeFlooringPageInfo do
-          field :locale, :hidden
-          field :banner_title
-          field :banner_subtitle
-          field :intro, :ck_editor
-          field :short_description
-        end
-
-        config.model InstallationPageInfo do
-          navigation_label_key(:installation, 1)
-          field :banner_image
-          field :home_image
-          field :translations, :globalize_tabs
-          field :gallery_images
-        end
-
-        config.model_translation InstallationPageInfo do
-          field :locale, :hidden
-          field :banner_title
-          field :banner_subtitle
-          field :intro, :ck_editor
-          field :features_title
-        end
-
-        config.model StairsPageInfo do
-          navigation_label_key(:stairs, 1)
-          field :banner_image
-          field :home_image
-          field :translations, :globalize_tabs
-
-        end
-
-        config.model_translation StairsPageInfo do
-          field :locale, :hidden
-          field :banner_title
-          field :banner_subtitle
-          field :intro, :ck_editor
-          field :short_description
-        end
-
-        config.model InstallationFeature do
-          navigation_label_key(:installation, 2)
-          nestable_list({position_field: :sorting_position})
-
-          field :published
-          field :image
-          field :translations, :globalize_tabs
-        end
-
-        config.model_translation InstallationFeature do
-          field :locale, :hidden
-          field :name
-          field :description
-        end
-
-        config.model StairsFeature do
-          navigation_label_key(:stairs, 2)
-          nestable_list({position_field: :sorting_position})
-
-          field :published
-          field :image
-          field :translations, :globalize_tabs
-        end
-
-        config.model_translation StairsFeature do
-          field :locale, :hidden
-          field :name
-          field :description
-        end
-
-        config.model ManualArticle do
-          navigation_label_key(:manual, 1)
-          nestable_list({position_field: :sorting_position})
-
-          field :published
-          field :banner_image
-          field :translations, :globalize_tabs
-        end
-
-        config.model_translation ManualArticle do
-          field :locale, :hidden
-          field :name
-          field :url_fragment
-          field :content, :ck_editor
-        end
-
-        config.model ManualPageInfo do
-          navigation_label_key(:manual, 2)
-          field :banner_image
-          field :translations, :globalize_tabs
-          field :downloads
-        end
-
-        config.model_translation ManualPageInfo do
-          field :locale, :hidden
-          field :banner_title
-          field :banner_subtitle
-        end
-
-        config.model Album do
-          navigation_label_key(:examples, 1)
-
-          linkable_field([LatticeFlooringCategory], :catalog_category)
-          field :album_tag
-          field :published
-          field :translations, :globalize_tabs
-          field :images
-        end
-
-        config.model_translation Album do
-          field :locale, :hidden
-          field :name
-          field :url_fragment
-        end
-
-        config.model AlbumTag do
-          navigation_label_key(:examples, 2)
-
-          field :translations, :globalize_tabs
-        end
-
-        config.model_translation AlbumTag do
-          field :locale, :hidden
-          field :name
-          field :url_fragment
-        end
-
-        config.model ExamplesPageInfo do
-          navigation_label_key(:examples, 3)
-          field :banner_image
-          field :translations, :globalize_tabs
-        end
-
-        config.model_translation ExamplesPageInfo do
-          field :locale, :hidden
-          field :banner_title
-          field :banner_subtitle
-        end
-
-        config.model HomeSlide do
-          navigation_label_key :home, 1
-          nestable_list({position_field: :sorting_position})
-
-          field :published
-          linkable_field([Cms::Page, LatticeFlooringCategory])
-          field :translations, :globalize_tabs
-          field :image
-          field :show_link_in_title
-          field :button_text
-        end
-
-        config.model_translation HomeSlide do
-          field :locale, :hidden
-          field :description_html, :ck_editor
-        end
-
-        config.model AboutUsPageInfo do
-          navigation_label_key :about_us, 1
-
-          field :banner_image
-          field :translations, :globalize_tabs
-        end
-
-        config.model_translation AboutUsPageInfo do
-          field :locale, :hidden
-          field :banner_title
-          field :banner_subtitle
-          field :who_we_are_html, :ck_editor
-          field :mission_html, :ck_editor
-          field :team_intro, :ck_editor
-          field :vacancies_intro, :ck_editor
-          field :clients_intro, :ck_editor
-          field :certificates_intro, :ck_editor
-        end
-
-        config.model TermsOfUsePageInfo do
-          field :banner_image
-          field :translations, :globalize_tabs
-        end
-
-        config.model_translation TermsOfUsePageInfo do
-          field :locale, :hidden
-          field :banner_title
-          field :banner_subtitle
-          field :content, :ck_editor
-        end
-
-        config.model NewsPageInfo do
-          navigation_label_key :news, 2
-
-          field :banner_image
-          field :translations, :globalize_tabs
-        end
-
-        config.model_translation NewsPageInfo do
-          field :banner_title
-          field :banner_subtitle
-        end
-
-        config.model BlogPageInfo do
-          navigation_label_key :blog, 3
-          field :banner_image
-          field :translations, :globalize_tabs
-        end
-
-        config.model_translation BlogPageInfo do
-          field :banner_title
-          field :banner_subtitle
-        end
-
-        config.model Certificate do
-          navigation_label_key :about_us, 2
-
-          field :published
-          field :date do
-            date_format do
-              :short
+        config.model Banner do
+          label 'Баннера главной страницы'
+          label_plural 'Баннера главной страницы'
+          list do
+            field :name do
+              label 'Название'
+            end
+            field :description do
+              label 'Описание'
+            end
+            field :banner do
+              label 'Изображение'
             end
           end
-          field :translations, :globalize_tabs
-          field :avatar
-          field :document
+          edit do
+            field :name do
+              label 'Название'
+            end
+            field :description do
+              label 'Описание'
+            end
+            field :banner do
+              label 'Изображение'
+            end
+            field :url do
+              label 'Ссылка'
+            end
+          end
         end
 
-        config.model_translation Certificate do
-          field :locale, :hidden
-          field :name
-          field :description
+        config.model Catalog do
+          label 'Каталог'
+          label_plural 'Каталог'
+
+          list do
+            field :name do
+              label 'Название'
+            end
+            field :parent_catalogs do
+              label 'Родительская категория'
+            end
+            field :home_position do
+              label 'Положение на главной'
+            end
+          end
+
+          edit do
+            field :name do
+              label 'Название'
+              help 'Обязательное заполнение'
+            end
+            field :description, :ck_editor do
+              label 'Краткое описание'
+              help 'Обязательное заполнение'
+            end
+            field :parent_catalogs do
+              label 'Родительская категория'
+            end
+            field :home_position do
+              label 'Положение на главной'
+            end
+          end
         end
 
-        config.model TeamMember do
-          navigation_label_key :about_us, 2
-          nestable_list({position_field: :sorting_position})
+        config.model ChildCatalog do
+          label 'Производитель'
+          label_plural 'Производители'
 
-          field :published
-          field :translations, :globalize_tabs
-          field :image
+          list do
+            field :avatar do
+              label 'Изображение'
+              thumb_method :admin_prv
+            end
+            field :name do
+              label 'Название'
+            end
+            field :parent_catalog do
+              label 'Родительский каталог'
+            end
+          end
+
+          edit do
+            field :name
+            field :description, :ck_editor
+            field :avatar, :paperclip
+            field :parent_catalog
+          end
         end
 
-        config.model_translation TeamMember do
-          field :locale, :hidden
-          field :name
-          field :position
+        config.model ContactMessageReceiver do
+
         end
 
-        config.model Vacancy do
-          navigation_label_key :about_us, 2
-          nestable_list({position_field: :sorting_position})
+        config.model HomePosition do
 
-          field :published
-          field :translations, :globalize_tabs
         end
 
-        config.model_translation Vacancy do
-          field :locale, :hidden
-          field :name
-          field :url_fragment
-          field :salary_description
-          field :content, :ck_editor
+        config.model NewCatalog do
+          label 'Каталог I уровня'
+          label_plural 'Каталог I уровня'
+          list do
+            field :name do
+              label 'Название'
+            end
+            field :new_parent_catalogs do
+              label 'Саб-категория'
+            end
+          end
+          edit do
+            field :name do
+              label 'Название'
+            end
+            field :description, :ck_editor do
+              label 'Описание'
+            end
+            field :slug do
+              read_only true
+            end
+            field :new_parent_catalogs do
+              label 'Саб-категория'
+            end
+          end
         end
 
-        config.model Client do
-          navigation_label_key :about_us, 2
-          nestable_list({position_field: :sorting_position})
+        config.model NewChildCatalog do
+          label 'Каталог III уровня'
+          label_plural 'Каталог III уровня'
+          list do
+            field :name do
+              label 'Название'
+            end
+            field :new_parent_catalog do
+              label 'Каталог (II уровень)'
+            end
+          end
+          edit do
+            field :name do
+              label 'Название'
+            end
+            field :new_parent_catalog do
+              label 'Каталог (II уровень)'
+            end
+            field :description, :ck_editor do
+              label 'Описание'
+            end
+            field :slug do
+              read_only true
+              label 'url'
+            end
 
-          field :published
-          field :translations, :globalize_tabs
-          field :image
+          end
         end
 
-        config.model_translation Client do
-          field :locale, :hidden
-          field :name
-          field :website_url
+        config.model NewParentCatalog do
+          label 'Каталог II уровня'
+          label_plural 'Каталог II уровня'
+          list do
+            field :name do
+              label 'Название'
+            end
+            field :new_child_catalogs do
+              label 'Детская категория'
+            end
+          end
+          edit do
+            field :name do
+              label 'Название'
+            end
+            field :description, :ck_editor do
+              label 'Описание'
+            end
+            field :new_child_catalogs do
+              label 'Детская категория'
+            end
+            field :slug do
+              read_only true
+              label 'url'
+            end
+          end
         end
+
+        config.model NewProduct do
+          label 'Товар'
+          label_plural 'Товары'
+
+          edit do
+            field :name do
+              label 'Название'
+            end
+            field :description, :ck_editor do
+              label 'Описание'
+            end
+            field :new_child_catalog do
+              label 'Категория'
+              inline_add false
+              #enum do
+              #  ['1a', '1b', '2a', '2b', '3a', '3b', '4a', '4b', '5']
+              #end
+              #enum do
+              #  except = bindings[:object].id.nil? ? 0 : bindings[:object].id
+              #  NewChildCatalog.where("id != ?", except).map { |c| [ c.name, c.id, c.new_parent_catalog ] }
+              #end
+              #formatted_value do
+              #  new_child_catalog_id = bindings[:object].new_child_catalog_id
+              #  proper_name = bindings[:view].proper_name(new_child_catalog_id)
+              #  bindings[:view].link_to "#{proper_name}", '#' #bindings[:view].rails_admin.edit_path('new_child_catalog', new_child_catalog_id)
+              #end
+            end
+
+            field :avatar do
+              label 'Изображение'
+            end
+            field :slug do
+              read_only true
+              label 'Ссылка'
+            end
+          end
+          list do
+            field :name do
+              label 'Название'
+            end
+            field :new_child_catalog do
+              label 'Категория'
+              pretty_value do
+                new_child_catalog_id = bindings[:object].new_child_catalog_id
+                proper_name = bindings[:view].proper_name(new_child_catalog_id)
+                bindings[:view].link_to "#{proper_name}", bindings[:view].rails_admin.show_path('new_child_catalog', new_child_catalog_id)
+              end
+            end
+            field :slug do
+              label 'Ссылка'
+            end
+            field :avatar do
+              label 'Изображение'
+            end
+          end
+        end
+
+        config.model ParentCatalog do
+
+        end
+
+        config.model Product do
+          edit do
+            field :name do
+              label 'Название'
+              help 'Название должно быть немение 4 символов'
+            end
+            field :parent_catalog do
+              label 'Саб категория'
+              help 'Необязательное поле. Выбирать в том случае если есть родительская категория'
+            end
+            field :child_catalog do
+              label 'Производитель'
+              help 'Выберите пожалуйста производителя'
+
+            end
+            field :description, :ck_editor do
+              label 'Описание'
+              help 'Описание должны быть немение 15 символов'
+            end
+            field :avatar do
+              label 'Главное изображение'
+            end
+          end
+        end
+
+        config.model Sponsor do
+          label 'Спонсоры'
+          label_plural 'Спонсоры'
+          list do
+            field :sponsor do
+              label 'Изображение'
+            end
+            field :link do
+              label 'Ссылка'
+            end
+          end
+
+          edit do
+            field :name do
+              label 'Название'
+            end
+            field :sponsor do
+              label 'Изображение'
+            end
+            field :link do
+              label 'Ссылка'
+            end
+            field :description do
+              label 'Описание'
+            end
+          end
+        end
+
+        config.model Text do
+          label 'Текста'
+          label_plural 'Текста'
+          list do
+            field :name do
+              label 'Название'
+            end
+            field :description do
+              label 'Описание'
+            end
+          end
+          edit do
+            field :name do
+              label 'Название'
+            end
+            field :description, :ck_editor do
+              label 'Описание'
+            end
+          end
+        end
+
+
 
       end
     end
