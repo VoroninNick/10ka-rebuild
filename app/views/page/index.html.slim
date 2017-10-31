@@ -1,0 +1,32 @@
+= render :partial => "partials/unsupported_browsers"
+
+= render :partial => "partials/head"
+
+
+
+= render :partial => "partials/banner_home"
+
+
+div id="info-wrapper" class="f-height"
+  div class="g4 alpha main-descr-img"
+    = image_tag('logo-big.jpg')
+
+
+  div id="about" class="g8 omega main-descr-area"
+    h1
+      = @text.name 
+    = @text.description.html_safe unless @text.description.blank?
+
+
+
+= render :partial => "partials/catalog_home"
+
+
+= render :partial => "partials/article_home"
+
+
+= render :partial => "partials/sponsor_all"
+
+
+
+= render :partial => "partials/footer" 
