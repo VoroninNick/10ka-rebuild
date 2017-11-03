@@ -105,7 +105,11 @@ class ApplicationController < ActionController::Base
 
   def office_phone
     "+38 (032) 244 00 00"
-  end  
+  end
+
+  def sales_phone
+    "+38 (032) 244 00 15"
+  end
 
   def office_phone_url
     phone_url(office_phone)
@@ -115,9 +119,13 @@ class ApplicationController < ActionController::Base
     phone_url(main_site_phone)
   end
 
+  def sales_phone_url
+    phone_url(sales_phone)
+  end
+
   def fax_phone
     "+38 (032) 244 00 09"
   end  
 
-  helper_method :main_site_phone, :phone_url, :main_site_phone_url, :office_phone, :office_phone_url, :fax_phone
+  helper_method :main_site_phone, :phone_url, :main_site_phone_url, :office_phone, :office_phone_url, :fax_phone, :sales_phone, :sales_phone_url
 end
