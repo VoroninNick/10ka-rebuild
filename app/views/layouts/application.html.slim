@@ -1,0 +1,29 @@
+doctype html
+html.no-js[lang="en-us"]
+  head
+    meta charset="utf-8"
+    = seo_tags
+    meta name="viewport" content="width=device-width, initial-scale=1.0"
+
+    = csrf_meta_tags
+    = stylesheet_link_tag "application"
+    = javascript_include_tag "application"
+  body
+    #no-support-script
+      a#link_to_ie8.fancybox[data-fancybox-type="iframe" href="/unsupported" style="display: none;"]
+        | Unsuport
+    #contacts-for-header
+      #phone-head
+        = image_tag('phone-2.png')
+        = link_to main_site_phone, main_site_phone_url
+      #mail-head
+        = image_tag('mail-1.png')
+        = link_to 'info', 'mailto:desyatka5@gmail.com'
+    #wrapper
+      = render "partials/unsupported_browsers"
+      = render "partials/header"
+      = yield
+      = render "partials/sponsor_all"
+      = render "partials/footer"
+    .footer-pusher
+    = render "cms/ga"

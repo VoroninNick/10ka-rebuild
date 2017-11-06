@@ -1,0 +1,12 @@
+uk:
+  menu:
+    title:
+      about_us: "Про компанію"
+      articles: "Статті"
+      catalog: "Каталог"
+      contacts: "Контакти"
+    html-title:
+      about_us: "Дізнатись більше про компанію"
+      articles: "Дізнайтесь щось цікаве"
+      catalog: "Знайдіть потрібний товар"
+      contacts: "Сконтактуйтеся з нами"

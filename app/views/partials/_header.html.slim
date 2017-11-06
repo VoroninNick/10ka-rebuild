@@ -1,0 +1,11 @@
+#hd-wrapper.page-indent.container
+  #logo.alpha
+    .image-container
+      - if current_page?(root_path)
+        = image_tag('logo.png', :alt => '')
+      - else
+        = link_to(image_tag('logo.png', :alt => ''), root_path)
+  .omega.mobile-menu-button
+    img src="/assets/mobile-menu-button.png" alt="show menu"
+  #menu.omega
+    = render "partials/menu"

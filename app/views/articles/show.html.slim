@@ -1,0 +1,35 @@
+#articles-wrapper.f-height
+  .shadow-top
+  div id="banner-item" style=("background-image: url('#{@article.avatar.url('banner_item')}')" if @article.avatar.exists?)
+  - if @next
+    #next-article
+      = link_to(image_tag(@next.avatar.url(:article_next_pre)), article_path(@next), :title => @next.name)
+  - if @prev
+    #prev-article
+      = link_to(image_tag(@prev.avatar.url(:article_next_pre), :style => 'float: right;'), article_path(@prev), :title => @prev.name)
+  .shadow-bottom[style="clear: none;"]
+  br.clear
+  .article-render-left
+    span.date
+      = @article.created_at.strftime("%m.%d.%Y")
+  .article-render
+    h2
+      = @article.name
+    .shortDescription
+      p
+        = @article.short_description
+    .fullDescription
+      = @article.content.html_safe unless @article.content.blank?
+  #latest-articles
+    .g12
+      h1
+        | Читатачам також сподобались:
+    - [@prev, @next].each do |last|
+      - next if !last
+      .g6.news-item
+        h2.article-header
+          = link_to last.name, article_path(last), :title => last.name
+        .image-cont
+          = link_to(image_tag(last.avatar.url('main')), article_path(last), :title => last.name)
+        p.article-short-description
+          = last.short_description

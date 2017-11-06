@@ -1,0 +1,15 @@
+#catalog-page-wrapper.f-height.catalog-page-index.page-indent.container
+  .g12.pd-me
+    h1
+      | Каталог продукції
+  = render "catalog_navigation"
+  #catalog-content.left-indent
+    #catalog-parent.g8.catalog-page-format.omega
+      - #= @new_product.inspect
+      h1
+        = @product.name
+      .avatar-pr
+        = image_tag @product.avatar.url(:main), :alt => @product.name
+      .description-pr
+        = @product.description.html_safe unless @product.description.blank?
+.pd-me.f-height

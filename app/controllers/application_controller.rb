@@ -18,7 +18,16 @@ class ApplicationController < ActionController::Base
   include Cms::Helpers::AnotherFormsHelper
   include Cms::Helpers::TagsHelper
 
-  helper_method :fetch_sponsors, :fetch_banners, :fetch_all_catalog, :get_left_catalogs, :get_center_catalogs, :get_right_catalogs, :fetch_all_child, :fetch_all_products, :count_childs, :child_name_breadcrumb, :parent_name_breadcrumb, :catalog_name_breadcrumb, :get_first_child, :parent_slug, :fetch_all_child_ids, :fetch_all_products_by_parent, :get_all_items_from_all_subcatalogs
+  helper_method :fetch_sponsors, :fetch_banners, :fetch_all_catalog, :get_left_catalogs, :get_center_catalogs, :get_right_catalogs, :fetch_all_child, :fetch_all_products, :count_childs, :child_name_breadcrumb, :parent_name_breadcrumb, :catalog_name_breadcrumb, :get_first_child, :parent_slug, :fetch_all_child_ids, :fetch_all_products_by_parent
+
+  def root_without_locale
+    redirect_to root_path(locale: I18n.locale)
+  end
+
+  def render_not_found
+    @render_footer = false
+    render template: "errors/not_found.html.slim", status: 404, layout: "application"
+  end
 
   def fetch_sponsors
     @fetch_sponsors ||= Sponsor.last(6)
@@ -46,17 +55,6 @@ class ApplicationController < ActionController::Base
 
   def fetch_all_child(ids)
     @childs ||= ChildCatalog.where(parent_catalog_id: ids)
-  end
-
-  def get_all_items_from_all_subcatalogs(parent_catalog)
-    items = []
-     parent_catalog.new_child_catalogs.each do |cc| 
-       get_all_products_by_child_ids(cc.id).each do |pr|
-        items[items.count] = pr
-      end
-    end
-
-    return items
   end
 
   def fetch_all_child_ids(ids)

@@ -13,7 +13,7 @@ module App10k
     config.time_zone = 'Kyiv'
     config.active_record.default_timezone = :local
 
-    config.i18n.available_locales = [:uk]
+    config.i18n.available_locales = [:uk, :ru]
     config.i18n.default_locale = :uk
 
     Rails.application.config.action_mailer.default_url_options = {host: (ENV["#{Rails.env}.host_with_port"] || ENV["#{Rails.env}.host"])}

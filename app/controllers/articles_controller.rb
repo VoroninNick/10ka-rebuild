@@ -4,23 +4,29 @@ class ArticlesController < ApplicationController
   #caches_page :index, :show, :gzip => :best_speed
 
   def index
-    @articles = Article.all
-		@fetuared = Article.featured
+    articles
+    @featured_articles = @articles.featured
+    set_page_metadata(:articles)
 
   end
 
   def show
-    @article = Article.where(slug: params[:id]).first
+    @article = Article.get(params[:id])
 
-		@article_next = Article.where('id < ?', @article.id).order('id asc').first
-    if @article_next.nil?
-      @article_next = Article.first
+    if @article.nil?
+      return render_not_found
     end
-    @article_prev = Article.where('id > ?', @article.id).order('id desc').first
-    if @article_prev.nil?
-      @article_prev = Article.last
-    end
-    @lasted = Article.last(2)
+
+    @og_image = @article.avatar.url(:banner)
+    @prev = @article.prev(articles, except_self: true)
+    @next = @article.next(articles, except_self: true)
+    set_page_metadata(@article)
+  end
+
+
+  private
+  def articles
+    @articles ||= Article.published
   end
 
 end

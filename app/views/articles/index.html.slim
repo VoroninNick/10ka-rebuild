@@ -1,0 +1,17 @@
+#articles-wrapper.f-height
+  .shadow-top
+  .main-banner-bg
+    .g12.f-height
+      = render 'partials/article_banner'
+  .shadow-bottom
+  .g12
+    h1
+      | Статті
+  - @articles.each do |article|
+    div class="g6 news-item"
+      h2.article-header
+        = link_to article.name, article.url, :title => article.name
+      .image-cont
+        = link_to(image_tag(article.avatar.url('main')), article_path(article), :title => article.name)
+      p.article-short-description
+        = article.short_description

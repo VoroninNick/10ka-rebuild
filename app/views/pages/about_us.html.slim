@@ -1,0 +1,27 @@
+#about-wrapper.container.page-content.page-indent
+  .g12.pd-me
+    h1
+      = @about_page_info.page_title
+
+  .g3.alpha.main-descr-img
+    = image_tag('logo-big.jpg')
+  .g9.fd.omega.pd-me
+    = raw @about_page_info.intro
+    .about-sponsors
+
+      - @about_sponsors.each do |sponsor|
+        .sponsor
+          .sponsor-image
+            img src=sponsor.avatar.url
+          .sponsor-description
+            = sponsor.short_description
+
+    .about-sponsor
+      .about-sponsor-p
+        p
+          = @about_page_info.sponsors_short_description
+
+  .g3.alpha.spec-img
+    = image_tag('spec-example.png')
+  .g9.omega.spec-descr
+    = raw @about_page_info.sales_description

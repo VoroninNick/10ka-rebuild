@@ -26,4 +26,8 @@ class NewChildCatalog < ActiveRecord::Base
 	 # self.new_catalog.name = "#{parent_catalog.name self.name}"
   #end
 
+  def url
+    Cms.url_helpers.sub_sub_category_path(id: self.slug)
+  end
+
 end

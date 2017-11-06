@@ -49,8 +49,6 @@ gem 'rails_admin' #, :github => 'sferik/rails_admin'
 gem 'devise'
 #gem 'jquery-rails'
 #gem 'jquery-migrate-rails'
-gem 'rails-i18n'
-gem 'russian'
 gem 'paperclip'
 gem 'yaml_db'
 gem 'ckeditor'
@@ -87,3 +85,9 @@ gem 'russian'
 gem 'quiet_assets'
 
 gem 'bower-rails'
+
+gem 'globalize'
+gem 'rails_admin_globalize_field'
+gem 'rails_admin_nestable'
+
+gem 'route_translator'

@@ -1,6 +1,6 @@
 class NewProduct < ActiveRecord::Base
   attr_accessible :description, :name, :new_child_catalog_id, :new_child_catalog, :slug, :avatar, :delete_avatar
-	has_one :new_child_catalog
+	#has_one :new_child_catalog
   #accepts_nested_attributes_for :new_child_catalog
   belongs_to :new_child_catalog
   #belongs_to :new_parent_catalog
@@ -30,6 +30,10 @@ class NewProduct < ActiveRecord::Base
   def generate_url
 	  url = name
 	  self.slug ||= url.parameterize
+  end
+
+  def url
+    Cms.url_helpers.product_path(id: self.slug)
   end
 
 end

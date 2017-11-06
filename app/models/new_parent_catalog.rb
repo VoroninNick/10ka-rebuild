@@ -15,4 +15,8 @@ class NewParentCatalog < ActiveRecord::Base
   def generate_url
 	  self.slug ||= name.parameterize
   end
+
+  def url
+    Cms.url_helpers.sub_category_path(id: self.slug)
+  end
 end

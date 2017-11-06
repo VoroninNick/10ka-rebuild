@@ -1,0 +1,85 @@
+#contact-page-wrapper
+  #contact-wrapper.f-height.padding-holder.my-test-class
+    .g12
+      h1 contenteditable="true" data-editable-id="1"
+        | Контактна інформація
+    #contact-info-row-address.g4.contact-info-row.alpha
+      h2.title contenteditable="true"
+        = image_tag('h-img.png')
+        | Адреса:
+      p.title contenteditable="true"
+        | вул. Городоцька, 357
+      p.title contenteditable="true"
+        | м. Львів, Україна, 79068
+      p.sub-title contenteditable="true"
+        | GPS: 49° 48° 757° Пн. Ш. 23° 58° 671° Сх. Д.
+    #contact-info-row-work.g4.contact-info-row
+      h2.title
+        = image_tag('h-img.png')
+        | Графік роботи:
+      p.title
+        | Пн—Пт: 
+        span.times
+          | 09:00 — 18:00
+      p#sb.title
+        | Сб: 
+        span.times.part2
+          | 09:00 — 14:00
+      p.sub-title
+        i
+          | На складі обід з 13:00 до 14:00
+    #contact-info-row-phone.g4.contact-info-row.omega
+      h2.title
+        = image_tag('h-img.png')
+        | Телефони:
+      p#office.title
+        | офіс: 
+        span.phone
+          = office_phone
+      p#sale.title
+        | продаж: 
+        span.phone
+          = main_site_phone
+      p#fax.title
+        | факс: 
+        span.phone
+          = fax_phone
+  = render "partials/gmap"
+
+  form data-url=contact_request_path method="post"
+    .g12
+      h2.title
+        = image_tag('h-img.png')
+        | Зворотній зв'язок:
+    #form-fields
+      #fields.g5.alpha
+        #validate_name.row-input
+          input#contact_request__name type="text" name="name"
+          label for="contact_request__name"
+            |Ім'я
+          span#validate_name
+        #validate_email.row-input
+          input#contact_request__email type="email" name="email"
+          label for="contact_request__email"
+            |Email
+          span#validate_email
+        #validate_phone.row-input
+          input#contact_request__phone type="tel" name="phone"
+          label for="contact_request__name"
+            |Телефон
+          span#validate_phone
+      .g7.omega
+        .row-input
+          textarea#contact_request__comment name="comment"
+          label for="contact_request__comment"
+
+      .g12
+        button type="submit" class="submit-branded animate"
+          |Надіслати!
+    #sending-message.g12 style="display:none;"
+      p
+        img style="width:16px;height:16px" src=asset_path('ajax-loader.gif') id="loader-image"
+        |Надсилається...
+    #thanks-message.g12 style="display:none;"
+      p
+        | Дякуємо за ваш лист

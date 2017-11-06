@@ -19,7 +19,7 @@ function init_google_map(){
         return;
     }
 
-    $.ajax('xml/gmap.xml',
+    $.ajax('/xml/gmap.xml',
         {success:function(xml){
             fullxml=xml;
             if($('status',xml).text()=='OK')

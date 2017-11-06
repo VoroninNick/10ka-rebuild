@@ -41,9 +41,9 @@ module RailsAdminDynamicConfig
               only []
             end
             #edit_model
-            #nestable do
-            #  only []
-            #end
+            nestable do
+              only [AboutPageSponsor]
+            end
 
             ## With an audit adapter, you can add:
             # history_index
@@ -82,80 +82,80 @@ module RailsAdminDynamicConfig
         }
 
 
-        #
-        #
-        # config.include_models Cms::SitemapElement, Cms::MetaTags
-        # config.include_models Cms::Page
-        # config.model Cms::Page do
-        #   navigation_label_key(:pages, 1)
-        #   nestable_list({position_field: :sorting_position, scope: :order_by_sorting_position})
-        #   object_label_method do
-        #     :custom_name
-        #     #{
-        #     #k = @bindings[:object].type.underscore.split("/").last
-        #     #I18n.t("activerecord.models.pages.#{k}", raise: true) rescue k.humanize
-        #     #}
-        #   end
-        #   list do
-        #     sort_by do
-        #       "sorting_position"
-        #     end
-        #
-        #     field :name do
-        #       def value
-        #         k = @bindings[:object].type.underscore.split("/").last
-        #         I18n.t("activerecord.models.pages.#{k}", raise: true) rescue k.humanize
-        #       end
-        #     end
-        #
-        #     field :h1_text do
-        #       def value
-        #         @bindings[:object].h1_text
-        #       end
-        #     end
-        #   end
-        #
-        #   edit do
-        #     field :name do
-        #       read_only true
-        #       def value
-        #         k = @bindings[:object].type.underscore.split("/").last
-        #         I18n.t("activerecord.models.pages.#{k}", raise: true) rescue k.humanize
-        #       end
-        #     end
-        #     field :translations, :globalize_tabs
-        #     field :seo_tags
-        #
-        #   end
-        #
-        # end
-        #
-        # config.model_translation Cms::Page do
-        #   field :locale, :hidden
-        #   field :h1_text
-        # end
-        #
-        #
-        # config.model Cms::MetaTags do
-        #   visible false
-        #   field :translations, :globalize_tabs
-        # end
-        #
-        # config.model_translation Cms::MetaTags do
-        #   field :locale, :hidden
-        #   field :title
-        #   field :keywords
-        #   field :description
-        # end
-        #
-        #
-        # config.model Cms::SitemapElement do
-        #   visible false
-        #
-        #   field :display_on_sitemap
-        #   field :changefreq
-        #   field :priority
-        # end
+
+
+        config.include_models Cms::SitemapElement, Cms::MetaTags
+        config.include_models Cms::Page
+        config.model Cms::Page do
+          navigation_label_key(:pages, 1)
+          nestable_list({position_field: :sorting_position, scope: :order_by_sorting_position})
+          object_label_method do
+            :custom_name
+            #{
+            #k = @bindings[:object].type.underscore.split("/").last
+            #I18n.t("activerecord.models.pages.#{k}", raise: true) rescue k.humanize
+            #}
+          end
+          list do
+            sort_by do
+              "sorting_position"
+            end
+
+            field :name do
+              def value
+                k = @bindings[:object].type.underscore.split("/").last
+                I18n.t("activerecord.models.pages.#{k}", raise: true) rescue k.humanize
+              end
+            end
+
+            field :h1_text do
+              def value
+                @bindings[:object].h1_text
+              end
+            end
+          end
+
+          edit do
+            field :name do
+              read_only true
+              def value
+                k = @bindings[:object].type.underscore.split("/").last
+                I18n.t("activerecord.models.pages.#{k}", raise: true) rescue k.humanize
+              end
+            end
+            field :translations, :globalize_tabs
+            field :seo_tags
+
+          end
+
+        end
+
+        config.model_translation Cms::Page do
+          field :locale, :hidden
+          field :h1_text
+        end
+
+
+        config.model Cms::MetaTags do
+          visible false
+          field :translations, :globalize_tabs
+        end
+
+        config.model_translation Cms::MetaTags do
+          field :locale, :hidden
+          field :title
+          field :keywords
+          field :description
+        end
+
+
+        config.model Cms::SitemapElement do
+          visible false
+
+          field :display_on_sitemap
+          field :changefreq
+          field :priority
+        end
         #
         # config.include_models Attachable::Asset
         #
@@ -212,65 +212,31 @@ module RailsAdminDynamicConfig
         # Application specific models
         # ===================================================
 
-        config.include_models AboutPage, AboutPageSponsor, Article, Banner, Catalog, ChildCatalog, ContactMessageReceiver, HomePosition
-        config.include_models NewCatalog, NewChildCatalog, NewParentCatalog, NewProduct, ParentCatalog, Product
-        config.include_models Sponsor, Text
-
-        config.model AboutPage do
-          edit do
-            field :top_description
-            field :about_page_sponsors
-            field :bottom_description
-          end
-        end
-
-        config.model AboutPageSponsor do
-          edit do
-            field :name
-            field :url
-            field :short_description
-            field :about_page
-          end
-
-          nested do
-            field :name
-            field :url
-            field :short_description
-          end
-        end
+        #config.include_models AboutPage, AboutPageSponsor, Banner, Catalog, ChildCatalog, ContactMessageReceiver, HomePosition
+        #config.include_models NewCatalog, NewChildCatalog, NewParentCatalog, NewProduct, ParentCatalog, Product
+        #config.include_models Sponsor, Text
 
         config.model Article do
-          label 'Новости'
-          label_plural 'Новости'
-          list do
-            field :featured do
-              label 'Отображать баннер'
-            end
-            field :name do
-              label 'Название'
-            end
-            field :short_description do
-              label 'Короткое описание'
-            end
-          end
+          navigation_label_key(:blog, 1)
 
-          edit do
-            field :featured do
-              label 'Отображать баннер'
-            end
-            field :name do
-              label 'Название'
-            end
-            field :short_description do
-              label 'Короткое описание'
-            end
-            field :description, :ck_editor do
-              label 'Описание'
-            end
-            field :avatar do
-              label 'Изображение'
+          field :published
+          field :featured
+          field :translations, :globalize_tabs
+          field :avatar
+          field :release_date do
+            date_format do
+              :short
             end
           end
+          field :seo_tags
+        end
+
+        config.model_translation Article do
+          field :locale, :hidden
+          field :name
+          field :url_fragment
+          field :short_description
+          field :content, :ck_editor
         end
 
         config.model Banner do
@@ -360,10 +326,6 @@ module RailsAdminDynamicConfig
             field :avatar, :paperclip
             field :parent_catalog
           end
-        end
-
-        config.model ContactMessageReceiver do
-
         end
 
         config.model HomePosition do
@@ -540,33 +502,7 @@ module RailsAdminDynamicConfig
           end
         end
 
-        config.model Sponsor do
-          label 'Спонсоры'
-          label_plural 'Спонсоры'
-          list do
-            field :sponsor do
-              label 'Изображение'
-            end
-            field :link do
-              label 'Ссылка'
-            end
-          end
 
-          edit do
-            field :name do
-              label 'Название'
-            end
-            field :sponsor do
-              label 'Изображение'
-            end
-            field :link do
-              label 'Ссылка'
-            end
-            field :description do
-              label 'Описание'
-            end
-          end
-        end
 
         config.model Text do
           label 'Текста'
@@ -590,7 +526,45 @@ module RailsAdminDynamicConfig
         end
 
 
+        config.model AboutPageInfo do
+          navigation_label_key(:about_us, 1)
 
+          field :translations, :globalize_tabs
+        end
+
+        config.model_translation AboutPageInfo do
+          field :locale, :hidden
+          field :page_title
+          field :intro, :ck_editor
+          field :sponsors_short_description
+          field :sales_description, :ck_editor
+        end
+
+        config.model AboutPageSponsor do
+          navigation_label_key(:about_us, 1)
+          nestable_list({position_field: :sorting_position, scope: :order_by_sorting_position})
+
+          list do
+            field :published
+            translated_field :name
+            field :website_url
+            field :avatar
+
+          end
+
+          edit do
+            field :published
+            field :avatar
+            field :translations, :globalize_tabs
+          end
+        end
+
+        config.model_translation AboutPageSponsor do
+          field :locale, :hidden
+          field :name
+          field :website_url
+          field :short_description
+        end
       end
     end
   end

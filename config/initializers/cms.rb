@@ -5,10 +5,7 @@ if !ENV["STD_PRECOMPILE"]
 end
 
 Cms.config.provided_locales do
-  [:uk]
+  [:uk, :ru]
 end
 
-Cms.config.use_translations false
-
-#IMAGE_OPTIONS = {styles: { thumb: "200x200#", large: {geometry: "1380x700#", **WATERMARK_ORIGINAL_STYLE}, square: "450x450#", wide: "900x450#", medium_square: "680x680#", medium_tall: "680x1040#", small_wide: "680x360#", small_square: "330x330#", popup: {geometry: "1920x1080>", **WATERMARK_ORIGINAL_STYLE} }}
-#GALLERY_IMAGE_OPTIONS = {styles: { thumb: "200x200#", large: "1380x700#", square: "450x450#", wide: "900x450#", medium_square: "680x680#", medium_tall: "680x1040#", small_wide: "680x360#", small_square: "330x330#", popup: {geometry: "1920x1080>", **WATERMARK_ORIGINAL_STYLE} }}
+Cms.config.use_translations true
