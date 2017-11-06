@@ -40,10 +40,16 @@
         | продаж: 
         span.phone
           = main_site_phone
+      p id="sale2" class="title"
+        |продаж:
+        span class="phone"
+          = sales_phone
       p#fax.title
         | факс: 
         span.phone
           = fax_phone
+
+
   = render "partials/gmap"
 
   form data-url=contact_request_path method="post"
