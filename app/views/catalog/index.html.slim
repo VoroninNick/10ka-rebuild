@@ -1,10 +1,10 @@
 #catalog-page-wrapper.f-height.catalog-page-index.page-indent.container
-  .g12.pd-me
+  .columns.pd-me
     h1
       | Каталог продукції
   = render "catalog_navigation"
-  #catalog-content.left-indent.g8
-    #catalog-main.g12.catalog-page-contact.omega
+  #catalog-content.left-indent.columns.large-8
+    #catalog-main.catalog-page-contact.columns
       h1
         = @description_dummy.name
       = @description_dummy.description.html_safe unless @description_dummy.description.blank?

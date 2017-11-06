@@ -21,12 +21,12 @@
     .fullDescription
       = @article.content.html_safe unless @article.content.blank?
   #latest-articles
-    .g12
+    .columns
       h1
         | Читатачам також сподобались:
     - [@prev, @next].each do |last|
       - next if !last
-      .g6.news-item
+      .columns.large-6.news-item
         h2.article-header
           = link_to last.name, article_path(last), :title => last.name
         .image-cont

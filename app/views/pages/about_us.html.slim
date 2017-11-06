@@ -1,11 +1,11 @@
 #about-wrapper.container.page-content.page-indent
-  .g12.pd-me
+  .columns.pd-me
     h1
       = @about_page_info.page_title
 
-  .g3.alpha.main-descr-img
+  .columns.large-3.main-descr-img
     = image_tag('logo-big.jpg')
-  .g9.fd.omega.pd-me
+  .columns.large-9.fd.pd-me
     = raw @about_page_info.intro
     .about-sponsors
 
@@ -21,7 +21,7 @@
         p
           = @about_page_info.sponsors_short_description
 
-  .g3.alpha.spec-img
+  .columns.large-3.spec-img
     = image_tag('spec-example.png')
-  .g9.omega.spec-descr
+  .columns.large-9.spec-descr
     = raw @about_page_info.sales_description

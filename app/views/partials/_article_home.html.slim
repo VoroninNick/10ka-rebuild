@@ -1,10 +1,10 @@
 #articles-wrapper.f-height.page-indent
-  .g12
+  .columns
     h1
       | Статті
 
   - @last_article.each do |article|
-    div class="g6 news-item"
+    .columns.large-6.news-item
       h2.article-header
         = link_to(article.name, article_path(article))
       .image-cont

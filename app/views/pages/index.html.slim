@@ -2,11 +2,11 @@
 
 
 div id="info-wrapper" class="f-height"
-  div class="g4 alpha main-descr-img"
+  .columns.large-4.alpha.main-descr-img
     = image_tag('logo-big.jpg')
 
 
-  div id="about" class="g8 omega main-descr-area"
+  .columns.large-8.omega.main-descr-area id="about"
     h1
       = @text.name 
     = @text.description.html_safe unless @text.description.blank?

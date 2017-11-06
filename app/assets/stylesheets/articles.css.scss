@@ -281,7 +281,7 @@
 }
 
 #articles-wrapper{
-  @extend .clearfix;
+  @include clearfix;
   overflow: hidden;
   #banner-item{
     width: 100%;
