@@ -1,0 +1,17 @@
+#article-banner-wrapper
+  #slider.sl-slider-wrapper.demo2
+    .sl-slider
+      - @featured_articles.each do |banner_item|
+        div class="sl-slide" data-orientation=cycle('horizontal', 'vertical') data-slice1-rotation=rand(5..15) data-slice2-rotation=rand(5..15) data-slice1-scale=rand(1..3) data-slice2-scale=rand(1..3)
+
+          .sl-slide-inner
+            div class="bg-img bg-img-#{ banner_item.id }" style="background-image: url('#{ banner_item.avatar.url(:banner)}')"
+            #item-description
+              h2
+                = banner_item.name
+              p
+                = banner_item.short_description
+              = link_to 'Дізнатись більше!', article_path(banner_item), :class => 'button'
+nav#nav-dots.nav-dots
+  - for i in 0...@featured_articles.count
+    span.nav-dot class=("nav-dot-current" if i == 0)

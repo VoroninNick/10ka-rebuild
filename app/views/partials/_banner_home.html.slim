@@ -1,0 +1,7 @@
+#home-slider-wrapper.g12
+  #home-slider
+    - @banners.each do |banner|
+      .slide
+        span.title
+          = banner.name
+        = link_to(image_tag(banner.banner.url(:main)), banner.url, :title => banner.name)

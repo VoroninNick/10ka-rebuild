@@ -1,0 +1,13 @@
+#articles-wrapper.f-height.page-indent
+  .g12
+    h1
+      | Статті
+
+  - @last_article.each do |article|
+    div class="g6 news-item"
+      h2.article-header
+        = link_to(article.name, article_path(article))
+      .image-cont
+        = link_to(image_tag(article.avatar.url('main')), article_path(article), :title => article.name)
+      p.article-short-description
+        = truncate(article.short_description, length: 339, omission: '...')
