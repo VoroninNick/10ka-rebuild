@@ -1,0 +1,7 @@
+.shadow-top
+#sponsor-parent.page-indent
+  #sponsor-wrapper.container
+    - fetch_sponsors.each do |sponsor_item|
+      .g2.sponsor-item
+        = link_to( image_tag(sponsor_item.sponsor.url, :alt => sponsor_item.description, :style => ''), sponsor_item.link )
+.shadow-bottom
