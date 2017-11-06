@@ -1,0 +1,40 @@
+#footer-wrapper.f-height.container.page-indent
+  .g4.contact-info-row.omega.contacts
+    img alt=("H img") src=asset_path("h-img.png") style=("position: absolute; left: -35px;")
+    h2 Контакти:
+    p#office.footer-title
+      | офіс:
+      a.tel href=office_phone_url style="" title=office_phone
+        = office_phone
+    p#sale.footer-title
+      | продаж:
+      a.tel href=main_site_phone_url style="" title=main_site_phone
+        = main_site_phone
+    p#sale.footer-title
+      | продаж:
+      a.tel href=sales_phone_url style="" title=sales_phone
+        = sales_phone
+    p.sub-title
+      a href="/contact"  Більш детальна контактна інформація
+  .g4.contact-info-row.work
+    img alt=("H img") src=asset_path("h-img.png") style=("position: absolute; left: -35px;")
+    h2 Графік роботи:
+    p#pn-pt.footer-title
+      | Пн — Пт:
+      span.me-color style=""  09:00 — 18:00
+    p#sb.footer-title
+      | Сб:
+      span.me-color.me2 style=""  09:00 — 14:00
+    p.sub-title На складі обід з 13:00 до 14:00
+  .g4.alpha.contact-info-row.copyright id=("contact-info-row copyright")
+    p.copyrights © 2012 — #{Date.today.year} ТзОВ «Десятка»
+    #developed-by
+      a href="http://voroninstudio.eu"
+        img alt="" src=asset_path("/assets/v-logo.png")
+      p.title
+        br
+        | Зроблено
+        a href="http://voroninstudio.eu"  дизайн студією М. Вороніна
+        br
+        | в 2013 році.
+        a href="http://voroninstudio.eu"  Інформація про сайт
