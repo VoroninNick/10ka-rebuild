@@ -1,15 +1,17 @@
 = render :partial => "partials/banner_home"
 
 
-div id="info-wrapper" class="f-height"
-  .columns.large-4.alpha.main-descr-img
-    = image_tag('logo-big.jpg')
+div id="home-about" class="f-height"
+  .row
+    .columns.large-3.large-offset-1.image-container
+      = image_tag('logo-big.jpg')
 
 
-  .columns.large-8.omega.main-descr-area id="about"
-    h1
-      = @text.name 
-    = @text.description.html_safe unless @text.description.blank?
+    .columns.large-7.main-descr-area id="about"
+
+      = raw @home_page_info.about_text
+      .icon-container
+        img alt="image" src=asset_path("main-about-image.jpg")
 
 
 

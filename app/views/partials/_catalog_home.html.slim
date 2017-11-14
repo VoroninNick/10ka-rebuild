@@ -1,0 +1,10 @@
+.shadow-top
+#catalog-wrapper.f-height.page-indent.row.home-catalog-wrapper
+  - @home_categories.each do |category|
+    .columns.medium-6.large-4.category-column
+      .catalog-category
+        a href=category.url
+          = category.name
+
+
+.shadow-bottom

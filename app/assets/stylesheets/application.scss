@@ -47,6 +47,7 @@
 //@import "media-grid/_init_grid_system";
 @import "page.css.scss";
 @import "basic.css.scss";
+@import "footer";
 // header
 // footer
 //@import "media-grid/_normalize_browsers";
@@ -56,6 +57,7 @@
 @import "media-queries/pages";
 // contact
 // about
+@import "catalog_menu";
 @import  "pages/catalogs";
 // articles
 
@@ -63,11 +65,13 @@
 // mobile
 //@import  "pages/home-slider";
 @import "pages/home_bxslider";
+@import "pages/home";
 @import  "pages/tabs";
 @import  "pages/products_page";
 @import  "pages/bread-crumbs";
 @import "articles.css.scss";
 @import "slider-custom.css";
+
 
 
 

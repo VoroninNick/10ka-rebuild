@@ -240,33 +240,23 @@ module RailsAdminDynamicConfig
         end
 
         config.model Banner do
-          label 'Баннера главной страницы'
-          label_plural 'Баннера главной страницы'
+          navigation_label_key(:home, 1)
           list do
-            field :name do
-              label 'Название'
-            end
-            field :description do
-              label 'Описание'
-            end
-            field :banner do
-              label 'Изображение'
-            end
+            field :name
+            field :description
+            field :banner
           end
           edit do
-            field :name do
-              label 'Название'
-            end
-            field :description do
-              label 'Описание'
-            end
-            field :banner do
-              label 'Изображение'
-            end
-            field :url do
-              label 'Ссылка'
-            end
+            field :name
+            field :description
+            field :banner
+            field :url
           end
+        end
+
+        config.model HomePageInfo do
+          navigation_label_key(:home, 2)
+          field "about_text", :ck_editor
         end
 
         config.model Catalog do

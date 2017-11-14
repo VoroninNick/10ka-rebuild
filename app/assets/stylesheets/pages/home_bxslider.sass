@@ -4,6 +4,9 @@
   border: none !important
   box-shadow: none !important
 
+  img
+    width: 100%
+
   .bx-loading
     background-image: none
 
@@ -23,11 +26,14 @@
       background-image: image_url("article-right.png")
       right: 0
 
-#home-slider
-  width: 100% !important
-
   .slide
     width: 100% !important
+    background-size: cover
+    background-repeat: no-repeat
+    background-position: center center
+
+    img
+      opacity: 0
 
   .title
     position: absolute
@@ -43,10 +49,16 @@
     line-height: 1
     padding: 30px
 
+  +breakpoint(small only)
+    .bx-controls-direction
+      display: none !important
+
+    .slide
+      height: 60vh
+    .title
+      font-size: 20px
 
 
-
-div#some-slider-wrapper img
-  width: 100%
-
+#home-slider
+  width: 100% !important
 

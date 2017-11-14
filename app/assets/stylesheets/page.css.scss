@@ -1,124 +1,11 @@
-.main-descr-area h1{
-  color: #bf291f;
-  font-weight: 600;
-}
-
-.main-descr-area p.h1-cont{
-  color: #bf291f;
-  font-weight: 300;
-  font-size: 1.35em;
-  margin-bottom: 15px;
-}
-
-.main-descr-area p.af-description{
-  color: #666;
-  font-size: 0.95em;
-  width: 65%;
-  float: left;
-  margin: 0 0 20px 0;
-  font-weight: 300;
-}
-
-.main-descr-img{
-  text-align: center;
-}
-
-#catalog-wrapper{
-  background: url(catalog-main-bg.jpg) repeat;
-  padding: 50px 0 25px 0;
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-#catalog-wrapper div.catalog-block div.catalog-item{
-  padding-bottom: 25px;
-  //width: inherit;
-}
-
-#catalog-wrapper div.catalog-block div.catalog-item a.catalog-show-more{
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  border-radius: 5px;
-  -moz-background-clip: padding;
-  -webkit-background-clip: padding-box;
-  background-clip: padding-box;
-  background-color: #c7c7c7;
-  -moz-box-shadow: 0 1px 0 rgba(0,0,0,.17);
-  -webkit-box-shadow: 0 1px 0 rgba(0,0,0,.17);
-  box-shadow: 0 1px 0 rgba(0,0,0,.17);
-  background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEwMCAxMDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxsaW5lYXJHcmFkaWVudCBpZD0iaGF0MCIgZ3JhZGllbnRVbml0cz0ib2JqZWN0Qm91bmRpbmdCb3giIHgxPSI1MCUiIHkxPSIxMDAlIiB4Mj0iNTAlIiB5Mj0iLTEuNDIxMDg1NDcxNTIwMmUtMTQlIj4KPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZkYWQwMCIgc3RvcC1vcGFjaXR5PSIxIi8+CjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI2ZkZWYwMCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgIDwvbGluZWFyR3JhZGllbnQ+Cgo8cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0idXJsKCNoYXQwKSIgLz4KPC9zdmc+);
-  background-image: -moz-linear-gradient(bottom, #fdad00 0%, #fdef00 100%);
-  background-image: -o-linear-gradient(bottom, #fdad00 0%, #fdef00 100%);
-  background-image: -webkit-linear-gradient(bottom, #fdad00 0%, #fdef00 100%);
-  background-image: linear-gradient(bottom, #fdad00 0%, #fdef00 100%);
 
 
-  font-size: 1.25em;
-  font-weight: 400;
-  text-decoration: none;
-  padding: 10px 20px;
-  color: #646464;
-  text-shadow: 0 1px 0 rgba(255,255,255,.46);
 
-  display: block;
-  width: inherit;
-  cursor: pointer;
-}
 
-#catalog-wrapper div.catalog-block div.catalog-item a.catalog-show-more:hover{
-  color: #ae4038;
-  text-shadow: 0 1px 0 rgba(255,255,255,.46);
-}
 
-#catalog-wrapper div.catalog-block div.catalog-item a.catalog-show-more span{
-  color: #646464;
-  font-size: 1.35em;
-  font-weight: 400;
-  text-shadow: 0 1px 0 rgba(255,255,255,.46);
-  float: right;
 
-  -webkit-transition: 0.45s ease-out all;
-  -moz-transition: 0.45s ease-out all;
-  -ms-transition: 0.45s ease-out all;
-  -o-transition: 0.45s ease-out all;
-  transition: 0.45s ease-out all;
-}
 
-#catalog-wrapper div.catalog-block div.catalog-item a.catalog-show-more:hover span{
-  color: #ae4038;
-}
 
-#catalog-wrapper div.catalog-block div.catalog-item ul.catalog-menu{
-  margin: 0;
-  padding: 10px 20px;
-  list-style: none;
-  display: none;
-}
-
-#catalog-wrapper div.catalog-block div.catalog-item ul.catalog-menu li{
-  margin-bottom: 5px;
-}
-
-#catalog-wrapper div.catalog-block div.catalog-item ul.catalog-menu li a{
-  color: #bf291f;
-  font-size: 1em;
-  font-weight: 300;
-  border-bottom: 1px solid rgba(191, 41, 31, 0.35);
-  -webkit-transition: 0.6s ease-out all;
-  -moz-transition: 0.6s ease-out all;
-  -ms-transition: 0.6s ease-out all;
-  -o-transition: 0.6s ease-out all;
-  transition: 0.6s ease-out all;
-}
-
-#catalog-wrapper div.catalog-block div.catalog-item ul.catalog-menu li a:hover{
-  border-bottom: 1px solid rgba(191, 41, 31, 1);
-}
-
-#catalog-wrapper div.catalog-block div.catalog-item.open a.catalog-show-more{
-  color: #dd2e21;
-  text-shadow: 0 1px 0 rgba(255,255,255,.46);
-}
 
 
 
@@ -140,6 +27,9 @@
   box-shadow: 0 0 5px rgba(0,0,0,.37);
   overflow: hidden;
   height: 108px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
 }
 
 #articles-wrapper div.news-item div.image-cont img{

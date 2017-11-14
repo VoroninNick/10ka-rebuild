@@ -69,10 +69,13 @@ body{
 }
 
 
-#hd-wrapper, #banner-wrapper, #info-wrapper, .shadow-bottom, #about-wrapper, .pd-me{
+#hd-wrapper, #banner-wrapper, #home-about, .shadow-bottom, #about-wrapper, .pd-me{
   padding-bottom: 30px;
 }
 
+a{
+  text-decoration: none;
+}
 
 
 

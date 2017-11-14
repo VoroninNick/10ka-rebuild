@@ -6,6 +6,8 @@ class PagesController < ApplicationController
 		@last_article = Article.last(4)
 		@banners = Banner.all
 		@text = Text.find(2)
+		@home_page_info = HomePageInfo.first_or_initialize
+		@home_categories = NewCatalog.all
   end
 
   def about_us

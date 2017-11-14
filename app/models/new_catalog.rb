@@ -53,4 +53,8 @@ class NewCatalog < ActiveRecord::Base
   def url
     Cms.url_helpers.category_path(id: self.slug)
   end
+
+  def sub_categories
+    new_parent_catalogs
+  end
 end

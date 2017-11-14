@@ -68,14 +68,14 @@ div#banner-wrapper
      margin-left: 0;
  }
  
- #info-wrapper #about
+ #home-about #about
  {
   margin-left: 0;
   padding-left: 15px;
   padding-right: 15px;  
  }
 
- #info-wrapper #about .af-description
+ #home-about #about .af-description
  {
     width:65%;
  }
