@@ -6,7 +6,9 @@ module ApplicationHelper
 	end
 
 	def main_menu
-		entries = ["about_us", "catalog", {controller: "articles"}, "contacts"]
+		entries = [{controller: "catalog", url: catalog_path,
+		#												active: controller_name == "catalog" && action_name == "index", has_active: controller_name == "catalog" && action_name != "index"
+		}, "about_us", {controller: "articles"}, "contacts"]
 		options = {i18n_title_key: true, i18n_html_title_key: true}
 		menu(entries, options)
 		#compute_navigation_keys(entries, "menu", true, options)

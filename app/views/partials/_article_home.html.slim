@@ -1,13 +1,8 @@
 #articles-wrapper.f-height.page-indent
-  .columns
-    h1
-      | Статті
+  .row.page-row
+    .columns
+      .section-title.articles-title
+        | Статті
 
-  - @last_article.each do |article|
-    .columns.large-6.news-item
-      h2.article-header
-        = link_to(article.name, article_path(article))
-      .image-cont style="background-image: url('#{article.avatar.url(:main)}')"
-        = link_to(image_tag(article.avatar.url('main')), article_path(article), :title => article.name)
-      p.article-short-description
-        = truncate(article.short_description, length: 339, omission: '...')
+    - @last_article.each do |article|
+      = render "article", article: article

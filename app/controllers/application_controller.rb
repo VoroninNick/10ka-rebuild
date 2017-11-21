@@ -66,7 +66,7 @@ class ApplicationController < ActionController::Base
   end
 
   def parent_slug(parent_id)
-    @parent_slug = ParentCatalog.find(parent_id).slug
+    @parent_slug = ParentCatalog.find(parent_id).url_fragment
   end
 
   def fetch_all_products(ids)
@@ -123,7 +123,47 @@ class ApplicationController < ActionController::Base
 
   def fax_phone
     "+38 (032) 244 00 09"
-  end  
+  end
+
+  def collection_except(relation, except = nil)
+    if except
+      if except.respond_to?(:id)
+        except_id = except.id
+      elsif except.is_a?(Fixnum)
+        except_id = except
+      end
+
+      if except_id
+        relation = relation.where.not("#{relation.klass.table_name}": {id: except_id})
+      end
+    end
+
+    relation
+  end
+
+  def all_categories
+    @categories ||= categories
+  end
+
+  def categories(except = nil)
+    rel = Category.all
+    rel = collection_except(rel, except)
+    rel.joins(:products).uniq
+  end
+
+  def brands_by_subcategory(subcategory, except = nil)
+    rel = Brand.where(subcategory_id: subcategory.id)
+    rel = collection_except(rel, except)
+    rel.joins(:products).uniq
+  end
+
+  def subcategories_by_category(category, except = nil)
+    rel = Subcategory.where(category_id: category.id)
+    rel = collection_except(rel, except)
+    rel.joins(:products).uniq
+  end
+
+  helper_method :all_categories, :brands_by_subcategory, :subcategories_by_category
 
   helper_method :main_site_phone, :phone_url, :main_site_phone_url, :office_phone, :office_phone_url, :fax_phone, :sales_phone, :sales_phone_url
 end

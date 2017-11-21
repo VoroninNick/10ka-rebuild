@@ -1,77 +1,47 @@
 #wrapper #footer-wrapper
   background: image_url("footer-bg.jpg") repeat-x transparent
   background-size: contain
-  height: 235px
+  height: 275px
   color: rgba(144, 144, 144, 1)
   font-size: 0.95em
 
   a
-    -webkit-transition: 0.6s ease-out all
-    -moz-transition: 0.6s ease-out all
-    -ms-transition: 0.6s ease-out all
-    -o-transition: 0.6s ease-out all
-    transition: 0.6s ease-out all
+    +transition(0.6s ease-out all)
     border-bottom: 1px solid rgba(178, 178, 178, 1)
     &:hover
       color: rgba(191, 41, 31, 1)
       border-bottom: 1px solid rgba(191, 41, 31, 1)
     
-  
-
   .me-color
     margin-left: 50px
     color: #bf291f
   
-
   .me2
     margin-left: 86px
   
-
   .sub-title
     font-style: italic
     padding-top: 10px
   
-
   .tel
     border-bottom: 0 !important
-  
-
-  .sub-title
-    a
-      -webkit-transition: 0.6s ease-out all
-      -moz-transition: 0.6s ease-out all
-      -ms-transition: 0.6s ease-out all
-      -o-transition: 0.6s ease-out all
-      transition: 0.6s ease-out all
-      border-bottom: 1px solid rgba(144, 144, 144, 1)
-      &:hover
-        color: rgba(191, 41, 31, 1)
-        border-bottom: 1px solid rgba(191, 41, 31, 1)
-      
-    
-  
 
   #sale
     a
       margin-left: 20px
-    
-  
 
   #office
     a
       margin-left: 49px
     
-  
-
-
-  h2
+  .block-title
     color: #bf291f
     font-weight: 300
     margin: 0 0 0.83em 0
+    font-size: 20px
   
   .contact-info-row
     margin-top: 70px
-
 
   .contact-info-row.contacts
     +breakpoint(large up)
@@ -83,19 +53,12 @@
   .contact-info-row.contacts p a.tel
     color: #BF291F
     text-decoration: none
-  
-
-  .contact-info-row.copyright 
-
-  
 
   .contact-info-row.contacts.columns 
     float: right
-  
 
   .contact-info-row.work.columns 
     float: right
-  
 
   .contact-info-row.copyright.columns 
     float: left
@@ -111,14 +74,11 @@
       
       p.title
         float: none
-      
-    
-  
 
-  /* end footer properties for all resolutions */
+  +breakpoint(medium down)
 
-  /* footer media(max-width:959px) */
-  @media(max-width: 959px)
+    .footer-block-header-icon
+      display: none
 
     height: auto
 
@@ -142,7 +102,7 @@
       width: 50%
       padding-left: 45px
       margin-right: 0
-      padding-top: 0px
+      padding-top: 0
     
 
     .contact-info-row.contacts.columns 
@@ -150,64 +110,43 @@
       margin-left: 0
       margin-right: 0
       padding-right: 45px
-      padding-top: 0px
+      padding-top: 0
       left: 0
       position: relative
       width: 50%
       float: right
-
-
-
-    
 
     .contact-info-row.copyright.columns
       width: 100%
       margin-left: 0
       padding-bottom: 0
       top: 160px
-      float: none
-    
+      float: left
 
     .contact-info-row.copyright div#developed-by p.title  
       font-size: 12px
       float: left
     
 
-    .contact-info-row.copyright div#developed-by  
-      position: absolute
+    .contact-info-row.copyright div#developed-by
       left: 30px
-      /*margin-top: 190px*/
       width: 300px
-      top: 0px
+      top: 0
 
-
-
-
-    
-
-    .contact-info-row.copyright p.copyrights  
-      position: absolute
-      top: 0px
+    .contact-info-row.copyright p.copyrights
+      top: 0
       right: 30px
       font-size: 16px
       width: 120px
 
-    
-
-    .contact-info-row.copyright  
-
-    
-
     #contact-info-row-copyright.contact-info-row.copyright.columns.alpha 
       padding-top: 0
       padding-bottom: 0
-    
 
-    .contact-info-row.contacts p#office a.tel,
-    .contact-info-row.contacts p#sale a.tel 
-
-    
-  
+  +breakpoint(medium only)
+    .contact-info-row.copyright p.copyrights
+      float: right
+      width: auto
 
 
 
@@ -216,91 +155,61 @@
     div.contact-info-row.work.columns 
       float: left
       width: 100%
-      margin-left: 0px
+      margin-left: 0
       margin-right: 0
-      padding-top: 0px
+      padding-top: 0
       padding-left: 15px
       padding-right: 15px
-    
 
     .contact-info-row.work img 
       left: -30px
-    
 
     #pn-pt 
       font-size: 18px
-    
 
-    #pn-pt span.me-color, #sb span.me-color 
-      /*left:100%*/
-      /*margin-left: -200px*/
+    #pn-pt span.me-color, #sb span.me-color
       right: 15px
       position: absolute
       font-size: 20px
       padding-left: 0
-    
 
     .contact-info-row.contacts.columns 
       float: left
       width: 100%
-      margin-left: 0px
+      margin-left: 0
       margin-right: 0
-      padding-top: 0px
+      padding-top: 0
       padding-left: 15px
       padding-right: 15px
+      right: 0 
+      position: relative 
 
-      /*margin-left: 0*/
-      /*margin-right: 0*/
-      /*padding-top: 0px*/
-      right: 0px /*right: 30px*/
-      position: relative /*position: absolute*/
-      width: 100% /*width: auto*/
-    
-
-    .contact-info-row.contacts p#office a.tel,
-    .contact-info-row.contacts p#sale a.tel 
-      //right:15px
-      //position: absolute
-    
-
-    .contact-info-row.copyright.columns 
-      width: 100%
-      margin-left: 0
-      padding-bottom: 0
-      float: none
+    .contact-info-row.copyright.columns
       height: auto
       top: 310px
-    
+      float: left
 
-    .contact-info-row.copyright div#developed-by  
-      position: absolute
-      left: 0px
-      top: 0px
+      .inner
+        +grid-row
 
-    
+    .contact-info-row.copyright div#developed-by
+      left: 0
+      top: 0
+
 
     .contact-info-row.copyright div#developed-by p.title  
       font-size: 12px
     
 
-    .contact-info-row.copyright p.copyrights  
-      position: absolute
+    .contact-info-row.copyright p.copyrights
       margin: 0
       top: 13px
       right: 15px
-      width: 150px
-    
+      width: 100%
+      text-align: center
+      padding: 0 10px
 
-    .contact-info-row.copyright  
-
-    
-  
-  /* end footer media(max-width:609px) */
-
-  /* footer media(max-width:535px) */
-  @media(max-width: 535px)
+  //@media(max-width: 535px)
     .contact-info-row.copyright #developed-by p.title
-      display: none
-    
-  
-  /* end footer media(max-width:535px) */
+      //display: none
+

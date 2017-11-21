@@ -1,5 +1,5 @@
 #tab-control.f-height
   .tabs
-    - get_all_child_catalogs_by_id(@sub_category.id).each do |child|
-      div class="tab-item" id="tab-#{child.id}" data-child-name=child.name data-slug=child.slug
-        = link_to child.name, child.url, :title => child.name
+    - brands_by_subcategory(@subcategory).each do |brand|
+      div class="tab-item" id="tab-#{brand.id}" data-brand-name=brand.name data-slug=brand.url_fragment
+        = link_to brand.name, brand.url, :title => brand.name

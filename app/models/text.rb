@@ -1,3 +1,3 @@
 class Text < ActiveRecord::Base
-  attr_accessible :description, :name
+  attr_accessible *attribute_names
 end

@@ -1,0 +1,131 @@
+.catalog-toolbar
+  +grid-row
+  margin-top: 20px
+  margin-bottom: 25px
+
+  body.forged_products__subcategory &
+
+    margin-top: 0
+    margin-bottom: 0
+    position: relative
+
+    .catalog-toolbar-inner
+      position: absolute
+      left: 25%
+      width: 75%
+      //margin-left: 25%
+      padding-top: 20px
+      padding-bottom: 25px
+
+      .sorting-options
+        position: relative
+        z-index: 1
+
+      +breakpoint(small only)
+        left: 0
+        width: 100%
+        position: relative
+
+        .search-bar
+          position: relative
+          padding-left: 60px
+
+  .breadcrumbs
+    margin-top: -10px
+    float: left
+
+.breadcrumbs
+  +clearfix
+
+  ul
+    margin: 0
+    padding: 0
+
+  li
+    position: relative
+    margin: 10px 20px 0 0
+    height: 24px
+    line-height: 24px
+    border: 1px solid $xlight-gray-color
+    display: block
+    float: left
+    font-size: 12px
+
+
+    a, span
+      color: $light-gray-color
+      padding: 0 20px 0 8px
+      position: relative
+      display: block
+
+    &.has-dropdown
+      > a, span
+        cursor: pointer
+        &:after
+          display: block
+          content: ""
+          width: 0
+          height: 0
+          border-style: solid
+          border-width: 4px 4px 0 4px
+          border-color: #BEBEBE transparent transparent transparent
+          position: absolute
+          right: 6px
+          top: 10px
+
+
+
+    a
+      text-decoration: none
+    &:not(.has-dropdown)
+      > a
+        +transition-property(all)
+        +transition-duration(0.2s)
+        &:hover
+          color: lighten($red-color, 5)
+
+    &:last-child
+      font-weight: 300
+    svg
+      width: 10px
+      height: 10px
+      position: absolute
+      right: -16px
+      top: 6px
+      fill: #BEBEBE
+
+
+    .dropdown
+      display: none
+      position: absolute
+      z-index: 1
+      background: $dark-white-color
+      border: 1px solid $xlight-gray-color
+      width: 190px
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15)
+
+      a
+        display: block
+
+
+      li
+        float: none
+        display: block
+        border: none
+        margin-right: 0
+        line-height: 16px
+        height: auto
+
+        &:last-child
+          margin-bottom: 10px
+
+      &.opened
+        display: block
+
+
+  @media (max-width: #{rem-calc(1200)})
+    margin-left: 15px
+//+medium-down
+    margin-left: 15px
+
+

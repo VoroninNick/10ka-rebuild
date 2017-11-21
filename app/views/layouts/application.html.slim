@@ -5,11 +5,17 @@ html.no-js lang=I18n.locale
     = seo_tags
     meta name="viewport" content="width=device-width, initial-scale=1.0"
   body
-    #contacts-for-header
-      #phone-head
+    .secondary-header
+      #header-cart.secondary-header-item
+        a href="#cart"
+          = inline_svg "svg/cart2"
+          span.products-count
+            |0 товарів
+
+      .secondary-header-item
         = image_tag('phone-2.png')
         = link_to main_site_phone, main_site_phone_url
-      #mail-head
+      .secondary-header-item
         = image_tag('mail-1.png')
         = link_to 'info', 'mailto:desyatka5@gmail.com'
     #wrapper

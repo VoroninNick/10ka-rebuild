@@ -1,22 +1,4 @@
+.columns.pd-me
+  = render "breadcrumbs"
 .columns.large-4.catalog-block
-  - categories.each do |category|
-    .catalog-item data-category-name=category.slug data-category-id=category.id
-      a class="catalog-show-more animate" id="main-cat-#{ category.id }"
-        = category.name
-        span data-opened="false" id="status-#{ category.id }"
-          |+
-
-      ul.catalog-menu id="menu-cat-#{category.id}"
-        - get_all_parent_catalogs_by_id(category.id).each do |parent|
-          - if parent.new_child_catalogs.present?
-            li
-              = link_to parent.name, parent.url, :title => parent.name
-              span data-opened="false" id="sub-status-#{ parent.id }" class="sub-menu-status"
-                |+
-              ul class="sub-status-ul-#{ parent.id }"
-                - get_all_child_catalogs_by_id(parent.id).each do |child|
-                  li
-                    = link_to child.name, child.url, :title => child.name
-          - else
-              li
-                = link_to parent.name, parent.url, :title => parent.name
+  = render "catalog_menu"

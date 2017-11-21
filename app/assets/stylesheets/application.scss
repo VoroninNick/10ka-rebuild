@@ -2,6 +2,11 @@
 @import "jquery.fancybox";
 @import "bxslider-4/dist/jquery.bxslider.min";
 
+@import "config";
+@import "custom_mixins";
+
+@import "detailed_css3_mixins";
+
 
 .windows{
   nav{
@@ -32,33 +37,31 @@
     font-weight: 400 !important;
   }
 
-  #contact-page-wrapper form#contact_us .submit-branded{
-    font-weight: 400 !important;
-  }
-
 }
 
 @import "foundation-sites/scss/foundation";
 @import "application_foundation_settings";
 @include foundation-global-styles;
 @include foundation-grid;
+@import "grid_extension";
 
 
-//@import "media-grid/_init_grid_system";
 @import "page.css.scss";
 @import "basic.css.scss";
 @import "footer";
-// header
-// footer
-//@import "media-grid/_normalize_browsers";
-//@import "media-grid/grid";
 
 @import "media-queries/layout.css.scss";
-@import "media-queries/pages";
-// contact
-// about
+//@import "media-queries/pages";
+
+@import "components/button";
+@import "components/breadcrumbs";
+@import "components/product";
+@import "components/header";
+@import "components/mobile_menu";
 @import "catalog_menu";
 @import  "pages/catalogs";
+@import "pages/about";
+@import "pages/articles";
 // articles
 
 // pad
@@ -71,25 +74,6 @@
 @import  "pages/bread-crumbs";
 @import "articles.css.scss";
 @import "slider-custom.css";
-
-
-
-
-// media-queries/fluid
-
-// media-queries/max_1199px
-// media-queries/max_959px
-// media-queries/max_609px
-// media-queries/max_535px
-// media-queries/max_455px
-
-// media-queries/min_610px
-// media-queries/min_960px
-// media-queries/min_1200px
-// media-queries/min_1440px
-// media-queries/min_2020px
-
-
 
 
 

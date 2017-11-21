@@ -7,7 +7,7 @@ class PagesController < ApplicationController
 		@banners = Banner.all
 		@text = Text.find(2)
 		@home_page_info = HomePageInfo.first_or_initialize
-		@home_categories = NewCatalog.all
+		@home_categories = Category.all
   end
 
   def about_us

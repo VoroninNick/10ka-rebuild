@@ -259,238 +259,83 @@ module RailsAdminDynamicConfig
           field "about_text", :ck_editor
         end
 
-        config.model Catalog do
-          label 'Каталог'
-          label_plural 'Каталог'
-
-          list do
-            field :name do
-              label 'Название'
-            end
-            field :parent_catalogs do
-              label 'Родительская категория'
-            end
-            field :home_position do
-              label 'Положение на главной'
-            end
-          end
-
-          edit do
-            field :name do
-              label 'Название'
-              help 'Обязательное заполнение'
-            end
-            field :description, :ck_editor do
-              label 'Краткое описание'
-              help 'Обязательное заполнение'
-            end
-            field :parent_catalogs do
-              label 'Родительская категория'
-            end
-            field :home_position do
-              label 'Положение на главной'
-            end
-          end
-        end
-
-        config.model ChildCatalog do
-          label 'Производитель'
-          label_plural 'Производители'
-
-          list do
-            field :avatar do
-              label 'Изображение'
-              thumb_method :admin_prv
-            end
-            field :name do
-              label 'Название'
-            end
-            field :parent_catalog do
-              label 'Родительский каталог'
-            end
-          end
-
-          edit do
-            field :name
-            field :description, :ck_editor
-            field :avatar, :paperclip
-            field :parent_catalog
-          end
-        end
-
         config.model HomePosition do
 
         end
 
-        config.model NewCatalog do
+        config.model Category do
           label 'Каталог I уровня'
           label_plural 'Каталог I уровня'
           list do
-            field :name do
-              label 'Название'
-            end
-            field :new_parent_catalogs do
-              label 'Саб-категория'
-            end
+            translated_field :name
           end
           edit do
-            field :name do
-              label 'Название'
-            end
-            field :description, :ck_editor do
-              label 'Описание'
-            end
-            field :slug do
-              read_only true
-            end
-            field :new_parent_catalogs do
-              label 'Саб-категория'
-            end
+            field :name
+            field :description, :ck_editor
+            field :url_fragment
           end
         end
 
-        config.model NewChildCatalog do
+        config.model Brand do
           label 'Каталог III уровня'
           label_plural 'Каталог III уровня'
           list do
-            field :name do
-              label 'Название'
-            end
-            field :new_parent_catalog do
+            translated_field :name
+            field :subcategory do
               label 'Каталог (II уровень)'
             end
           end
           edit do
-            field :name do
-              label 'Название'
-            end
-            field :new_parent_catalog do
-              label 'Каталог (II уровень)'
-            end
-            field :description, :ck_editor do
-              label 'Описание'
-            end
-            field :slug do
-              read_only true
-              label 'url'
-            end
+            field :subcategory
+            field :translations, :globalize_tabs
 
           end
         end
 
-        config.model NewParentCatalog do
+        config.model_translation Brand do
+          field :name
+          field :url_fragment
+          field :description, :ck_editor
+        end
+
+        config.model Subcategory do
           label 'Каталог II уровня'
           label_plural 'Каталог II уровня'
           list do
-            field :name do
-              label 'Название'
-            end
-            field :new_child_catalogs do
-              label 'Детская категория'
-            end
+            field :name
           end
           edit do
-            field :name do
-              label 'Название'
-            end
-            field :description, :ck_editor do
-              label 'Описание'
-            end
-            field :new_child_catalogs do
-              label 'Детская категория'
-            end
-            field :slug do
-              read_only true
-              label 'url'
-            end
+            field :category
+            field :translations, :globalize_tabs
           end
         end
 
-        config.model NewProduct do
-          label 'Товар'
-          label_plural 'Товары'
-
-          edit do
-            field :name do
-              label 'Название'
-            end
-            field :description, :ck_editor do
-              label 'Описание'
-            end
-            field :new_child_catalog do
-              label 'Категория'
-              inline_add false
-              #enum do
-              #  ['1a', '1b', '2a', '2b', '3a', '3b', '4a', '4b', '5']
-              #end
-              #enum do
-              #  except = bindings[:object].id.nil? ? 0 : bindings[:object].id
-              #  NewChildCatalog.where("id != ?", except).map { |c| [ c.name, c.id, c.new_parent_catalog ] }
-              #end
-              #formatted_value do
-              #  new_child_catalog_id = bindings[:object].new_child_catalog_id
-              #  proper_name = bindings[:view].proper_name(new_child_catalog_id)
-              #  bindings[:view].link_to "#{proper_name}", '#' #bindings[:view].rails_admin.edit_path('new_child_catalog', new_child_catalog_id)
-              #end
-            end
-
-            field :avatar do
-              label 'Изображение'
-            end
-            field :slug do
-              read_only true
-              label 'Ссылка'
-            end
-          end
-          list do
-            field :name do
-              label 'Название'
-            end
-            field :new_child_catalog do
-              label 'Категория'
-              pretty_value do
-                new_child_catalog_id = bindings[:object].new_child_catalog_id
-                proper_name = bindings[:view].proper_name(new_child_catalog_id)
-                bindings[:view].link_to "#{proper_name}", bindings[:view].rails_admin.show_path('new_child_catalog', new_child_catalog_id)
-              end
-            end
-            field :slug do
-              label 'Ссылка'
-            end
-            field :avatar do
-              label 'Изображение'
-            end
-          end
-        end
-
-        config.model ParentCatalog do
-
+        config.model_translation Subcategory do
+          field :name
+          field :url_fragment
+          field :description, :ck_editor
         end
 
         config.model Product do
+          list do
+            translated_field :name
+            field :brand
+            translated_field :url_fragment
+            field :avatar
+          end
           edit do
-            field :name do
-              label 'Название'
-              help 'Название должно быть немение 4 символов'
-            end
-            field :parent_catalog do
-              label 'Саб категория'
-              help 'Необязательное поле. Выбирать в том случае если есть родительская категория'
-            end
-            field :child_catalog do
-              label 'Производитель'
-              help 'Выберите пожалуйста производителя'
-
-            end
-            field :description, :ck_editor do
-              label 'Описание'
-              help 'Описание должны быть немение 15 символов'
-            end
-            field :avatar do
-              label 'Главное изображение'
-            end
+            field :brand
+            field :translations, :globalize_tabs
+            field :avatar
           end
         end
+
+        config.model_translation Product do
+          field :name
+          field :url_fragment
+          field :description, :ck_editor
+        end
+
 
 
 

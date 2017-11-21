@@ -12,6 +12,6 @@
               p
                 = banner_item.short_description
               = link_to 'Дізнатись більше!', article_path(banner_item), :class => 'button'
-nav#nav-dots.nav-dots
-  - for i in 0...@featured_articles.count
-    span.nav-dot class=("nav-dot-current" if i == 0)
+  nav#nav-dots.nav-dots
+    - for i in 0...@featured_articles.count
+      span.nav-dot class=("nav-dot-current" if i == 0)

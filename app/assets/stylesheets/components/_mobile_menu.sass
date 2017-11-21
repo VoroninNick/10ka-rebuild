@@ -1,0 +1,127 @@
+#header
+  +breakpoint(xlarge down)
+    .header-nav > li
+      padding-left: 34px
+      padding-right: 34px
+
+  +breakpoint(large down)
+    div#menu
+      margin-right: 0
+
+    div.mobile-menu-button
+      margin-top: 29px
+      display: inline
+      float: right
+      cursor: pointer
+      margin-right: 10px
+      margin-bottom: 10px
+
+      img
+        right: 0
+        position: relative
+        width: 89px
+
+    .menu-item-catalog
+      .menu-item
+        display: none !important
+      .main-menu-catalog-menu
+        display: block
+
+    .header-nav > li
+      padding: 0
+    .header-nav > li.click
+      background-clip: padding-box
+      background-color: #c7c7c7
+      box-shadow: 0 1px 0 rgba(0,0,0,.17)
+      +gradient-bg(#FD3232, #FD6432)
+
+    .header-nav > li .menu-item
+      line-height: 40px
+      display: block
+      width: 100%
+      text-align: center
+      border-left: white 1px solid
+      border-right: white 1px solid
+      font-size: 26px
+      font-weight: bold
+      padding-top: 7px
+      padding-bottom: 7px
+
+    nav
+      margin-bottom: 10px
+      margin-top: 0
+      display: none
+      box-shadow: 0px -7px 7px -7px rgba(0,0,0,0.9)
+
+      &.collapsed-menu
+        display: none
+
+      &.expanded-menu
+        display: inline-block
+        width: 100%
+
+    .main-menu-catalog-menu
+
+      .catalog-category
+        padding-bottom: 10px
+
+        .node-title
+          font-size: 16px
+          font-weight: 400
+          text-align: left
+          padding: 10px
+
+        ul
+          .node-title
+            font-size: 14px
+            padding: 0
+
+  +breakpoint(large only)
+    .header-nav > li
+      &:nth-child(n+2)
+        background: none
+
+        padding-bottom: 10px
+
+        > .menu-item
+          background: none
+          //+gradient-bg(#fdad00, #fdef00)
+          padding: 10px 30px
+
+
+
+  +breakpoint(medium down)
+    padding-bottom: 15px
+
+    nav
+      margin-bottom: 10px
+      margin-top: 0
+      display: none
+      -moz-box-shadow:  0px 0px 0px 0px rgba(0,0,0,0.9)
+      -webkit-box-shadow: 0px -7px 7px -7px rgba(0,0,0,0.9)
+      box-shadow: 0px -7px 7px -7px rgba(0,0,0,0.9)
+
+      &.collapsed-menu
+        display: none
+
+      &.expanded-menu
+        display: inline
+
+    .header-nav > li
+      width: 100%
+
+  +breakpoint(small only)
+    .header-nav > li .menu-item
+      background-clip: padding-box
+      background-color: #c7c7c7
+      box-shadow: 0 1px 0 rgba(0,0,0,.17)
+      +gradient-bg(#fdad00, #fdef00)
+      font-size: 22px
+      font-weight: bolder
+      text-decoration: none
+      padding: 10px 35px
+      color: #646464
+      text-shadow: 0 1px 0 rgba(255,255,255,.46)
+      //display: block
+      cursor: pointer
+      height: 61px

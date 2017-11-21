@@ -1,6 +1,6 @@
 function init_header_menu() {
     var $mobile_menu_button = $('.mobile-menu-button');
-    var $menu = $('div#hd-wrapper nav');
+    var $menu = $('div#header nav');
     $('.mobile-menu-button').click(function () {
 
         if ($menu.filter(':visible').length > 0)

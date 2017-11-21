@@ -15,12 +15,14 @@
 
 #articles-wrapper{}
 
-#articles-wrapper div.g12 h1{
+.section-title{
   color: #838383;
   font-weight: 300;
+  font-size: 32px;
+  margin: 21px 0;
 }
 
-#articles-wrapper div.news-item div.image-cont{
+.news-item .image-cont{
   border: 4px solid #fff;
   -moz-box-shadow: 0 0 5px rgba(0,0,0,.37);
   -webkit-box-shadow: 0 0 5px rgba(0,0,0,.37);
@@ -30,19 +32,20 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
+
+  img{
+    opacity: 0;
+  }
 }
 
-#articles-wrapper div.news-item div.image-cont img{
-  width: 100%;
-}
 
-#articles-wrapper div.news-item h2.article-header{
+.news-item .article-header{
   color: rgba(191, 41, 31, 1);
   font-weight: 300;
   margin: 15px 0;
 }
 
-#articles-wrapper div.news-item h2.article-header a{
+.news-item .article-header a{
   color: rgba(191, 41, 31, 1);
   font-weight: inherit;
   text-decoration: none;
@@ -55,11 +58,11 @@
   transition: 0.6s ease-out all;
 }
 
-#articles-wrapper div.news-item h2.article-header a:hover{
+.news-item .article-header a:hover{
   border-bottom: 1px solid rgba(191, 41, 31, 1);
 }
 
-#articles-wrapper div.news-item p.article-short-description{
+.news-item .article-short-description{
   color: #666;
   font-weight: 300;
   font-size: 1em;
@@ -138,14 +141,14 @@
 }
 
 
-#contacts-for-header{
+.secondary-header{
   margin: 10px auto 0 auto;
   width: 80%;
   height: 25px;
   text-align: right;
   a{
     color: rgba(255, 255, 255, 1);
-    border-bottom: 1px solid rgba(255, 255, 255, 1);
+    //border-bottom: 1px solid rgba(255, 255, 255, 1);
 
 
 
@@ -156,15 +159,16 @@
     }
   }
 
-  #mail-head{
+  .secondary-header-item{
     float: right;
     margin-right: 20px;
     opacity: 0.6;
-    -webkit-transition: 0.6s ease-out all;
-    -moz-transition: 0.6s ease-out all;
-    -ms-transition: 0.6s ease-out all;
-    -o-transition: 0.6s ease-out all;
-    transition: 0.6s ease-out all;
+    @include transition(0.6s ease-out all);
+
+    a{
+      color: white;
+    }
+
     &:hover{
       opacity: 1;
     }
@@ -174,20 +178,16 @@
     }
   }
 
-  #phone-head{
-    float: right;
-    opacity: 0.6;
-    -webkit-transition: 0.6s ease-out all;
-    -moz-transition: 0.6s ease-out all;
-    -ms-transition: 0.6s ease-out all;
-    -o-transition: 0.6s ease-out all;
-    transition: 0.6s ease-out all;
-    &:hover{
-      opacity: 1;
+  #header-cart{
+    svg{
+      width: 20px;
+      fill: white;
     }
-    img{
-      vertical-align: middle;
-      margin-right: 5px;
+
+    .products-count{
+      top: -6px;
+      position: relative;
+      margin-left: 5px;
     }
   }
 }

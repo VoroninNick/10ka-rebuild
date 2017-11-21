@@ -45,7 +45,7 @@
                 <div class="online-item" data-id="" data-catalog-name="" data-price="">
                   <%= link_to image_tag(pr.avatar.url(:prod), :alt => pr.name), catalog_main_path+'/'+@catalog_slug.slug+'/'+parent_slug(get_first_child(@parent_catalog.id).id)+'/'+get_first_child(@parent_catalog.id).slug+'/'+pr.slug, :title => pr.name, :class => '' %>
                   <p><%= pr.name %></p>
-                  <%= link_to 'Детальніше', catalog_main_path+'/'+@catalog_slug.slug+'/'+parent_slug(get_first_child(@parent_catalog.id).id)+'/'+get_first_child(@parent_catalog.id).slug+'/'+pr.slug, :title => pr.name, :class => 'submit-branded animate' %>
+                  <%= link_to 'Детальніше', catalog_main_path+'/'+@catalog_slug.slug+'/'+parent_slug(get_first_child(@parent_catalog.id).id)+'/'+get_first_child(@parent_catalog.id).slug+'/'+pr.slug, :title => pr.name, :class => 'button' %>
                 </div>
               <% end %>
               <%# end %>

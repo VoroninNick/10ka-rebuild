@@ -169,8 +169,7 @@ function openChild(url){
                 var $title=$('<p>'+product_name+'</p>');
                 var $show_more=$('<a>Детальніше</a>');
                 $show_more.attr('href',product_slug);
-                $show_more.addClass('submit-branded');
-                $show_more.addClass('animate');
+                $show_more.addClass('button');
                 $show_more.attr('title',product_name);
 
                 $item.append($img);

@@ -1,15 +1,22 @@
-#catalog-page-wrapper.f-height.catalog-page-index.page-indent.container
-  .columns.pd-me
-    h1
-      | Каталог продукції
+#catalog-page-wrapper.f-height.page-indent.container.product-page
   = render "catalog_navigation"
   #catalog-content.left-indent
     #catalog-parent.columns.large-8.catalog-page-format
       - #= @new_product.inspect
-      h1
-        = @product.name
-      .avatar-pr
-        = image_tag @product.avatar.url(:main), :alt => @product.name
-      .description-pr
-        = @product.description.html_safe unless @product.description.blank?
+      .product-header
+        .row
+          .columns
+            .product-title
+              = @product.name
+          .product-image.columns.large-4
+            = image_tag @product.avatar.url(:prod), :alt => @product.name
+          .product-order-block.columns.large-8
+            button.order-button
+              |У кошик
+
+      .product-content
+        .row
+          .columns
+            .description-pr
+              = @product.description.html_safe unless @product.description.blank?
 .pd-me.f-height

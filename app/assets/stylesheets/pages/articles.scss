@@ -35,10 +35,6 @@
   right: 4px;
 }
 
-#article-banner-wrapper .item .article-slide-descr .submit-branded{
-  width: 200px;
-}
-
 #article-banner-wrapper .item .article-slide-descr .article-h{
   font-weight: 400;
   font-size: 1.70em;
@@ -50,4 +46,10 @@
   font-weight: 300;
   font-size: 1.25em;
   color: #ffffff;
+}
+
+@include breakpoint(small only){
+  .article-banner-row{
+    display: none;
+  }
 }

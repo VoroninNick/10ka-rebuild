@@ -1,59 +1,78 @@
 class CatalogController < ApplicationController
   def index
-    @categories = NewCatalog.all
+    all_categories
 
     @description_dummy = Text.find(1)
   end
 
   def node
-    node = NewCatalog.find_node_by_url_fragment(params[:id])
-    if !node
+    @node = Category.find_node_by_url_fragment(params[:id])
+    if !@node
       return render_not_found
     end
 
-    node_type = NewCatalog.node_type(node)
-    if !node_type
+    @node_type = Category.node_type(@node)
+    if !@node_type
       return render_not_found
     end
 
-    send(node_type, node)
+    send(@node_type, @node)
 
-    render node_type
+    template_name = @node_type
+    if template_name == "category" || template_name == "subcategory" || template_name == "brand"
+      template_name = "base_category"
+    end
+    render template_name
 
 
 
   end
 
   def category(node)
-    categories
+    all_categories
     @category = node
+    @products = @category.products
+    add_breadcrumb(@category, nil, categories(@category))
   end
 
-  def sub_category(node)
-    @sub_category = node
-    @category = @sub_category.new_catalog
-    #@products = NewProduct.where(new_child_catalog_id: NewChildCatalog.where(new_parent_catalog_id: @new_parent_catalog.id))
-    @products = NewProduct.joins(new_child_catalog: :new_parent_catalog).where(new_parent_catalogs: {id: @sub_category.id})
+  def subcategory(node)
+    @subcategory = node
+    @category = @subcategory.category
+    @products = @subcategory.products
+    add_breadcrumb(@category, nil, categories)
+    add_breadcrumb(@subcategory, nil, subcategories_by_category(@category, @subcategory))
   end
 
-  def sub_sub_category(node)
-    @sub_sub_category = node
-    @sub_category = @sub_sub_category.new_parent_catalog
-    @category = @sub_category.new_catalog
-    @products = @sub_sub_category.new_products
+  def brand(node)
+    @brand = node
+    @subcategory = @brand.subcategory
+    @category = @subcategory.category
+    @products = @brand.products
+
+    add_breadcrumb(@category, nil, categories)
+    add_breadcrumb(@subcategory, nil, subcategories_by_category(@category))
+    add_breadcrumb(@brand, nil, brands_by_subcategory(@subcategory))
+
   end
 
   def product(node)
     @product = node
-    @sub_sub_category = @product.new_child_catalog
-    @sub_category = @sub_sub_category.new_parent_catalog
-    @category = @sub_category.new_catalog
+    @brand = @product.brand
+    @subcategory = @brand.subcategory
+    @category = @subcategory.category
+
+    add_breadcrumb(@category, nil, categories)
+    add_breadcrumb(@subcategory, nil, subcategories_by_category(@category))
+    add_breadcrumb(@brand, nil, brands_by_subcategory(@subcategory))
+    add_breadcrumb(@product, nil, @brand.products.where.not(products: {id: @product.id }))
+
   end
 
-  def categories
-    @categories ||= NewCatalog.all
+
+
+  def catalog_node_records_path
+    [@category, @subcategory, @brand, @product].select(&:present?)
   end
 
-  helper_method :categories
 
 end

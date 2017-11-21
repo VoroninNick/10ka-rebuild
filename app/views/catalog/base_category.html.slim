@@ -1,0 +1,23 @@
+#catalog-page-wrapper.f-height.catalog-page-index.page-indent.container
+  = render "catalog_navigation"
+  #catalog-content.left-indent.columns.large-8
+    /- if @subcategory
+      #catalog-parent.columns.large-8.catalog-page-format.omega
+        = render "tabs"
+    .parent-description
+      h1
+        = @node.name
+      br
+      = @node.description.html_safe unless @node.description.blank?
+    .clearfix
+      |  
+    #all-products-by-childs
+      .store-section.row
+        /.top-border
+        - @products.each_with_index do |product|
+          .product.columns.large-4
+            = link_to image_tag(product.avatar.url(:prod), :alt => product.name), product.url, :title => product.name
+            p
+              = product.name
+            = link_to 'Детальніше', product.url, :title => product.name, :class => 'button'
+.pd-me.f-height

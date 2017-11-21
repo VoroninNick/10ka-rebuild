@@ -1,4 +1,4 @@
 class HomePosition < ActiveRecord::Base
-  attr_accessible :catalog_ids, :name, :catalog_id
-  has_many :catalogs
+  attr_accessible *attribute_names
+  has_many :categories
 end

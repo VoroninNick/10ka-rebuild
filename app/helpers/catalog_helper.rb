@@ -1,31 +1,31 @@
 module CatalogHelper
   def get_catalog_by_id(id)
-    NewCatalog.find(id)
+    Category.find(id)
   end
 
   def get_parent_catalog_by_id(id)
-    NewParentCatalog.find(id)
+    Subcategory.find(id)
   end
 
   def get_child_catalog_by_id(id)
-    NewChildCatalog.find(id)
+    Brand.find(id)
   end
 
   def get_all_parent_catalogs_by_id(id)
-    NewParentCatalog.where(new_catalog_id: id)
+    Subcategory.where(category_id: id)
   end
 
   def get_all_child_catalogs_by_id(id)
-    NewChildCatalog.where(new_parent_catalog_id: id)
+    Brand.where(subcategory_id: id)
   end
 
   def get_all_products_by_child_ids(ids)
-    NewProduct.where(new_child_catalog_id: ids)
+    Product.where(brand_id: ids)
   end
 
   def get_all_items_from_all_subcatalogs(parent_catalog)
     items = []
-    parent_catalog.new_child_catalogs.each do |cc|
+    parent_catalog.brands.each do |cc|
       get_all_products_by_child_ids(cc.id).each do |pr|
         items[items.count] = pr
       end

@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
-  root as: "root_without_locale", to: "application#root_without_locale"
+  if RouteTranslator.config.force_locale
+    root as: "root_without_locale", to: "application#root_without_locale"
+    get "admin(/*admin_path)", to: redirect{|params| "/#{ I18n.default_locale}/admin/#{params[:admin_path]}"}
+  end
+
   mount Cms::Engine => '/'
 
   mount Ckeditor::Engine => '/ckeditor'
-  get "admin(/*admin_path)", to: redirect{|params| "/#{ I18n.default_locale}/admin/#{params[:admin_path]}"}
 
   localized do
     mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
@@ -34,8 +37,8 @@ Rails.application.routes.draw do
       get 'catalog', action: 'index', :as => 'catalog'
       get ":id", action: 'node', as: :node
       get ':id', action: 'category', :as => 'category'
-      get ':id', action: 'sub_category', :as => 'sub_category'
-      get ':id', action: 'sub_sub_category', :as => 'sub_sub_category'
+      get ':id', action: 'subcategory', :as => 'subcategory'
+      get ':id', action: 'brand', :as => 'brand'
       get ':id', action: 'product', :as => 'product'
     end
 

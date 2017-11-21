@@ -1,3 +1,4 @@
 asset "jquery", "1.8.3"
 asset "bxslider-4"
 asset 'foundation-sites', "6.2.3"
+asset "js-cookie"

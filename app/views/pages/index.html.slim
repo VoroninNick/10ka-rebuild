@@ -2,7 +2,7 @@
 
 
 div id="home-about" class="f-height"
-  .row
+  .row.page-row
     .columns.large-3.large-offset-1.image-container
       = image_tag('logo-big.jpg')
 
@@ -15,7 +15,7 @@ div id="home-about" class="f-height"
 
 
 
-= render :partial => "partials/catalog_home"
+= render :partial => "catalog/catalog_home"
 
 
 = render :partial => "partials/article_home"

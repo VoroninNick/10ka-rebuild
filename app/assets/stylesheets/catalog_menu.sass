@@ -1,7 +1,7 @@
 .catalog-category
   padding-bottom: 25px
 
-  > a
+  > .node-title
     -moz-border-radius: 5px
     -webkit-border-radius: 5px
     border-radius: 5px
@@ -19,7 +19,7 @@
     background-image: linear-gradient(bottom, #fdad00 0%, #fdef00 100%)
 
 
-    font-size: 1.25em
+    font-size: 16px
     font-weight: 400
     text-decoration: none
     padding: 10px 20px
@@ -30,16 +30,10 @@
     width: inherit
     cursor: pointer
 
-    &:hover
-      color: #ae4038
-      text-shadow: 0 1px 0 rgba(255,255,255,.46)
 
-      span
-        color: #ae4038
-
-
-    span
+    .expander
       //color: #ae4038
+      display: inline
       color: #646464
       font-size: 1.35em
       font-weight: 400
@@ -50,6 +44,13 @@
       -ms-transition: 0.45s ease-out all
       -o-transition: 0.45s ease-out all
       transition: 0.45s ease-out all
+
+  a.node-title:hover, &.has-active > .node-title, &.active > .node-title
+    color: #ae4038
+    text-shadow: 0 1px 0 rgba(255,255,255,.46)
+
+    .expander
+      color: #ae4038
 
 
   ul.catalog-menu
@@ -82,20 +83,24 @@
         &:hover
           border-bottom: 1px solid rgba(191, 41, 31, 1)
 
+      span
+        color: #838383
+
 
     ul
         list-style: none
-        display: none
+        display: block
         margin-left: 20px
-
-
-    &.visited, &.show
-      display: block !important
-
-
+        padding: 0
 
     &.visited li
       font-style: italic
+
+  &.has-active > ul, ul.visited, ul.show
+    display: block !important
+
+
+
 
   &.open a.catalog-show-more
     color: #dd2e21
@@ -124,5 +129,8 @@
 
 
 
-
++breakpoint(small only)
+  #catalog-page-wrapper
+    .catalog-block
+      display: none
 

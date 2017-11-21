@@ -1,0 +1,39 @@
+- all_categories.each do |category|
+  - category_active = @node_type == "category" && @category.id == category.id
+  - category_has_active = @node_type && @node_type != "category" && @category.id == category.id
+  .catalog-category class=("active" if category_active) class=("has-active" if category_has_active)
+    - if !category_active
+      a.node-title href=category.url
+        = category.name
+        .expander
+          |+
+    - else
+      span.node-title href=category.url
+        = category.name
+        .expander
+          |+
+
+    ul.catalog-menu
+      - subcategories_by_category(category).each do |subcategory|
+        - subcategory_active = @node_type == "subcategory" && @subcategory.id == subcategory.id
+        - subcategory_has_active = @node_type != "subcategory" && @subcategory.try(:id) == subcategory.id
+        li class=("active" if subcategory_active) class=("has-active" if subcategory_has_active)
+          - if !subcategory_active
+            a.node-title href=subcategory.url title=subcategory.name
+              = subcategory.name
+          - else
+            span.node-title
+              = subcategory.name
+
+
+          ul
+            - subcategory.brands.each do |brand|
+              - brand_active = @node_type == "brand" && @brand.try(:id) == brand.id
+              - brand_has_active = @node_type != "brand" && @brand.try(:id) == brand.id
+              li class=("active" if brand_active) class=("has-active" if brand_has_active)
+                - if !brand_active
+                  a.node-title href=brand.url title=brand.name
+                    = brand.name
+                - else
+                  span.node-title
+                    = brand.name

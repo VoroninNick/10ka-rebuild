@@ -1,7 +1,9 @@
-#home-slider-wrapper.columns
-  #home-slider
-    - @banners.each do |banner|
-      .slide style="background-image: url('#{banner.banner.url(:main)}')"
-        span.title
-          = banner.name
-        = link_to(image_tag(banner.banner.url(:main)), banner.url, :title => banner.name)
+#home-slider-wrapper
+  .row.page-row
+    .columns
+      #home-slider
+        - @banners.each do |banner|
+          .slide style="background-image: url('#{banner.banner.url(:main)}')"
+            span.title
+              = banner.name
+            = link_to(image_tag(banner.banner.url(:main)), banner.url, :title => banner.name)

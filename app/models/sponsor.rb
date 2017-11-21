@@ -1,6 +1,6 @@
 # -*- encoding : utf-8 -*-
 class Sponsor < ActiveRecord::Base
-  attr_accessible :description, :link, :name, :sponsor, :delete_sponsor
+  attr_accessible *attribute_names
 
   attr_accessor :delete_sponsor
   before_validation { self.sponsor.clear if self.delete_sponsor == '1' }

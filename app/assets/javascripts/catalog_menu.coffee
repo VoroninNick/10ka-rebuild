@@ -1,2 +1,3 @@
-$document.on "click", ".catalog-show-more", (e)->
-  $(this).next().toggleClass("show")
+$document.on "click", ".expander", (e)->
+  e.preventDefault()
+  $(this).parent().next().toggleClass("show")

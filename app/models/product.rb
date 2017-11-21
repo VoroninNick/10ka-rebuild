@@ -1,43 +1,31 @@
-# -*- encoding : utf-8 -*-
 class Product < ActiveRecord::Base
-  attr_accessible :name,
-                  :description,
-                  :avatar,
-                  :delete_avatar,
-                  :parent_catalogs,
-                  :parent_catalog_id,
-                  :child_catalogs,
-                  :child_catalog_id
+  attr_accessible *attribute_names
 
-  # Validate name presence and minimum lenght 2 chars
-  validates :name, :presence => true, :length => { :minimum => 2 }
-  validates :slug, uniqueness: true, presence: true
-  validates :description, :presence => true, :length => { :minimum => 2 }
-  validates :child_catalog, :presence => true
-  validates :parent_catalog, :presence => true
+  globalize :name, :url_fragment, :description
 
-  # Generate url
-  before_validation :generate_slug_for_product
+  belongs_to :brand
+  has_one :subcategory, through: :brand
+  has_one :category, through: :subcategory
 
-  # remove avatar image
-  attr_accessor :delete_avatar
-  before_validation { self.avatar.clear if self.delete_avatar == '1' }
-
-  belongs_to :child_catalog
-  belongs_to :parent_catalog
-
-  # Paperclip image attachments
-  has_attached_file :avatar, :styles => { :thumb => '180>', :prod => '190x190#' },
-                    :url  => '/assets/product/:id/:style/:basename.:extension',
-                    :path => ':rails_root/public/assets/product/:id/:style/:basename.:extension'
-
-
-  def to_param
-    slug
+  scope :order_by_id, -> { order('id desc') }
+  default_scope do
+    order_by_id
   end
 
-  def generate_slug_for_product
-    self.slug ||= name.parameterize
+  has_seo_tags
+  has_sitemap_record
+  has_cache do
+    pages self, category, subcategory, brand
+  end
+
+  image :avatar, styles: { thumb: '180>', prod: '190x190#', main: '420x420#' }
+
+  def url(locale = I18n.locale)
+    Cms.url_helpers.send("product_#{locale}_path", id: self.url_fragment)
+  end
+
+  def self.custom_move_images
+    move_images(':rails_root/public/assets/pr/:id/:style/:basename.:extension')
   end
 
 end

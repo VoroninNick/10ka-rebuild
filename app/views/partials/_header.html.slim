@@ -1,12 +1,15 @@
-#hd-wrapper.header.page-indent.row
-  #logo.columns.large-3
-    .image-container
-      - if current_page?(root_path)
-        = image_tag('logo.png', :alt => '')
-      - else
-        = link_to(image_tag('logo.png', :alt => ''), root_path)
+#header.header.page-indent
+  .row.page-row
+    #logo.columns.small-3
+      .image-container
+        - if current_page?(root_path)
+          = image_tag('logo.png', :alt => '')
+          = image_tag "logo-big.jpg", class: "rect-logo"
+        - else
+          = link_to(image_tag('logo.png', :alt => ''), root_path)
+          = link_to(image_tag('logo-big.jpg', :alt => '', class: "rect-logo"), root_path)
 
-  .mobile-menu-button
-    img src="/assets/mobile-menu-button.png" alt="show menu"
-  #menu.columns.large-9
-    = render "partials/menu"
+    .mobile-menu-button
+      img src="/assets/mobile-menu-button.png" alt="show menu"
+    #menu.columns.large-9
+      = render "partials/menu"

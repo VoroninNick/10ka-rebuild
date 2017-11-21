@@ -1,4 +1,16 @@
 nav
   ul.header-nav
     - main_menu.each do |item_key, item|
-      = menu_item_tag(item)
+      li class="menu-item-#{item_key}" class=("active" if item[:active]) class=("has-active" if item[:has_active])
+
+        - if !item[:active]
+          a.menu-item href=item[:url] title=item[:title]
+            = item[:name]
+        - else
+          span.menu-item title=item[:title]
+            = item[:name]
+
+
+        - if item_key == "catalog"
+          .main-menu-catalog-menu
+            = render "catalog/catalog_menu"

@@ -1,0 +1,31 @@
+- if @_breadcrumbs.try(&:any?)
+  .breadcrumbs
+    /div
+      = @_breadcrumbs.inspect
+    ul
+      - @_breadcrumbs.each_with_index do |b, i|
+        - last = i == @_breadcrumbs.length - 1
+
+        li class=("has-dropdown" if b[:children].try(:any?))
+          - if !last
+            a href=b[:url]
+              = b[:name]
+          - else
+            span
+              = b[:name]
+
+          - if b[:children].try(:any?)
+            ul.dropdown
+              - b[:children].each do |child|
+                - child_active = false
+                - child_has_active = false
+                /- child_active = child == @node
+                /- global_var = instance_variable_get("@#{Category.node_type(child)}")
+                /- child_has_active = child == global_var
+                li class=("has-active" if child_has_active) class=("active" if child_active)
+                  - if !child_active
+                    a href=child[:url]
+                      = child[:name]
+                  - else
+                    span
+                      = child[:name]
