@@ -10,6 +10,6 @@
           = link_to(image_tag('logo-big.jpg', :alt => '', class: "rect-logo"), root_path)
 
     .mobile-menu-button
-      img src="/assets/mobile-menu-button.png" alt="show menu"
+      img src=asset_path("mobile-menu-button.png") alt="show menu"
     #menu.columns.large-9
       = render "partials/menu"
