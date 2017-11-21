@@ -4,7 +4,11 @@ html.no-js lang=I18n.locale
     meta charset="utf-8"
     = seo_tags
     meta name="viewport" content="width=device-width, initial-scale=1.0"
+    javascript:
+      document.getElementsByTagName("html")[0].className = "js"
+    = inline_css("preloader")
   body
+    = render "preloader"
     .secondary-header
       #header-cart.secondary-header-item
         a href="#cart"

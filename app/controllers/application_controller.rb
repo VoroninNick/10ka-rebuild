@@ -17,6 +17,7 @@ class ApplicationController < ActionController::Base
   include ApplicationHelper
   include Cms::Helpers::AnotherFormsHelper
   include Cms::Helpers::TagsHelper
+  include Cms::Helpers::AssetHelper
 
   helper_method :fetch_sponsors, :fetch_banners, :fetch_all_catalog, :get_left_catalogs, :get_center_catalogs, :get_right_catalogs, :fetch_all_child, :fetch_all_products, :count_childs, :child_name_breadcrumb, :parent_name_breadcrumb, :catalog_name_breadcrumb, :get_first_child, :parent_slug, :fetch_all_child_ids, :fetch_all_products_by_parent
 

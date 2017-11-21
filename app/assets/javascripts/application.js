@@ -28,6 +28,7 @@
 
 
 
+//= require basic
 //= require pages/contacts
 //= require pages/home
 //= require components/breadcrumbs

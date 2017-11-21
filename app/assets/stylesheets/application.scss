@@ -3,9 +3,12 @@
 @import "bxslider-4/dist/jquery.bxslider.min";
 
 @import "config";
+@import "sass-burger/burger";
+@import "sass-css3-mixins/css3-mixins.scss";
+@import "detailed_css3_mixins";
 @import "custom_mixins";
 
-@import "detailed_css3_mixins";
+
 
 
 .windows{
@@ -58,6 +61,7 @@
 @import "components/product";
 @import "components/header";
 @import "components/mobile_menu";
+@import "components/popup";
 @import "catalog_menu";
 @import  "pages/catalogs";
 @import "pages/about";

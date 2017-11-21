@@ -1,0 +1,77 @@
+$popup-width: calc(100% - 120px)
+
+.popup
+  display: none
+  position: fixed
+  top: 50%
+  left: 50%
+  +transform(translate(-50%, -50%))
+  //width: 100%
+  width: $popup-width
+
+  max-width: 800px
+  z-index: $zindex-popup
+  background: white
+  //+box-shadow-popup
+  +transition-duration(1s)
+  //+transition-property(all)
+  +transition-property(opacity)
+
+
+  //&.allow-transition
+      display: block
+
+
+
+  > .header
+    height: 90px
+    //background-color: $header-bg-color
+    padding: 20px 40px 0 40px
+    position: relative
+
+    .title
+      font-size: 21px
+      color: white
+      margin-bottom: 5px
+    .sub-title
+      color: gray
+      //+ubuntu
+      +font-12
+      +semi-bold
+    .close-button
+      position: absolute
+      display: block
+      top: 0
+      right: 0
+      width: 90px
+      height: 90px
+      +transition-duration(0.2s)
+      +transition-property(all)
+      cursor: pointer
+
+      svg
+        display: block
+        width: 30px
+        height: 30px
+        fill: #FFF
+        top: 30px
+        position: relative
+        left: 30px
+
+      &:hover
+        background: $red-color
+
+  &.visible
+    display: block
+
+
+  @media (max-width: 800px)
+
+    top: 0
+    +transform(none)
+    left: 60px
+    overflow: auto
+    max-height: 100vh
+    position: absolute
+
+
