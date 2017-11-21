@@ -10,3 +10,9 @@ uk:
       articles: "Дізнайтесь щось цікаве"
       catalog: "Знайдіть потрібний товар"
       contacts: "Сконтактуйтеся з нами"
+
+  phone-labels:
+    office: "офіс"
+    main_site: "продаж"
+    sales: "продаж"
+    fax: "факс"
