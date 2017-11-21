@@ -1,4 +1,6 @@
 class CatalogController < ApplicationController
+  caches_page :index, :node
+
   def index
     all_categories
 

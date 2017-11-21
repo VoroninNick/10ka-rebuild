@@ -1,7 +1,6 @@
 # -*- encoding : utf-8 -*-
 class ArticlesController < ApplicationController
-
-  #caches_page :index, :show, :gzip => :best_speed
+  caches_page :index, :show
 
   def index
     articles

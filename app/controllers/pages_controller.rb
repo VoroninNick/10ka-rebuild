@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
 	before_action :set_page_instance, except: [:index]
-  caches_page :index, :about_us
+  caches_page :index, :about_us, :contacts
 
   def index
 		@last_article = Article.last(4)
