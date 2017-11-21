@@ -1,0 +1,11 @@
+.popup.cart-popup
+  .header
+    .title
+      = product.name
+    /.sub-title
+      |Категорія: #{product.tags.map(&:name).join(", ")}
+    .close-button
+      = inline_svg "svg/close.svg"
+
+  .popup-content
+    = render "checkout_form"

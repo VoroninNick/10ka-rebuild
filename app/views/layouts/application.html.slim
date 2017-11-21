@@ -10,7 +10,7 @@ html.no-js lang=I18n.locale
         a href="#cart"
           = inline_svg "svg/cart2"
           span.products-count
-            |0 товарів
+            |0
 
       .secondary-header-item
         = image_tag('phone-2.png')
@@ -28,3 +28,4 @@ html.no-js lang=I18n.locale
     = stylesheet_link_tag "application"
     = javascript_include_tag "application"
     = render "cms/ga"
+    = render "cart"
