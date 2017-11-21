@@ -224,7 +224,7 @@
     top: 0;
     right: 0;
 
-    background: url('article-main-banner-bg.png') repeat-x #181818 center;
+    background: image_url('article-main-banner-bg.png') repeat-x #181818 center;
 
     h2{
       margin-left: 25px;
@@ -245,21 +245,11 @@
     }
 
     .button{
-      -moz-border-radius: 5px;
-      -webkit-border-radius: 5px;
       border-radius: 5px;
-      -moz-background-clip: padding;
-      -webkit-background-clip: padding-box;
       background-clip: padding-box;
       background-color: #c7c7c7;
-      -moz-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.17);
-      -webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.17);
       box-shadow: 0 1px 0 rgba(0, 0, 0, 0.17);
-      background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJod…IwIiB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0idXJsKCNoYXQwKSIgLz4KPC9zdmc+);
-      background-image: -moz-linear-gradient(bottom, #fdad00 0%, #fdef00 100%);
-      background-image: -o-linear-gradient(bottom, #fdad00 0%, #fdef00 100%);
-      background-image: -webkit-linear-gradient(bottom, #fdad00 0%, #fdef00 100%);
-      background-image: linear-gradient(bottom, #fdad00 0%, #fdef00 100%);
+      @include gradient-bg(#fdad00, #fdef00);
       font-size: 1.25em;
       font-weight: 400;
       text-decoration: none;

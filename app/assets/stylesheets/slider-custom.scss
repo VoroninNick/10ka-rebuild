@@ -118,7 +118,7 @@
 	height: 22px;
 	margin: 3px 16px;
 	cursor: pointer;
-  background: url('articles-switcher.png') no-repeat 0 0;
+  background: image_url('articles-switcher.png') no-repeat 0 0;
 }
 
 .nav-dots span {
@@ -128,11 +128,11 @@
 
 .nav-dots span.nav-dot-current,
 .nav-dots span:hover {
-  background: url('articles-switcher.png') no-repeat -24px 0;
+  background: image_url('articles-switcher.png') no-repeat -24px 0;
 }
 
 .nav-dots span.nav-dot-current {
-  background: url('articles-switcher.png') no-repeat -24px 0;
+  background: image_url('articles-switcher.png') no-repeat -24px 0;
 }
 
 /* Content elements */

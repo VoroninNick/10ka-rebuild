@@ -31,7 +31,7 @@ a:focus{
 
 body{
   font-family: 'Open Sans', sans-serif;
-  background: url(10k-bricks-pattern.gif) repeat transparent;
+  background: image_url("10k-bricks-pattern.gif") repeat transparent;
   font-size: 14px;
   line-height: 20px;
 }
@@ -58,13 +58,13 @@ body{
 
 .shadow-top{
   width: 100%;
-  background: url(shadow-top.jpg) no-repeat center bottom;
+  background: image_url("shadow-top.jpg") no-repeat center bottom;
   height: 10px;
 }
 
 .shadow-bottom{
   width: 100%;
-  background: url(shadow-bottom.jpg) no-repeat center top;
+  background: image_url("shadow-bottom.jpg") no-repeat center top;
   height: 25px;
 }
 
