@@ -143,9 +143,14 @@
 
 .secondary-header{
   margin: 10px auto 0 auto;
-  width: 80%;
   height: 25px;
   text-align: right;
+  width: 80%;
+
+  @include breakpoint(medium down){
+    width: 100%;
+  }
+
   a{
     color: rgba(255, 255, 255, 1);
     //border-bottom: 1px solid rgba(255, 255, 255, 1);

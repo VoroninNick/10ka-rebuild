@@ -4,7 +4,7 @@ form#contact_us data-url=contact_request_path method="post"
       = image_tag('h-img.png')
       | Зворотній зв'язок:
   #form-fields
-    #fields.columns.large-5
+    #fields.columns.medium-6.large-5
       #validate_name.row-input
         input#contact_request__name type="text" name="name"
         label for="contact_request__name"
@@ -20,12 +20,13 @@ form#contact_us data-url=contact_request_path method="post"
         label for="contact_request__name"
           |Телефон
         span#validate_phone
-    .columns.large-7.omega
+    .columns.medium-6.large-7.omega
       .row-input
         textarea#contact_request__comment name="comment"
         label for="contact_request__comment"
+          |Коментар
 
-    .columns
+    .columns.button-column
       button type="submit"
         |Надіслати!
   #sending-message.columns style="display:none;"
