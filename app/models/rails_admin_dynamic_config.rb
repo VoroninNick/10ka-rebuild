@@ -55,24 +55,7 @@ module RailsAdminDynamicConfig
         end
 
         config.navigation_labels do
-          {
-            feedbacks: 100,
-            lattice_flooring: 110,
-            stairs: 120,
-            installation: 130,
-            manual: 140,
-            home: 200,
-            about_us: 300,
-            blog: 400,
-            news: 500,
-            contacts: 600,
-            terms_of_use: 850,
-            tags: 1000,
-            users: 1100,
-            settings: 1200,
-            pages: 1300,
-            assets: 1400
-          }
+          [:feedbacks, :lattice_flooring, :stairs, :installation, :manual, :home, :about_us, :blog, :news, :contacts, :terms_of_use, :tags, :users, :settings, :pages, :assets]
         end
 
         config.navigation_static_links = {
