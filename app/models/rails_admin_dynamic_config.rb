@@ -76,9 +76,7 @@ module RailsAdminDynamicConfig
         end
 
         config.navigation_static_links = {
-           mailchimp: "/admin/mailchimp",
-           locales: "/file_editor/locales",
-           site_data: "/file_editor/site_data.yml"
+
         }
 
 
@@ -260,7 +258,7 @@ module RailsAdminDynamicConfig
         end
 
         config.model HomePosition do
-
+          visible false
         end
 
         config.model Category do
@@ -274,6 +272,10 @@ module RailsAdminDynamicConfig
             field :description, :ck_editor
             field :url_fragment
           end
+        end
+
+        config.model_translation Category do
+
         end
 
         config.model Brand do
