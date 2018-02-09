@@ -19,7 +19,11 @@ class Category < ActiveRecord::Base
   end
 
   def url(locale = I18n.locale)
-    Cms.url_helpers.send("category_#{locale}_path", id: self.url_fragment)
+    url_fragment = self.translations_by_locale[locale].try(:url_fragment)
+    if url_fragment.blank?
+      return nil
+    end
+    Cms.url_helpers.send("category_#{locale}_path", id: url_fragment)
   end
 
 

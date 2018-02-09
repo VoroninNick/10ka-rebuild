@@ -16,9 +16,10 @@ html.no-js lang=I18n.locale
           span.products-count
             |0
 
-      .secondary-header-item
-        = image_tag('phone-2.png')
-        = link_to main_site_phone, main_site_phone_url
+      - header_phones.reverse.each do |phone|
+        .secondary-header-item
+          = image_tag('phone-2.png')
+          = link_to phone, phone_url(phone)
       .secondary-header-item
         = image_tag('mail-1.png')
         = link_to 'info', 'mailto:desyatka5@gmail.com'

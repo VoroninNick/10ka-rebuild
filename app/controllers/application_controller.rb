@@ -102,6 +102,10 @@ class ApplicationController < ActionController::Base
     "+38 (032) 244 00 22"
   end
 
+  def header_phones
+    ["+38 (032) 244 00 22", "+38 (032) 244 00 15"]
+  end
+
   def office_phone
     "+38 (032) 244 00 00"
   end
@@ -166,5 +170,5 @@ class ApplicationController < ActionController::Base
 
   helper_method :all_categories, :brands_by_subcategory, :subcategories_by_category
 
-  helper_method :main_site_phone, :phone_url, :main_site_phone_url, :office_phone, :office_phone_url, :fax_phone, :sales_phone, :sales_phone_url
+  helper_method :header_phones, :main_site_phone, :phone_url, :main_site_phone_url, :office_phone, :office_phone_url, :fax_phone, :sales_phone, :sales_phone_url
 end
