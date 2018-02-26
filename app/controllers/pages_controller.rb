@@ -8,6 +8,7 @@ class PagesController < ApplicationController
 		@text = Text.find(2)
 		@home_page_info = HomePageInfo.first_or_initialize
 		@home_categories = Category.all
+		set_page_metadata(:home)
   end
 
   def about_us
@@ -27,9 +28,9 @@ class PagesController < ApplicationController
 
 	def set_page_instance
 		set_page_metadata(action_name)
-		@_locale_links ||= {}
-		Cms.config.provided_locales.each do |locale|
-			@_locale_links[locale.to_sym] = send("#{action_name}_#{I18n.locale}_path")
-		end
+		#@_locale_links ||= {}
+		#Cms.config.provided_locales.each do |locale|
+		#	@_locale_links[locale.to_sym] = send("#{action_name}_#{I18n.locale}_path")
+		#end
 	end
 end
