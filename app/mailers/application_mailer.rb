@@ -12,7 +12,7 @@ class ApplicationMailer < ActionMailer::Base
     new_request(contact_request)
   end
 
-  def new_order_request(order_request)
+  def new_order(order_request)
     new_request(order_request)
   end
 

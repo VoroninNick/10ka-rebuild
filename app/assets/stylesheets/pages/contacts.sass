@@ -1,3 +1,5 @@
+$form-input-border-color: #aaa
+$form-label-color: #222
 #contact-page-wrapper
 
   h2.title, #gmap-wrapper h2.title,#contact_us h2.title
@@ -27,7 +29,7 @@
 
 
     .contact-info-row p.title, .contact-info-row .label
-      color: #929292
+      color: $form-label-color
       font-weight: 300
       font-size: 16px
       //line-height: 0.65em
@@ -93,121 +95,121 @@
   
 
 
-  form#contact_us
-    height: 420px
-    //padding-left: 30px
-    //padding-right: 30px
+form#contact_us, form#order
+  height: 420px
+  //padding-left: 30px
+  //padding-right: 30px
 
-    .row-input
-      width: 100%
-      padding-bottom: 15px
-    
+  .row-input
+    width: 100%
+    padding-bottom: 15px
 
-    input
-      border: 1px solid #fff
-      background-color: #f3f3f3
-      -moz-box-shadow: inset 0 0 2px rgba(0,0,0,.16)
-      -webkit-box-shadow: inset 0 0 2px rgba(0,0,0,.16)
-      box-shadow: inset 0 0 2px rgba(0,0,0,.16)
-      background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEwMCAxMDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxsaW5lYXJHcmFkaWVudCBpZD0iaGF0MCIgZ3JhZGllbnRVbml0cz0ib2JqZWN0Qm91bmRpbmdCb3giIHgxPSI1MCUiIHkxPSIxMDAlIiB4Mj0iNTAlIiB5Mj0iLTEuNDIxMDg1NDcxNTIwMmUtMTQlIj4KPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2VmZWZlZiIgc3RvcC1vcGFjaXR5PSIxIi8+CjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI2Y5ZjlmOSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgIDwvbGluZWFyR3JhZGllbnQ+Cgo8cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0idXJsKCNoYXQwKSIgLz4KPC9zdmc+)
-      background-image: -moz-linear-gradient(bottom, #efefef 0%, #f9f9f9 100%)
-      background-image: -o-linear-gradient(bottom, #efefef 0%, #f9f9f9 100%)
-      background-image: -webkit-linear-gradient(bottom, #efefef 0%, #f9f9f9 100%)
-      background-image: linear-gradient(bottom, #efefef 0%, #f9f9f9 100%)
-      outline: 0
-      height: 60px
-      width: inherit
-      padding: 0 5px
-      color: #929292
-    
 
-    input:focus
-      border: 2px solid #fff
-      outline: 0
-      -moz-box-shadow: inset 0 0 2px rgba(0,0,0,.36)
-      -webkit-box-shadow: inset 0 0 2px rgba(0,0,0,.36)
-      box-shadow: inset 0 0 2px rgba(0,0,0,.36)
-    
+  input
+    border: 1px solid $form-input-border-color
+    background-color: #f3f3f3
+    -moz-box-shadow: inset 0 0 2px rgba(0,0,0,.16)
+    -webkit-box-shadow: inset 0 0 2px rgba(0,0,0,.16)
+    box-shadow: inset 0 0 2px rgba(0,0,0,.16)
+    background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEwMCAxMDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxsaW5lYXJHcmFkaWVudCBpZD0iaGF0MCIgZ3JhZGllbnRVbml0cz0ib2JqZWN0Qm91bmRpbmdCb3giIHgxPSI1MCUiIHkxPSIxMDAlIiB4Mj0iNTAlIiB5Mj0iLTEuNDIxMDg1NDcxNTIwMmUtMTQlIj4KPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2VmZWZlZiIgc3RvcC1vcGFjaXR5PSIxIi8+CjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI2Y5ZjlmOSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgIDwvbGluZWFyR3JhZGllbnQ+Cgo8cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0idXJsKCNoYXQwKSIgLz4KPC9zdmc+)
+    background-image: -moz-linear-gradient(bottom, #efefef 0%, #f9f9f9 100%)
+    background-image: -o-linear-gradient(bottom, #efefef 0%, #f9f9f9 100%)
+    background-image: -webkit-linear-gradient(bottom, #efefef 0%, #f9f9f9 100%)
+    background-image: linear-gradient(bottom, #efefef 0%, #f9f9f9 100%)
+    outline: 0
+    height: 60px
+    width: inherit
+    padding: 0 5px
+    color: #929292
 
-    label
-      color: #b1b1b1
-      font-size: 0.82em
-      font-style: italic
-      font-weight: 300
-      padding: 0 10px
-    
 
-    .field
-      float: left
-    
+  input:focus
+    border: 2px solid $form-input-border-color
+    outline: 0
+    -moz-box-shadow: inset 0 0 2px rgba(0,0,0,.36)
+    -webkit-box-shadow: inset 0 0 2px rgba(0,0,0,.36)
+    box-shadow: inset 0 0 2px rgba(0,0,0,.36)
 
+
+  label
+    color: $form-label-color
+    font-size: 0.82em
+    font-style: italic
+    font-weight: 300
+    padding: 0 10px
+
+
+  .field
+    float: left
 
 
 
 
-    h2
-      color: #bf291f
-      font-weight: 300
-    
-
-    .row-input input:focus
-      color: #bf291f
-    
 
 
-
-    textarea
-      border: 1px solid #fff
-      background-color: #f3f3f3
-      -moz-box-shadow: inset 0 0 2px rgba(0,0,0,.16)
-      -webkit-box-shadow: inset 0 0 2px rgba(0,0,0,.16)
-      box-shadow: inset 0 0 2px rgba(0,0,0,.16)
-      background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEwMCAxMDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxsaW5lYXJHcmFkaWVudCBpZD0iaGF0MCIgZ3JhZGllbnRVbml0cz0ib2JqZWN0Qm91bmRpbmdCb3giIHgxPSI1MCUiIHkxPSIxMDAlIiB4Mj0iNTAlIiB5Mj0iLTEuNDIxMDg1NDcxNTIwMmUtMTQlIj4KPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2VmZWZlZiIgc3RvcC1vcGFjaXR5PSIxIi8+CjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI2Y5ZjlmOSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgIDwvbGluZWFyR3JhZGllbnQ+Cgo8cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0idXJsKCNoYXQwKSIgLz4KPC9zdmc+)
-      background-image: -moz-linear-gradient(bottom, #efefef 0%, #f9f9f9 100%)
-      background-image: -o-linear-gradient(bottom, #efefef 0%, #f9f9f9 100%)
-      background-image: -webkit-linear-gradient(bottom, #efefef 0%, #f9f9f9 100%)
-      background-image: linear-gradient(bottom, #efefef 0%, #f9f9f9 100%)
-      outline: 0
-      height: 60px
-      width: inherit
-      padding: 5px
-
-      color: #929292
-
-      width: 100%
-    
-
-    textarea:focus
-      border: 2px solid #fff
-      outline: 0
-      -moz-box-shadow: inset 0 0 2px rgba(0,0,0,.36)
-      -webkit-box-shadow: inset 0 0 2px rgba(0,0,0,.36)
-      box-shadow: inset 0 0 2px rgba(0,0,0,.36)
-    
-
-    textarea
-      width: 100%
-      height: 250px
-    
-
-    .row-input input
-      width: 100%
-      height: 60px
-
-    .button-column
-      text-align: right
-    
-
-    span.jquery_form_error_message
-      color: red
-      font-size: 0.82em
-      font-style: italic
-    
+  h2
+    color: #bf291f
+    font-weight: 300
 
 
-    .container form#contact_us div.g7.omega
-      margin-left: 30px
-      margin-right: 0
-      width: 58%
-    
-  
+  .row-input input:focus
+    color: #bf291f
+
+
+
+
+  textarea
+    border: 1px solid $form-input-border-color
+    background-color: #f3f3f3
+    -moz-box-shadow: inset 0 0 2px rgba(0,0,0,.16)
+    -webkit-box-shadow: inset 0 0 2px rgba(0,0,0,.16)
+    box-shadow: inset 0 0 2px rgba(0,0,0,.16)
+    background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEwMCAxMDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxsaW5lYXJHcmFkaWVudCBpZD0iaGF0MCIgZ3JhZGllbnRVbml0cz0ib2JqZWN0Qm91bmRpbmdCb3giIHgxPSI1MCUiIHkxPSIxMDAlIiB4Mj0iNTAlIiB5Mj0iLTEuNDIxMDg1NDcxNTIwMmUtMTQlIj4KPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2VmZWZlZiIgc3RvcC1vcGFjaXR5PSIxIi8+CjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI2Y5ZjlmOSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgIDwvbGluZWFyR3JhZGllbnQ+Cgo8cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0idXJsKCNoYXQwKSIgLz4KPC9zdmc+)
+    background-image: -moz-linear-gradient(bottom, #efefef 0%, #f9f9f9 100%)
+    background-image: -o-linear-gradient(bottom, #efefef 0%, #f9f9f9 100%)
+    background-image: -webkit-linear-gradient(bottom, #efefef 0%, #f9f9f9 100%)
+    background-image: linear-gradient(bottom, #efefef 0%, #f9f9f9 100%)
+    outline: 0
+    height: 60px
+    width: inherit
+    padding: 5px
+
+    color: #929292
+
+    width: 100%
+
+
+  textarea:focus
+    border: 2px solid $form-input-border-color
+    outline: 0
+    -moz-box-shadow: inset 0 0 2px rgba(0,0,0,.36)
+    -webkit-box-shadow: inset 0 0 2px rgba(0,0,0,.36)
+    box-shadow: inset 0 0 2px rgba(0,0,0,.36)
+
+
+  textarea
+    width: 100%
+    height: 250px
+
+
+  .row-input input
+    width: 100%
+    height: 60px
+
+  .button-column
+    text-align: right
+
+
+  span.jquery_form_error_message
+    color: red
+    font-size: 0.82em
+    font-style: italic
+
+
+
+  .container form#contact_us div.g7.omega
+    margin-left: 30px
+    margin-right: 0
+    width: 58%
+
+

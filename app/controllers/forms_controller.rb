@@ -5,7 +5,7 @@ class FormsController < ApplicationController
   end
 
   def order_request
-    basic_request(OrderRequest)
+    basic_request(Order)
   end
 
   def basic_request(request_class)

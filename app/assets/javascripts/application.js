@@ -25,6 +25,7 @@
 //= require plugins/clickout
 //= require jquery.ba-cond.min
 //= require jquery.slitslider
+//= require jquery-form/dist/jquery.form.min
 
 
 
@@ -35,5 +36,6 @@
 //= require catalog_menu
 //= require header
 //= require article-banner
+//= require order
 
 // require_tree .

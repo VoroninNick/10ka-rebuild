@@ -34,15 +34,15 @@ class CatalogController < ApplicationController
     all_categories
     @category = node
     @products = @category.products
-    add_breadcrumb(@category, nil, categories(@category))
+    add_breadcrumb(@category, nil)
   end
 
   def subcategory(node)
     @subcategory = node
     @category = @subcategory.category
     @products = @subcategory.products
-    add_breadcrumb(@category, nil, categories)
-    add_breadcrumb(@subcategory, nil, subcategories_by_category(@category, @subcategory))
+    add_breadcrumb(@category, nil)
+    add_breadcrumb(@subcategory, nil)
   end
 
   def brand(node)
@@ -51,9 +51,9 @@ class CatalogController < ApplicationController
     @category = @subcategory.category
     @products = @brand.products
 
-    add_breadcrumb(@category, nil, categories)
-    add_breadcrumb(@subcategory, nil, subcategories_by_category(@category))
-    add_breadcrumb(@brand, nil, brands_by_subcategory(@subcategory))
+    add_breadcrumb(@category, nil)
+    add_breadcrumb(@subcategory, nil)
+    add_breadcrumb(@brand, nil)
 
   end
 
@@ -63,11 +63,26 @@ class CatalogController < ApplicationController
     @subcategory = @brand.subcategory
     @category = @subcategory.category
 
-    add_breadcrumb(@category, nil, categories)
-    add_breadcrumb(@subcategory, nil, subcategories_by_category(@category))
-    add_breadcrumb(@brand, nil, brands_by_subcategory(@subcategory))
-    add_breadcrumb(@product, nil, @brand.products.where.not(products: {id: @product.id }))
+    add_breadcrumb(@category, nil)
+    add_breadcrumb(@subcategory, nil)
+    add_breadcrumb(@brand, nil)
+    add_breadcrumb(@product, nil)
 
+  end
+
+  def order
+    #@product = Product.joins(:translations).where(product_translations: {url_fragment: params[:id], locale: I18n.locale}).first
+    @product = Product.find(params[:product_id]) rescue nil
+    return render_not_found if !@product
+    request_params = params.permit(:name, :phone, :email, :comment)
+    request_params[:product_id] = @product.id
+    r = Order.new(request_params)
+    r.referer = request.referer
+    r.session_id = session.id
+    r.save
+
+
+    render json: {}
   end
 
 

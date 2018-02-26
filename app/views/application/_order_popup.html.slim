@@ -1,0 +1,36 @@
+- if @product
+  .body-overlay
+
+  .order-popup.popup
+    form#order action=order_path(product_id: @product.id)
+      .form-title
+        |Форма замовлення
+      .form-inputs.row
+        .columns
+          .row-input
+            input#order__name type="text" name="name"
+            label for="order__name"
+              |Ім'я
+          .row-input
+            input#order__email type="email" name="email"
+            label for="order__email"
+              |Email
+            span#validate_email
+          .row-input
+            input#order__phone type="tel" name="phone"
+            label for="order__phone"
+              |Телефон
+            span#validate_phone
+          .row-input
+            textarea#order__comment name="comment"
+            label for="order__comment"
+              |Коментар
+
+        .columns.button-column
+          button type="submit"
+            |Замовити
+      .form-success-block
+        .h3
+          |Дякуємо
+        .h4
+          |Наш менеджер зв'яжеться з вами наближчим часом

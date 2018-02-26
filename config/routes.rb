@@ -40,6 +40,7 @@ Rails.application.routes.draw do
       get ':id', action: 'subcategory', :as => 'subcategory'
       get ':id', action: 'brand', :as => 'brand'
       get ':id', action: 'product', :as => 'product'
+      post ":id/order", action: 'order', as: 'order'
     end
 
     get 'unsupported' => 'page#unsupported', :as => 'unsupported'

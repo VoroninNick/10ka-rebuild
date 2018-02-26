@@ -197,6 +197,20 @@ module RailsAdminDynamicConfig
         #config.include_models NewCatalog, NewChildCatalog, NewParentCatalog, NewProduct, ParentCatalog, Product
         #config.include_models Sponsor, Text
 
+        config.configure_forms(Order)
+
+        config.model Order do
+          navigation_label_key(:feedbacks, 1)
+
+          field :product
+          field :name
+          field :email
+          field :phone
+          field :comment
+          field :referer
+          field :session_id
+        end
+
         config.model Article do
           navigation_label_key(:blog, 1)
 

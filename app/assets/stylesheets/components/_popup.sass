@@ -1,5 +1,18 @@
 $popup-width: calc(100% - 120px)
 
+.body-overlay
+  display: none
+  position: fixed
+  width: 100%
+  height: 100%
+  top: 0
+  left: 0
+  background: rgba(0,0,0,0.8)
+
+  &.visible
+    display: block
+
+
 .popup
   display: none
   position: fixed
@@ -20,6 +33,7 @@ $popup-width: calc(100% - 120px)
 
   //&.allow-transition
       display: block
+
 
 
 
@@ -63,6 +77,49 @@ $popup-width: calc(100% - 120px)
 
   &.visible
     display: block
+
+
+  &.order-popup
+    background: white
+    max-width: 300px
+    border-radius: 5px
+    width: 100%
+    top: 50%
+    position: fixed
+    left: 50%
+    transform: translate(-50%, -50%)
+
+    .form-success-block
+      display: none
+      text-align: center
+      margin: 20px
+
+
+
+    .form-title
+      color: #bf291f
+      font-weight: 300
+      font-size: 1.5em
+      text-align: center
+      margin: 16px
+
+    button
+      width: 100%
+      margin: 0 0 16px 0
+
+
+    form#order
+      height: auto
+
+      textarea
+        height: 80px
+
+      &.submitting
+        .form-success-block
+          display: block
+        .form-inputs
+          display: none
+
 
 
   @media (max-width: 800px)

@@ -7,10 +7,9 @@
     .parent-description
       h1
         = @node.name
-      br
-      = @node.description.html_safe unless @node.description.blank?
+
     .clearfix
-      |  
+
     #all-products-by-childs
       .store-section.row
         /.top-border
@@ -20,4 +19,7 @@
             p
               = product.name
             = link_to 'Детальніше', product.url, :title => product.name, :class => 'button'
+    - if @node.description.present?
+      #category-description
+        = raw @node.description
 .pd-me.f-height
