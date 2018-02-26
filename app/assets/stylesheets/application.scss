@@ -49,11 +49,11 @@
 @import "grid_extension";
 
 
-@import "page.css.scss";
-@import "basic.css.scss";
+@import "page";
+@import "basic";
 @import "footer";
 
-@import "media-queries/layout.css.scss";
+@import "media-queries/layout";
 //@import "media-queries/pages";
 
 @import "components/button";
@@ -76,8 +76,8 @@
 @import  "pages/tabs";
 @import  "pages/products_page";
 //@import  "pages/bread-crumbs";
-@import "articles.css.scss";
-@import "slider-custom.css";
+@import "articles";
+@import "slider-custom";
 @import "pages/contacts";
 
 
