@@ -26,8 +26,6 @@ class CatalogController < ApplicationController
     end
     render template_name
 
-
-
   end
 
   def category(node)
@@ -35,6 +33,7 @@ class CatalogController < ApplicationController
     @category = node
     @products = @category.products
     add_breadcrumb(@category, nil)
+    set_page_metadata(@category)
   end
 
   def subcategory(node)
@@ -43,6 +42,7 @@ class CatalogController < ApplicationController
     @products = @subcategory.products
     add_breadcrumb(@category, nil)
     add_breadcrumb(@subcategory, nil)
+    set_page_metadata(@subcategory)
   end
 
   def brand(node)
@@ -54,6 +54,7 @@ class CatalogController < ApplicationController
     add_breadcrumb(@category, nil)
     add_breadcrumb(@subcategory, nil)
     add_breadcrumb(@brand, nil)
+    set_page_metadata(@brand)
 
   end
 
@@ -67,6 +68,7 @@ class CatalogController < ApplicationController
     add_breadcrumb(@subcategory, nil)
     add_breadcrumb(@brand, nil)
     add_breadcrumb(@product, nil)
+    set_page_metadata(@product)
 
   end
 
