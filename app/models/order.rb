@@ -4,4 +4,6 @@ class Order < ActiveRecord::Base
   belongs_to :product
 
   include Cms::Notifier
+
+  after_create :notify_admin
 end

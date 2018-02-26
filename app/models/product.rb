@@ -18,8 +18,6 @@ class Product < ActiveRecord::Base
     pages self, category, subcategory, brand
   end
 
-  after_create :notify_admin
-
   image :avatar, styles: { thumb: '180>', prod: '190x190#', main: '420x420#' }
 
   def url(locale = I18n.locale)
