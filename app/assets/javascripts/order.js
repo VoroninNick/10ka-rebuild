@@ -31,3 +31,7 @@ $(document).on("submit", "#order", function (e) {
     $form.ajaxSubmit({type: "post"})
     $form.addClass("submitting")
 })
+
+$(document).on("click", ".body-overlay", function () {
+    $(".order-popup, .body-overlay").removeClass("visible")
+})
