@@ -1,7 +1,7 @@
 - request_url_in_admin_panel = "#{@admin_root}/#{@request.class.name.underscore.gsub(/\//, "~")}/#{@request.id}/edit"
 = render "application_mailer/header"
 
-- keys = [:role, :name, :email, :phone, :address, :attachment, :comment]
+- keys = [:role, :product, :name, :email, :phone, :address, :attachment, :comment]
 - keys.each do |k|
   - next if !@request.respond_to?(k)
   - v = @request.send(k)
@@ -17,6 +17,8 @@
         = label_text
     - if k == :role
       = (role_name = @request.role_name).present? ? role_name : "-"
+    - elsif k == :product
+      = v.name
     - else
       = v
 
