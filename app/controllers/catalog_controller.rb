@@ -76,7 +76,7 @@ class CatalogController < ApplicationController
     #@product = Product.joins(:translations).where(product_translations: {url_fragment: params[:id], locale: I18n.locale}).first
     @product = Product.find(params[:product_id]) rescue nil
     return render_not_found if !@product
-    request_params = params.permit(:name, :phone, :email, :comment)
+    request_params = params.permit(:name, :phone, :comment)
     request_params[:product_id] = @product.id
     r = Order.new(request_params)
     r.referer = request.referer

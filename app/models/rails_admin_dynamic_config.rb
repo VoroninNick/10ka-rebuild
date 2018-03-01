@@ -204,7 +204,7 @@ module RailsAdminDynamicConfig
 
           field :product
           field :name
-          field :email
+          #field :email
           field :phone
           field :comment
           field :referer
