@@ -268,6 +268,7 @@ module RailsAdminDynamicConfig
             field :name
             field :description, :ck_editor
             field :url_fragment
+            field :seo_tags
           end
         end
 
@@ -287,7 +288,7 @@ module RailsAdminDynamicConfig
           edit do
             field :subcategory
             field :translations, :globalize_tabs
-
+            field :seo_tags
           end
         end
 
@@ -306,6 +307,7 @@ module RailsAdminDynamicConfig
           edit do
             field :category
             field :translations, :globalize_tabs
+            field :seo_tags
           end
         end
 
@@ -326,6 +328,7 @@ module RailsAdminDynamicConfig
             field :brand
             field :translations, :globalize_tabs
             field :avatar
+            field :seo_tags
           end
         end
 
