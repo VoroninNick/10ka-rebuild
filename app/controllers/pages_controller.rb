@@ -5,14 +5,14 @@ class PagesController < ApplicationController
   def index
 		@last_article = Article.last(4)
 		@banners = Banner.all
-		@text = Text.find(2)
+		#@text = Text.find(2)
 		@home_page_info = HomePageInfo.first_or_initialize
 		@home_categories = Category.all
 		set_page_metadata(:home)
   end
 
   def about_us
-		@text_about = Text.find(3)
+		#@text_about = Text.find(3)
 		@about_sponsors = AboutPageSponsor.published
 		@about_page_info = AboutPageInfo.first_or_initialize
 	end

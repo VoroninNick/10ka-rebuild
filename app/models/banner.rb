@@ -12,4 +12,8 @@ class Banner < ActiveRecord::Base
     move_images(':rails_root/public/assets/banner/:id/:style/:basename.:extension')
   end
 
+  has_cache do
+    pages :home
+  end
+
 end

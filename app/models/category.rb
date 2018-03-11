@@ -15,7 +15,7 @@ class Category < ActiveRecord::Base
   has_seo_tags
   has_sitemap_record
   has_cache do
-    pages self, subcategories, brands, products
+    pages :home, self, subcategories, brands, products
   end
 
   def url(locale = I18n.locale)

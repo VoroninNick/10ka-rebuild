@@ -367,6 +367,7 @@ module RailsAdminDynamicConfig
           navigation_label_key(:about_us, 1)
 
           field :translations, :globalize_tabs
+          field :sales_image
         end
 
         config.model_translation AboutPageInfo do
