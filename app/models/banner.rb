@@ -16,4 +16,8 @@ class Banner < ActiveRecord::Base
     pages :home
   end
 
+  def url
+    self['url']
+  end
+
 end
