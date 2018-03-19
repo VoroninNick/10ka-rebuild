@@ -403,6 +403,10 @@ module RailsAdminDynamicConfig
           field :website_url
           field :short_description
         end
+
+        config.model Sponsor do
+
+        end
       end
     end
   end

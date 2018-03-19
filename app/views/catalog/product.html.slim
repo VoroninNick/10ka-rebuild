@@ -8,9 +8,9 @@
           .columns
             .product-title
               = @product.name
-          .product-image.columns.large-4
+          .product-image.columns.large-3
             = image_tag @product.avatar.url(:prod), :alt => @product.name
-          .product-order-block.columns.large-8
+          .product-order-block.columns.large-9
             button.order-button
               |Замовити
 

@@ -26,8 +26,8 @@ function init_google_map(){
             {
 
 
-                var lat= 49.8163609;
-                var lng= 23.9259267;
+                var lat= 49.8198447;
+                var lng= 23.9248706;
                 var myLatlng = new google.maps.LatLng(lat, lng);
                 var myOptions = {
                     zoom: 15,
